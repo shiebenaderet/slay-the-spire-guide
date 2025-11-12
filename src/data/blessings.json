@@ -1,0 +1,482 @@
+[
+  {
+    "id": "blessing_max_hp",
+    "name": "Gain Max HP",
+    "description": "Gain 6 Max HP",
+    "character": "ironclad"
+  },
+  {
+    "id": "blessing_max_hp_silent",
+    "name": "Gain Max HP",
+    "description": "Gain 6 Max HP",
+    "character": "silent"
+  },
+  {
+    "id": "blessing_max_hp_defect",
+    "name": "Gain Max HP",
+    "description": "Gain 6 Max HP",
+    "character": "defect"
+  },
+  {
+    "id": "blessing_max_hp_watcher",
+    "name": "Gain Max HP",
+    "description": "Gain 6 Max HP",
+    "character": "watcher"
+  },
+  {
+    "id": "blessing_heal_hp",
+    "name": "Heal HP",
+    "description": "Heal to full HP and gain 5 Max HP",
+    "character": "ironclad"
+  },
+  {
+    "id": "blessing_heal_hp_silent",
+    "name": "Heal HP",
+    "description": "Heal to full HP and gain 5 Max HP",
+    "character": "silent"
+  },
+  {
+    "id": "blessing_heal_hp_defect",
+    "name": "Heal HP",
+    "description": "Heal to full HP and gain 5 Max HP",
+    "character": "defect"
+  },
+  {
+    "id": "blessing_heal_hp_watcher",
+    "name": "Heal HP",
+    "description": "Heal to full HP and gain 5 Max HP",
+    "character": "watcher"
+  },
+  {
+    "id": "blessing_upgrade_strikes",
+    "name": "Upgrade Starter Cards",
+    "description": "Upgrade all Strikes and Defends",
+    "character": "ironclad"
+  },
+  {
+    "id": "blessing_upgrade_strikes_silent",
+    "name": "Upgrade Starter Cards",
+    "description": "Upgrade all Strikes and Defends",
+    "character": "silent"
+  },
+  {
+    "id": "blessing_upgrade_strikes_defect",
+    "name": "Upgrade Starter Cards",
+    "description": "Upgrade all Strikes and Defends",
+    "character": "defect"
+  },
+  {
+    "id": "blessing_upgrade_strikes_watcher",
+    "name": "Upgrade Starter Cards",
+    "description": "Upgrade all Strikes and Defends",
+    "character": "watcher"
+  },
+  {
+    "id": "blessing_remove_card",
+    "name": "Remove a Card",
+    "description": "Remove a card from your deck",
+    "character": "ironclad"
+  },
+  {
+    "id": "blessing_remove_card_silent",
+    "name": "Remove a Card",
+    "description": "Remove a card from your deck",
+    "character": "silent"
+  },
+  {
+    "id": "blessing_remove_card_defect",
+    "name": "Remove a Card",
+    "description": "Remove a card from your deck",
+    "character": "defect"
+  },
+  {
+    "id": "blessing_remove_card_watcher",
+    "name": "Remove a Card",
+    "description": "Remove a card from your deck",
+    "character": "watcher"
+  },
+  {
+    "id": "blessing_gold",
+    "name": "Gain Gold",
+    "description": "Gain 100 Gold",
+    "character": "ironclad"
+  },
+  {
+    "id": "blessing_gold_silent",
+    "name": "Gain Gold",
+    "description": "Gain 100 Gold",
+    "character": "silent"
+  },
+  {
+    "id": "blessing_gold_defect",
+    "name": "Gain Gold",
+    "description": "Gain 100 Gold",
+    "character": "defect"
+  },
+  {
+    "id": "blessing_gold_watcher",
+    "name": "Gain Gold",
+    "description": "Gain 100 Gold",
+    "character": "watcher"
+  },
+  {
+    "id": "blessing_choose_rare",
+    "name": "Choose a Rare Card",
+    "description": "Choose a rare card to add to your deck",
+    "character": "ironclad"
+  },
+  {
+    "id": "blessing_choose_rare_silent",
+    "name": "Choose a Rare Card",
+    "description": "Choose a rare card to add to your deck",
+    "character": "silent"
+  },
+  {
+    "id": "blessing_choose_rare_defect",
+    "name": "Choose a Rare Card",
+    "description": "Choose a rare card to add to your deck",
+    "character": "defect"
+  },
+  {
+    "id": "blessing_choose_rare_watcher",
+    "name": "Choose a Rare Card",
+    "description": "Choose a rare card to add to your deck",
+    "character": "watcher"
+  },
+  {
+    "id": "blessing_random_rare",
+    "name": "Obtain a Random Rare Card",
+    "description": "Obtain a random rare card",
+    "character": "ironclad"
+  },
+  {
+    "id": "blessing_random_rare_silent",
+    "name": "Obtain a Random Rare Card",
+    "description": "Obtain a random rare card",
+    "character": "silent"
+  },
+  {
+    "id": "blessing_random_rare_defect",
+    "name": "Obtain a Random Rare Card",
+    "description": "Obtain a random rare card",
+    "character": "defect"
+  },
+  {
+    "id": "blessing_random_rare_watcher",
+    "name": "Obtain a Random Rare Card",
+    "description": "Obtain a random rare card",
+    "character": "watcher"
+  },
+  {
+    "id": "blessing_remove_two",
+    "name": "Remove Two Cards",
+    "description": "Remove 2 cards from your deck",
+    "character": "ironclad"
+  },
+  {
+    "id": "blessing_remove_two_silent",
+    "name": "Remove Two Cards",
+    "description": "Remove 2 cards from your deck",
+    "character": "silent"
+  },
+  {
+    "id": "blessing_remove_two_defect",
+    "name": "Remove Two Cards",
+    "description": "Remove 2 cards from your deck",
+    "character": "defect"
+  },
+  {
+    "id": "blessing_remove_two_watcher",
+    "name": "Remove Two Cards",
+    "description": "Remove 2 cards from your deck",
+    "character": "watcher"
+  },
+  {
+    "id": "blessing_upgrade_card",
+    "name": "Upgrade a Card",
+    "description": "Upgrade any card in your deck",
+    "character": "ironclad"
+  },
+  {
+    "id": "blessing_upgrade_card_silent",
+    "name": "Upgrade a Card",
+    "description": "Upgrade any card in your deck",
+    "character": "silent"
+  },
+  {
+    "id": "blessing_upgrade_card_defect",
+    "name": "Upgrade a Card",
+    "description": "Upgrade any card in your deck",
+    "character": "defect"
+  },
+  {
+    "id": "blessing_upgrade_card_watcher",
+    "name": "Upgrade a Card",
+    "description": "Upgrade any card in your deck",
+    "character": "watcher"
+  },
+  {
+    "id": "blessing_transform_card",
+    "name": "Transform a Card",
+    "description": "Transform a card into a random card of the same rarity",
+    "character": "ironclad"
+  },
+  {
+    "id": "blessing_transform_card_silent",
+    "name": "Transform a Card",
+    "description": "Transform a card into a random card of the same rarity",
+    "character": "silent"
+  },
+  {
+    "id": "blessing_transform_card_defect",
+    "name": "Transform a Card",
+    "description": "Transform a card into a random card of the same rarity",
+    "character": "defect"
+  },
+  {
+    "id": "blessing_transform_card_watcher",
+    "name": "Transform a Card",
+    "description": "Transform a card into a random card of the same rarity",
+    "character": "watcher"
+  },
+  {
+    "id": "blessing_transform_two",
+    "name": "Transform Two Cards",
+    "description": "Transform 2 cards into random cards of the same rarity",
+    "character": "ironclad"
+  },
+  {
+    "id": "blessing_transform_two_silent",
+    "name": "Transform Two Cards",
+    "description": "Transform 2 cards into random cards of the same rarity",
+    "character": "silent"
+  },
+  {
+    "id": "blessing_transform_two_defect",
+    "name": "Transform Two Cards",
+    "description": "Transform 2 cards into random cards of the same rarity",
+    "character": "defect"
+  },
+  {
+    "id": "blessing_transform_two_watcher",
+    "name": "Transform Two Cards",
+    "description": "Transform 2 cards into random cards of the same rarity",
+    "character": "watcher"
+  },
+  {
+    "id": "blessing_enemies_1hp",
+    "name": "Next 3 Enemies Have 1 HP",
+    "description": "The next 3 enemies you encounter will have 1 HP",
+    "character": "ironclad"
+  },
+  {
+    "id": "blessing_enemies_1hp_silent",
+    "name": "Next 3 Enemies Have 1 HP",
+    "description": "The next 3 enemies you encounter will have 1 HP",
+    "character": "silent"
+  },
+  {
+    "id": "blessing_enemies_1hp_defect",
+    "name": "Next 3 Enemies Have 1 HP",
+    "description": "The next 3 enemies you encounter will have 1 HP",
+    "character": "defect"
+  },
+  {
+    "id": "blessing_enemies_1hp_watcher",
+    "name": "Next 3 Enemies Have 1 HP",
+    "description": "The next 3 enemies you encounter will have 1 HP",
+    "character": "watcher"
+  },
+  {
+    "id": "blessing_random_common_relic",
+    "name": "Obtain a Random Common Relic",
+    "description": "Obtain a random common relic",
+    "character": "ironclad"
+  },
+  {
+    "id": "blessing_random_common_relic_silent",
+    "name": "Obtain a Random Common Relic",
+    "description": "Obtain a random common relic",
+    "character": "silent"
+  },
+  {
+    "id": "blessing_random_common_relic_defect",
+    "name": "Obtain a Random Common Relic",
+    "description": "Obtain a random common relic",
+    "character": "defect"
+  },
+  {
+    "id": "blessing_random_common_relic_watcher",
+    "name": "Obtain a Random Common Relic",
+    "description": "Obtain a random common relic",
+    "character": "watcher"
+  },
+  {
+    "id": "blessing_lose_hp_gain_gold",
+    "name": "Lose HP, Gain Gold",
+    "description": "Lose 7 max HP. Gain 250 Gold",
+    "character": "ironclad"
+  },
+  {
+    "id": "blessing_lose_hp_gain_gold_silent",
+    "name": "Lose HP, Gain Gold",
+    "description": "Lose 6 max HP. Gain 250 Gold",
+    "character": "silent"
+  },
+  {
+    "id": "blessing_lose_hp_gain_gold_defect",
+    "name": "Lose HP, Gain Gold",
+    "description": "Lose 7 max HP. Gain 250 Gold",
+    "character": "defect"
+  },
+  {
+    "id": "blessing_lose_hp_gain_gold_watcher",
+    "name": "Lose HP, Gain Gold",
+    "description": "Lose 7 max HP. Gain 250 Gold",
+    "character": "watcher"
+  },
+  {
+    "id": "blessing_lose_hp_rare_relic",
+    "name": "Lose HP, Gain Rare Relic",
+    "description": "Lose 10% max HP. Obtain a random rare relic",
+    "character": "ironclad"
+  },
+  {
+    "id": "blessing_lose_hp_rare_relic_silent",
+    "name": "Lose HP, Gain Rare Relic",
+    "description": "Lose 10% max HP. Obtain a random rare relic",
+    "character": "silent"
+  },
+  {
+    "id": "blessing_lose_hp_rare_relic_defect",
+    "name": "Lose HP, Gain Rare Relic",
+    "description": "Lose 10% max HP. Obtain a random rare relic",
+    "character": "defect"
+  },
+  {
+    "id": "blessing_lose_hp_rare_relic_watcher",
+    "name": "Lose HP, Gain Rare Relic",
+    "description": "Lose 10% max HP. Obtain a random rare relic",
+    "character": "watcher"
+  },
+  {
+    "id": "blessing_curse_rare_card",
+    "name": "Gain Curse, Choose Rare Card",
+    "description": "Obtain a curse. Choose a rare card to add to your deck",
+    "character": "ironclad"
+  },
+  {
+    "id": "blessing_curse_rare_card_silent",
+    "name": "Gain Curse, Choose Rare Card",
+    "description": "Obtain a curse. Choose a rare card to add to your deck",
+    "character": "silent"
+  },
+  {
+    "id": "blessing_curse_rare_card_defect",
+    "name": "Gain Curse, Choose Rare Card",
+    "description": "Obtain a curse. Choose a rare card to add to your deck",
+    "character": "defect"
+  },
+  {
+    "id": "blessing_curse_rare_card_watcher",
+    "name": "Gain Curse, Choose Rare Card",
+    "description": "Obtain a curse. Choose a rare card to add to your deck",
+    "character": "watcher"
+  },
+  {
+    "id": "blessing_lose_gold_rare_relic",
+    "name": "Lose Gold, Gain Rare Relic",
+    "description": "Lose all gold. Obtain a random rare relic",
+    "character": "ironclad"
+  },
+  {
+    "id": "blessing_lose_gold_rare_relic_silent",
+    "name": "Lose Gold, Gain Rare Relic",
+    "description": "Lose all gold. Obtain a random rare relic",
+    "character": "silent"
+  },
+  {
+    "id": "blessing_lose_gold_rare_relic_defect",
+    "name": "Lose Gold, Gain Rare Relic",
+    "description": "Lose all gold. Obtain a random rare relic",
+    "character": "defect"
+  },
+  {
+    "id": "blessing_lose_gold_rare_relic_watcher",
+    "name": "Lose Gold, Gain Rare Relic",
+    "description": "Lose all gold. Obtain a random rare relic",
+    "character": "watcher"
+  },
+  {
+    "id": "blessing_three_potions",
+    "name": "Obtain 3 Random Potions",
+    "description": "Obtain 3 random potions",
+    "character": "ironclad"
+  },
+  {
+    "id": "blessing_three_potions_silent",
+    "name": "Obtain 3 Random Potions",
+    "description": "Obtain 3 random potions",
+    "character": "silent"
+  },
+  {
+    "id": "blessing_three_potions_defect",
+    "name": "Obtain 3 Random Potions",
+    "description": "Obtain 3 random potions",
+    "character": "defect"
+  },
+  {
+    "id": "blessing_three_potions_watcher",
+    "name": "Obtain 3 Random Potions",
+    "description": "Obtain 3 random potions",
+    "character": "watcher"
+  },
+  {
+    "id": "blessing_lose_hp_colorless",
+    "name": "Lose HP, Gain Rare Colorless Card",
+    "description": "Lose 5 max HP. Obtain a rare colorless card",
+    "character": "ironclad"
+  },
+  {
+    "id": "blessing_lose_hp_colorless_silent",
+    "name": "Lose HP, Gain Rare Colorless Card",
+    "description": "Lose 5 max HP. Obtain a rare colorless card",
+    "character": "silent"
+  },
+  {
+    "id": "blessing_lose_hp_colorless_defect",
+    "name": "Lose HP, Gain Rare Colorless Card",
+    "description": "Lose 5 max HP. Obtain a rare colorless card",
+    "character": "defect"
+  },
+  {
+    "id": "blessing_lose_hp_colorless_watcher",
+    "name": "Lose HP, Gain Rare Colorless Card",
+    "description": "Lose 5 max HP. Obtain a rare colorless card",
+    "character": "watcher"
+  },
+  {
+    "id": "blessing_choose_colorless",
+    "name": "Choose a Colorless Card",
+    "description": "Choose a colorless card to add to your deck",
+    "character": "ironclad"
+  },
+  {
+    "id": "blessing_choose_colorless_silent",
+    "name": "Choose a Colorless Card",
+    "description": "Choose a colorless card to add to your deck",
+    "character": "silent"
+  },
+  {
+    "id": "blessing_choose_colorless_defect",
+    "name": "Choose a Colorless Card",
+    "description": "Choose a colorless card to add to your deck",
+    "character": "defect"
+  },
+  {
+    "id": "blessing_choose_colorless_watcher",
+    "name": "Choose a Colorless Card",
+    "description": "Choose a colorless card to add to your deck",
+    "character": "watcher"
+  }
+]

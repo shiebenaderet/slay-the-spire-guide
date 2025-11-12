@@ -1,0 +1,191 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #0f0f1e;
+  color: #eee8d5;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Enhanced button interactions */
+@layer components {
+  button {
+    @apply transition-all duration-200 ease-in-out;
+  }
+
+  button:active:not(:disabled) {
+    @apply scale-95;
+  }
+
+  button:disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+
+  /* Focus visible for accessibility */
+  button:focus-visible {
+    @apply outline-none ring-2 ring-offset-2 ring-offset-sts-darkest;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a2e;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4af37;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b8941f;
+}
+
+/* Loading spinner animation */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Pulse animation for notifications */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Mobile touch optimization */
+@media (hover: none) and (pointer: coarse) {
+  button {
+    @apply active:brightness-90;
+    min-height: 44px; /* iOS recommended touch target size */
+    min-width: 44px;
+  }
+
+  /* Larger tap targets for mobile */
+  input[type="range"] {
+    height: 44px;
+  }
+
+  /* Prevent text selection on buttons for better UX */
+  button, a {
+    -webkit-tap-highlight-color: rgba(212, 175, 55, 0.2);
+    user-select: none;
+  }
+
+  /* Better spacing for mobile cards */
+  .grid {
+    gap: 0.75rem;
+  }
+}
+
+/* Mobile-specific layout improvements */
+@media (max-width: 768px) {
+  /* Reduce padding on small screens */
+  .p-4 {
+    padding: 0.75rem !important;
+  }
+
+  .p-6 {
+    padding: 1rem !important;
+  }
+
+  /* Smaller text for mobile headers */
+  h1 {
+    font-size: 1.875rem !important;
+    line-height: 2.25rem !important;
+  }
+
+  h2 {
+    font-size: 1.25rem !important;
+    line-height: 1.75rem !important;
+  }
+
+  /* Make toast notifications more mobile-friendly */
+  .fixed.bottom-4.right-4 {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+  }
+
+  /* Ensure card grids stack on mobile */
+  .grid.grid-cols-2,
+  .grid.grid-cols-3,
+  .grid.grid-cols-4 {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Better modal sizing on mobile */
+  .max-w-7xl {
+    max-width: 100% !important;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .max-w-4xl {
+    max-width: 100% !important;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

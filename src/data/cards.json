@@ -1,0 +1,7585 @@
+[
+  {
+    "id": "apotheosis",
+    "name": "Apotheosis",
+    "character": "colorless",
+    "rarity": "rare",
+    "type": "skill",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Upgrade ALL cards in your deck. Exhaust.",
+    "tier": "S",
+    "tierRating": 5,
+    "synergies": [
+      "dead_branch"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "upgrade",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "bandage_up",
+    "name": "Bandage Up",
+    "character": "colorless",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Heal 4 HP. Exhaust.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "dead_branch",
+      "feel_no_pain"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "heal",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "blind",
+    "name": "Blind",
+    "character": "colorless",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Apply 2 Weak. Exhaust.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "sadistic_nature",
+      "paper_crane",
+      "odd_mushroom"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "weak",
+      "exhaust",
+      "debuff"
+    ]
+  },
+  {
+    "id": "chrysalis",
+    "name": "Chrysalis",
+    "character": "colorless",
+    "rarity": "rare",
+    "type": "skill",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Add 3 random Skills to your hand. They cost 0 this turn. Exhaust.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": [
+      "generate",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "dark_shackles",
+    "name": "Dark Shackles",
+    "character": "colorless",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Enemy loses 9 Strength for the rest of the turn. Exhaust.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "sadistic_nature"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "debuff",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "deep_breath",
+    "name": "Deep Breath",
+    "character": "colorless",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Shuffle your discard pile into your draw pile. Draw 1 card.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": [
+      "draw",
+      "shuffle"
+    ]
+  },
+  {
+    "id": "discovery",
+    "name": "Discovery",
+    "character": "colorless",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Choose 1 of 3 random cards to add to your hand. It costs 0 this turn. Exhaust.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": [
+      "generate",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "dramatic_entrance",
+    "name": "Dramatic Entrance",
+    "character": "colorless",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Innate. Deal 8 damage to ALL enemies. Exhaust.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "tungsten_rod"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "damage",
+      "aoe",
+      "innate",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "enlightenment",
+    "name": "Enlightenment",
+    "character": "colorless",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Reduce the cost of all cards in your hand to 1 this turn.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "vault",
+      "meteor_strike",
+      "wraith_form"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "cost-reduction"
+    ]
+  },
+  {
+    "id": "finesse",
+    "name": "Finesse",
+    "character": "colorless",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Gain 2 Block. Draw 1 card.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "kunai",
+      "shuriken",
+      "ornamental_fan"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block",
+      "draw",
+      "0-cost"
+    ]
+  },
+  {
+    "id": "flash_of_steel",
+    "name": "Flash of Steel",
+    "character": "colorless",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Deal 3 damage. Draw 1 card.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "kunai",
+      "shuriken",
+      "ornamental_fan",
+      "accuracy"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "damage",
+      "draw",
+      "0-cost"
+    ]
+  },
+  {
+    "id": "forethought",
+    "name": "Forethought",
+    "character": "colorless",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Put a card from your hand on the bottom of your draw pile. It costs 0 until played.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "vault",
+      "meteor_strike"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "cost-reduction"
+    ]
+  },
+  {
+    "id": "good_instincts",
+    "name": "Good Instincts",
+    "character": "colorless",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Gain 6 Block.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "kunai",
+      "shuriken",
+      "ornamental_fan"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block",
+      "0-cost"
+    ]
+  },
+  {
+    "id": "hand_of_greed",
+    "name": "Hand of Greed",
+    "character": "colorless",
+    "rarity": "rare",
+    "type": "attack",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Deal 20 damage. If this kills an enemy, gain 20 Gold. Exhaust.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": [
+      "damage",
+      "gold",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "impatience",
+    "name": "Impatience",
+    "character": "colorless",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "If you have no Attacks in your hand, draw 2 cards.",
+    "tier": "D",
+    "tierRating": 1,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": [
+      "draw",
+      "conditional"
+    ]
+  },
+  {
+    "id": "jack_of_all_trades",
+    "name": "Jack of All Trades",
+    "character": "colorless",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Add 1 random colorless card to your hand. Exhaust.",
+    "tier": "D",
+    "tierRating": 1,
+    "synergies": [
+      "dead_branch"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "generate",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "madness",
+    "name": "Madness",
+    "character": "colorless",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "A random card in your hand costs 0 this turn. Exhaust.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "vault",
+      "meteor_strike",
+      "wraith_form",
+      "dead_branch"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "cost-reduction",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "magnetism",
+    "name": "Magnetism",
+    "character": "colorless",
+    "rarity": "rare",
+    "type": "power",
+    "cost": 2,
+    "upgraded": false,
+    "description": "At the start of your turn, add a random colorless card to your hand.",
+    "tier": "D",
+    "tierRating": 1,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": [
+      "generate",
+      "power"
+    ]
+  },
+  {
+    "id": "master_of_strategy",
+    "name": "Master of Strategy",
+    "character": "colorless",
+    "rarity": "rare",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Draw 3 cards. Exhaust.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "dead_branch"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "draw",
+      "exhaust",
+      "0-cost"
+    ]
+  },
+  {
+    "id": "metamorphosis",
+    "name": "Metamorphosis",
+    "character": "colorless",
+    "rarity": "rare",
+    "type": "skill",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Add 3 random Attacks to your hand. They cost 0 this turn. Exhaust.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": [
+      "generate",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "mind_blast",
+    "name": "Mind Blast",
+    "character": "colorless",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Innate. Deal damage equal to the number of cards in your draw pile.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "well_laid_plans",
+      "equilibrium",
+      "battle_trance"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "damage",
+      "innate",
+      "scaling"
+    ]
+  },
+  {
+    "id": "panacea",
+    "name": "Panacea",
+    "character": "colorless",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Gain 1 Artifact. Exhaust.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "dead_branch"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "artifact",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "panache",
+    "name": "Panache",
+    "character": "colorless",
+    "rarity": "rare",
+    "type": "power",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Every time you play 5 cards in a single turn, deal 10 damage to ALL enemies.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "blade_dance",
+      "grand_finale",
+      "concentrate"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "damage",
+      "aoe",
+      "power",
+      "0-cost"
+    ]
+  },
+  {
+    "id": "panic_button",
+    "name": "Panic Button",
+    "character": "colorless",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Gain 30 Block. You cannot gain Block from cards for 2 turns. Exhaust.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "dead_branch"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "purity",
+    "name": "Purity",
+    "character": "colorless",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Choose and Exhaust up to 3 cards from your hand. Exhaust.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "dead_branch",
+      "feel_no_pain"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "exhaust"
+    ]
+  },
+  {
+    "id": "sadistic_nature",
+    "name": "Sadistic Nature",
+    "character": "colorless",
+    "rarity": "rare",
+    "type": "power",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Whenever you apply a Debuff to an enemy, they take 5 damage.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "blind",
+      "dark_shackles",
+      "trip",
+      "bash",
+      "uppercut",
+      "shockwave",
+      "clothesline"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "damage",
+      "power",
+      "0-cost"
+    ]
+  },
+  {
+    "id": "secret_technique",
+    "name": "Secret Technique",
+    "character": "colorless",
+    "rarity": "rare",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Put a Skill from your draw pile into your hand. Exhaust.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "wraith_form",
+      "limit_break"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "exhaust",
+      "0-cost"
+    ]
+  },
+  {
+    "id": "secret_weapon",
+    "name": "Secret Weapon",
+    "character": "colorless",
+    "rarity": "rare",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Put an Attack from your draw pile into your hand. Exhaust.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "bludgeon",
+      "heavy_blade"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "exhaust",
+      "0-cost"
+    ]
+  },
+  {
+    "id": "swift_strike",
+    "name": "Swift Strike",
+    "character": "colorless",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Deal 7 damage.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "kunai",
+      "shuriken",
+      "ornamental_fan"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "damage",
+      "0-cost"
+    ]
+  },
+  {
+    "id": "the_bomb",
+    "name": "The Bomb",
+    "character": "colorless",
+    "rarity": "rare",
+    "type": "skill",
+    "cost": 2,
+    "upgraded": false,
+    "description": "At the end of 3 turns, deal 40 damage to ALL enemies.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": [
+      "damage",
+      "aoe",
+      "delayed"
+    ]
+  },
+  {
+    "id": "thinking_ahead",
+    "name": "Thinking Ahead",
+    "character": "colorless",
+    "rarity": "rare",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Draw 2 cards, then put a card from your hand on top of your draw pile. Exhaust.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "dead_branch"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "draw",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "transmutation",
+    "name": "Transmutation",
+    "character": "colorless",
+    "rarity": "rare",
+    "type": "skill",
+    "cost": "X",
+    "upgraded": false,
+    "description": "Add X random colorless cards to your hand. Exhaust.",
+    "tier": "D",
+    "tierRating": 1,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": [
+      "generate",
+      "exhaust",
+      "x-cost"
+    ]
+  },
+  {
+    "id": "trip",
+    "name": "Trip",
+    "character": "colorless",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Apply 2 Vulnerable. Exhaust.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "sadistic_nature",
+      "paper_crane"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "vulnerable",
+      "exhaust",
+      "debuff"
+    ]
+  },
+  {
+    "id": "violence",
+    "name": "Violence",
+    "character": "colorless",
+    "rarity": "rare",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Put 3 random Attacks from your draw pile into your hand. Exhaust.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": [
+      "exhaust",
+      "0-cost"
+    ]
+  },
+  {
+    "id": "aggregate",
+    "name": "Aggregate",
+    "character": "defect",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Gain 1 Energy for every 4 cards in your draw pile.",
+    "tier": "D",
+    "tierRating": 1,
+    "synergies": [
+      "reboot",
+      "meteor_strike"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "energy"
+    ]
+  },
+  {
+    "id": "all_for_one",
+    "name": "All for One",
+    "character": "defect",
+    "rarity": "rare",
+    "type": "attack",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Deal 10 damage. Put all cost 0 cards from your discard pile into your hand.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "claw",
+      "beam_cell",
+      "steam_barrier",
+      "ftl",
+      "scrape"
+    ],
+    "antiSynergies": [
+      "reboot"
+    ],
+    "tags": [
+      "damage",
+      "recursion",
+      "zero_cost"
+    ]
+  },
+  {
+    "id": "amplify",
+    "name": "Amplify",
+    "character": "defect",
+    "rarity": "rare",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "This turn, your next Power card is played twice.",
+    "tier": "D",
+    "tierRating": 1,
+    "synergies": [
+      "echo_form",
+      "creative_ai",
+      "defragment",
+      "biased_cognition"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "power"
+    ]
+  },
+  {
+    "id": "auto_shields",
+    "name": "Auto-Shields",
+    "character": "defect",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "If you have no Block, gain 11 Block.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "calipers"
+    ],
+    "antiSynergies": [
+      "glacier",
+      "coolheaded",
+      "loop"
+    ],
+    "tags": [
+      "block"
+    ]
+  },
+  {
+    "id": "ball_lightning",
+    "name": "Ball Lightning",
+    "character": "defect",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 7 damage. Channel 1 Lightning.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "electrodynamics",
+      "defragment",
+      "static_discharge",
+      "thunder_strike"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "damage",
+      "orb",
+      "lightning",
+      "channel"
+    ]
+  },
+  {
+    "id": "barrage",
+    "name": "Barrage",
+    "character": "defect",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 4 damage for each channeled Orb.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "capacitor",
+      "loop",
+      "glacier",
+      "coolheaded",
+      "chill",
+      "rainbow"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "damage",
+      "orb",
+      "scaling"
+    ]
+  },
+  {
+    "id": "beam_cell",
+    "name": "Beam Cell",
+    "character": "defect",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Deal 3 damage. Apply 1 Vulnerable.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "all_for_one",
+      "hologram",
+      "claw"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "damage",
+      "vulnerable",
+      "zero_cost"
+    ]
+  },
+  {
+    "id": "biased_cognition",
+    "name": "Biased Cognition",
+    "character": "defect",
+    "rarity": "rare",
+    "type": "power",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Gain 4 Focus. At the start of your turn, lose 1 Focus.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "loop",
+      "electrodynamics",
+      "glacier",
+      "darkness",
+      "artifact"
+    ],
+    "antiSynergies": [
+      "consume"
+    ],
+    "tags": [
+      "focus",
+      "power"
+    ]
+  },
+  {
+    "id": "blizzard",
+    "name": "Blizzard",
+    "character": "defect",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal damage equal to 2 times the number of Frost Channeled this combat to ALL enemies.",
+    "tier": "E",
+    "tierRating": 1,
+    "synergies": [
+      "glacier",
+      "coolheaded",
+      "chill",
+      "loop"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "damage",
+      "aoe",
+      "frost",
+      "scaling"
+    ]
+  },
+  {
+    "id": "boot_sequence",
+    "name": "Boot Sequence",
+    "character": "defect",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Innate. Gain 10 Block. Exhaust.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "dead_branch"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block",
+      "zero_cost",
+      "innate",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "buffer",
+    "name": "Buffer",
+    "character": "defect",
+    "rarity": "rare",
+    "type": "power",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Prevent the next time you would lose HP from an attack.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "creative_ai",
+      "echo_form"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "power",
+      "protection"
+    ]
+  },
+  {
+    "id": "capacitor",
+    "name": "Capacitor",
+    "character": "defect",
+    "rarity": "uncommon",
+    "type": "power",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Gain 2 Orb slots.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "defragment",
+      "loop",
+      "fission",
+      "barrage",
+      "darkness"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "orb",
+      "power"
+    ]
+  },
+  {
+    "id": "chaos",
+    "name": "Chaos",
+    "character": "defect",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Channel 1 random Orb.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "compile_driver",
+      "barrage"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "orb",
+      "channel",
+      "random"
+    ]
+  },
+  {
+    "id": "charge_battery",
+    "name": "Charge Battery",
+    "character": "defect",
+    "rarity": "common",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Gain 7 Block. Next turn, gain 1 Energy.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "meteor_strike",
+      "hyperbeam",
+      "sunder",
+      "creative_ai"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block",
+      "energy"
+    ]
+  },
+  {
+    "id": "chill",
+    "name": "Chill",
+    "character": "defect",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Innate. Channel 1 Frost per enemy. Exhaust.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "defragment",
+      "loop",
+      "capacitor",
+      "blizzard"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "orb",
+      "frost",
+      "channel",
+      "zero_cost",
+      "innate",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "claw",
+    "name": "Claw",
+    "character": "defect",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Deal 3 damage. Increase the damage of ALL Claw cards by 2 this combat.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "all_for_one",
+      "hologram",
+      "claw",
+      "echo_form"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "damage",
+      "zero_cost",
+      "scaling"
+    ]
+  },
+  {
+    "id": "cold_snap",
+    "name": "Cold Snap",
+    "character": "defect",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 6 damage. Channel 1 Frost.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "defragment",
+      "loop",
+      "capacitor",
+      "blizzard"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "damage",
+      "orb",
+      "frost",
+      "channel"
+    ]
+  },
+  {
+    "id": "compile_driver",
+    "name": "Compile Driver",
+    "character": "defect",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 7 damage. Draw 1 card for each unique Orb you have Channeled.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "rainbow",
+      "chaos",
+      "capacitor"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "damage",
+      "draw",
+      "orb"
+    ]
+  },
+  {
+    "id": "consume",
+    "name": "Consume",
+    "character": "defect",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Gain 2 Focus. Lose 1 Orb slot.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "defragment",
+      "loop",
+      "electrodynamics"
+    ],
+    "antiSynergies": [
+      "capacitor",
+      "fission",
+      "barrage"
+    ],
+    "tags": [
+      "focus",
+      "orb"
+    ]
+  },
+  {
+    "id": "coolheaded",
+    "name": "Coolheaded",
+    "character": "defect",
+    "rarity": "common",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Channel 1 Frost. Draw 1 card.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "defragment",
+      "loop",
+      "capacitor",
+      "blizzard"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "orb",
+      "frost",
+      "channel",
+      "draw"
+    ]
+  },
+  {
+    "id": "core_surge",
+    "name": "Core Surge",
+    "character": "defect",
+    "rarity": "rare",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 11 damage. Gain 1 Artifact. Exhaust.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "biased_cognition",
+      "consume"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "damage",
+      "artifact",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "creative_ai",
+    "name": "Creative AI",
+    "character": "defect",
+    "rarity": "rare",
+    "type": "power",
+    "cost": 3,
+    "upgraded": false,
+    "description": "At the start of your turn, add a random Power card to your hand.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "heatsinks",
+      "force_field",
+      "storm",
+      "echo_form"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "power",
+      "random"
+    ]
+  },
+  {
+    "id": "darkness",
+    "name": "Darkness",
+    "character": "defect",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Channel 1 Dark. Trigger the passive ability of all Dark orbs.",
+    "tier": "D",
+    "tierRating": 1,
+    "synergies": [
+      "dualcast",
+      "multi_cast",
+      "defragment",
+      "capacitor"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "orb",
+      "dark",
+      "channel"
+    ]
+  },
+  {
+    "id": "defend_b",
+    "name": "Defend",
+    "character": "defect",
+    "rarity": "starter",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Gain 5 Block.",
+    "tier": "D",
+    "tierRating": 1,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": [
+      "basic",
+      "block"
+    ]
+  },
+  {
+    "id": "defragment",
+    "name": "Defragment",
+    "character": "defect",
+    "rarity": "uncommon",
+    "type": "power",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Gain 1 Focus.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "loop",
+      "electrodynamics",
+      "glacier",
+      "coolheaded",
+      "darkness"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "focus",
+      "power"
+    ]
+  },
+  {
+    "id": "doom_and_gloom",
+    "name": "Doom and Gloom",
+    "character": "defect",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Deal 10 damage to ALL enemies. Channel 1 Dark.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "darkness",
+      "dualcast",
+      "multi_cast",
+      "defragment"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "damage",
+      "aoe",
+      "orb",
+      "dark",
+      "channel"
+    ]
+  },
+  {
+    "id": "double_energy",
+    "name": "Double Energy",
+    "character": "defect",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Double your Energy. Exhaust.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "meteor_strike",
+      "hyperbeam",
+      "sunder"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "energy",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "dualcast",
+    "name": "Dualcast",
+    "character": "defect",
+    "rarity": "starter",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Evoke your next Orb twice.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "darkness",
+      "loop",
+      "multi_cast",
+      "defragment",
+      "capacitor"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "orb",
+      "evoke"
+    ]
+  },
+  {
+    "id": "echo_form",
+    "name": "Echo Form",
+    "character": "defect",
+    "rarity": "rare",
+    "type": "power",
+    "cost": 3,
+    "upgraded": false,
+    "description": "Ethereal. The first card you play each turn is played twice.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "seek",
+      "equilibrium",
+      "claw",
+      "streamline",
+      "genetic_algorithm"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "power",
+      "ethereal"
+    ]
+  },
+  {
+    "id": "electrodynamics",
+    "name": "Electrodynamics",
+    "character": "defect",
+    "rarity": "rare",
+    "type": "power",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Lightning now hits ALL enemies. Channel 2 Lightning.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "zap",
+      "ball_lightning",
+      "static_discharge",
+      "tempest",
+      "defragment"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "orb",
+      "lightning",
+      "channel",
+      "power",
+      "aoe"
+    ]
+  },
+  {
+    "id": "equilibrium",
+    "name": "Equilibrium",
+    "character": "defect",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Gain 13 Block. Retain your hand this turn.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "meteor_strike",
+      "hyperbeam",
+      "seek"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block",
+      "retain"
+    ]
+  },
+  {
+    "id": "ftl",
+    "name": "FTL",
+    "character": "defect",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Deal 5 damage. If you have played less than 3 cards this turn, draw 1 card.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "all_for_one",
+      "hologram"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "damage",
+      "draw",
+      "zero_cost"
+    ]
+  },
+  {
+    "id": "fission",
+    "name": "Fission",
+    "character": "defect",
+    "rarity": "rare",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Evoke all of your Orbs. Gain 1 Energy and draw 1 card for each Orb evoked. Exhaust.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "capacitor",
+      "fusion",
+      "glacier",
+      "rainbow",
+      "darkness"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "orb",
+      "evoke",
+      "energy",
+      "draw",
+      "zero_cost",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "force_field",
+    "name": "Force Field",
+    "character": "defect",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 4,
+    "upgraded": false,
+    "description": "This card's cost is reduced by 1 for each Power card played this combat. Gain 12 Block.",
+    "tier": "D",
+    "tierRating": 1,
+    "synergies": [
+      "creative_ai",
+      "defragment",
+      "loop",
+      "heatsinks",
+      "echo_form"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block"
+    ]
+  },
+  {
+    "id": "fusion",
+    "name": "Fusion",
+    "character": "defect",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Channel 1 Plasma.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "meteor_strike",
+      "hyperbeam",
+      "fission"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "orb",
+      "plasma",
+      "channel",
+      "energy"
+    ]
+  },
+  {
+    "id": "genetic_algorithm",
+    "name": "Genetic Algorithm",
+    "character": "defect",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Gain 1 Block. Permanently increase this card's Block by 2 this combat. Exhaust.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "hologram",
+      "echo_form"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block",
+      "exhaust",
+      "scaling"
+    ]
+  },
+  {
+    "id": "glacier",
+    "name": "Glacier",
+    "character": "defect",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Gain 7 Block. Channel 2 Frost.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "defragment",
+      "loop",
+      "capacitor",
+      "blizzard"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block",
+      "orb",
+      "frost",
+      "channel"
+    ]
+  },
+  {
+    "id": "go_for_the_eyes",
+    "name": "Go for the Eyes",
+    "character": "defect",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Deal 3 damage. If the enemy intends to attack, apply 1 Weak.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "all_for_one",
+      "hologram"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "damage",
+      "weak",
+      "zero_cost"
+    ]
+  },
+  {
+    "id": "heatsinks",
+    "name": "Heatsinks",
+    "character": "defect",
+    "rarity": "uncommon",
+    "type": "power",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Whenever you play a Power card, draw 1 card.",
+    "tier": "E",
+    "tierRating": 1,
+    "synergies": [
+      "creative_ai",
+      "defragment",
+      "loop",
+      "echo_form"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "draw",
+      "power"
+    ]
+  },
+  {
+    "id": "hello_world",
+    "name": "Hello World",
+    "character": "defect",
+    "rarity": "uncommon",
+    "type": "power",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Innate. At the start of each turn, add a random Common card to your hand.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "creative_ai",
+      "echo_form"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "power",
+      "innate",
+      "random"
+    ]
+  },
+  {
+    "id": "hologram",
+    "name": "Hologram",
+    "character": "defect",
+    "rarity": "common",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Gain 3 Block. Return a card from your discard pile to your hand. Exhaust.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "claw",
+      "all_for_one",
+      "meteor_strike",
+      "hyperbeam"
+    ],
+    "antiSynergies": [
+      "reboot"
+    ],
+    "tags": [
+      "block",
+      "exhaust",
+      "recursion"
+    ]
+  },
+  {
+    "id": "hyperbeam",
+    "name": "Hyperbeam",
+    "character": "defect",
+    "rarity": "rare",
+    "type": "attack",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Deal 26 damage to ALL enemies. Lose 3 Focus.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "bullseye",
+      "reprogram"
+    ],
+    "antiSynergies": [
+      "defragment",
+      "loop",
+      "electrodynamics"
+    ],
+    "tags": [
+      "damage",
+      "aoe",
+      "focus"
+    ]
+  },
+  {
+    "id": "leap",
+    "name": "Leap",
+    "character": "defect",
+    "rarity": "common",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Gain 9 Block.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "calipers"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block"
+    ]
+  },
+  {
+    "id": "loop",
+    "name": "Loop",
+    "character": "defect",
+    "rarity": "uncommon",
+    "type": "power",
+    "cost": 1,
+    "upgraded": false,
+    "description": "At the start of your turn, trigger the passive ability of your next Orb.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "defragment",
+      "capacitor",
+      "glacier",
+      "electrodynamics",
+      "darkness"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "orb",
+      "power"
+    ]
+  },
+  {
+    "id": "machine_learning",
+    "name": "Machine Learning",
+    "character": "defect",
+    "rarity": "rare",
+    "type": "power",
+    "cost": 1,
+    "upgraded": false,
+    "description": "At the start of your turn, draw 1 additional card.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "creative_ai",
+      "echo_form",
+      "skim",
+      "coolheaded"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "power",
+      "draw"
+    ]
+  },
+  {
+    "id": "melter",
+    "name": "Melter",
+    "character": "defect",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Remove ALL of an enemy's Block. Deal 10 damage.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "ftl"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "damage"
+    ]
+  },
+  {
+    "id": "meteor_strike",
+    "name": "Meteor Strike",
+    "character": "defect",
+    "rarity": "rare",
+    "type": "attack",
+    "cost": 5,
+    "upgraded": false,
+    "description": "Deal 24 damage. Channel 3 Plasma.",
+    "tier": "F",
+    "tierRating": 1,
+    "synergies": [
+      "fusion",
+      "turbo",
+      "double_energy",
+      "aggregate",
+      "fission"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "damage",
+      "orb",
+      "plasma",
+      "channel",
+      "energy"
+    ]
+  },
+  {
+    "id": "multi_cast",
+    "name": "Multi-Cast",
+    "character": "defect",
+    "rarity": "rare",
+    "type": "skill",
+    "cost": "X",
+    "upgraded": false,
+    "description": "Evoke your next Orb X times.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "darkness",
+      "defragment",
+      "loop",
+      "fusion"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "orb",
+      "evoke",
+      "x_cost"
+    ]
+  },
+  {
+    "id": "overclock",
+    "name": "Overclock",
+    "character": "defect",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Draw 2 cards. Add a Burn to your discard pile.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "dead_branch",
+      "feel_no_pain"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "draw",
+      "zero_cost"
+    ]
+  },
+  {
+    "id": "rainbow",
+    "name": "Rainbow",
+    "character": "defect",
+    "rarity": "rare",
+    "type": "skill",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Channel 1 Lightning. Channel 1 Frost. Channel 1 Dark. Exhaust.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "capacitor",
+      "defragment",
+      "loop",
+      "compile_driver",
+      "barrage"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "orb",
+      "lightning",
+      "frost",
+      "dark",
+      "channel",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "reboot",
+    "name": "Reboot",
+    "character": "defect",
+    "rarity": "rare",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Shuffle ALL of your cards into your draw pile. Draw 4 cards. Exhaust.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "aggregate"
+    ],
+    "antiSynergies": [
+      "stack",
+      "hologram",
+      "all_for_one"
+    ],
+    "tags": [
+      "draw",
+      "zero_cost",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "rebound",
+    "name": "Rebound",
+    "character": "defect",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 9 damage. Put this card on top of your draw pile when played.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "hologram",
+      "equilibrium"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "damage"
+    ]
+  },
+  {
+    "id": "recursion",
+    "name": "Recursion",
+    "character": "defect",
+    "rarity": "common",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Evoke your next Orb. Channel that Orb.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "loop",
+      "defragment",
+      "darkness"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "orb",
+      "evoke",
+      "channel"
+    ]
+  },
+  {
+    "id": "recycle",
+    "name": "Recycle",
+    "character": "defect",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Exhaust a card. Gain Energy equal to its cost.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "meteor_strike",
+      "hyperbeam"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "energy",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "reinforced_body",
+    "name": "Reinforced Body",
+    "character": "defect",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": "X",
+    "upgraded": false,
+    "description": "Gain 7 Block X times.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "fusion",
+      "turbo",
+      "double_energy"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block",
+      "x_cost"
+    ]
+  },
+  {
+    "id": "reprogram",
+    "name": "Reprogram",
+    "character": "defect",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Lose 1 Focus. Gain 1 Strength. Gain 1 Dexterity.",
+    "tier": "D",
+    "tierRating": 1,
+    "synergies": [
+      "heatsinks",
+      "capacitor"
+    ],
+    "antiSynergies": [
+      "defragment",
+      "loop",
+      "electrodynamics"
+    ],
+    "tags": [
+      "focus",
+      "strength",
+      "dexterity"
+    ]
+  },
+  {
+    "id": "rip_and_tear",
+    "name": "Rip and Tear",
+    "character": "defect",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 7 damage to a random enemy twice.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "electrodynamics"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "damage",
+      "random"
+    ]
+  },
+  {
+    "id": "scrape",
+    "name": "Scrape",
+    "character": "defect",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 7 damage. Draw 4 cards then discard all cards that don't cost 0.",
+    "tier": "D",
+    "tierRating": 1,
+    "synergies": [
+      "all_for_one",
+      "claw",
+      "beam_cell",
+      "ftl"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "damage",
+      "draw"
+    ]
+  },
+  {
+    "id": "seek",
+    "name": "Seek",
+    "character": "defect",
+    "rarity": "rare",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Choose a card from your draw pile and add it to your hand. Exhaust.",
+    "tier": "S",
+    "tierRating": 5,
+    "synergies": [
+      "echo_form",
+      "meteor_strike",
+      "hyperbeam",
+      "equilibrium"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "zero_cost",
+      "exhaust",
+      "tutoring"
+    ]
+  },
+  {
+    "id": "self_repair",
+    "name": "Self Repair",
+    "character": "defect",
+    "rarity": "uncommon",
+    "type": "power",
+    "cost": 1,
+    "upgraded": false,
+    "description": "At the end of combat, heal 7 HP.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "creative_ai",
+      "echo_form"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "power",
+      "heal"
+    ]
+  },
+  {
+    "id": "skim",
+    "name": "Skim",
+    "character": "defect",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Draw 3 cards.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "machine_learning",
+      "equilibrium"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "draw"
+    ]
+  },
+  {
+    "id": "stack",
+    "name": "Stack",
+    "character": "defect",
+    "rarity": "common",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Gain Block equal to the number of cards in your discard pile.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "equilibrium",
+      "recycle"
+    ],
+    "antiSynergies": [
+      "reboot"
+    ],
+    "tags": [
+      "block",
+      "scaling"
+    ]
+  },
+  {
+    "id": "static_discharge",
+    "name": "Static Discharge",
+    "character": "defect",
+    "rarity": "uncommon",
+    "type": "power",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Whenever you receive attack damage, Channel 1 Lightning.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "electrodynamics",
+      "defragment",
+      "loop",
+      "thunder_strike"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "orb",
+      "lightning",
+      "channel",
+      "power"
+    ]
+  },
+  {
+    "id": "steam_barrier",
+    "name": "Steam Barrier",
+    "character": "defect",
+    "rarity": "common",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Gain 6 Block. Decrease this card's Block by 1 this combat each time it's played.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "all_for_one",
+      "hologram"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block",
+      "zero_cost"
+    ]
+  },
+  {
+    "id": "storm",
+    "name": "Storm",
+    "character": "defect",
+    "rarity": "uncommon",
+    "type": "power",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Innate. Whenever you play a Power card, Channel 1 Lightning.",
+    "tier": "E",
+    "tierRating": 1,
+    "synergies": [
+      "creative_ai",
+      "defragment",
+      "electrodynamics",
+      "heatsinks"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "orb",
+      "lightning",
+      "channel",
+      "power",
+      "innate"
+    ]
+  },
+  {
+    "id": "streamline",
+    "name": "Streamline",
+    "character": "defect",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Deal 15 damage. Reduce this card's cost by 1 this combat each time it's played.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "echo_form",
+      "hologram"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "damage",
+      "scaling"
+    ]
+  },
+  {
+    "id": "strike_b",
+    "name": "Strike",
+    "character": "defect",
+    "rarity": "starter",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 6 damage.",
+    "tier": "D",
+    "tierRating": 1,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": [
+      "basic",
+      "damage"
+    ]
+  },
+  {
+    "id": "sunder",
+    "name": "Sunder",
+    "character": "defect",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 3,
+    "upgraded": false,
+    "description": "Deal 24 damage. If this kills an enemy, gain 3 Energy.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "turbo",
+      "double_energy",
+      "fusion"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "damage",
+      "energy"
+    ]
+  },
+  {
+    "id": "sweeping_beam",
+    "name": "Sweeping Beam",
+    "character": "defect",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 6 damage to ALL enemies. Draw 1 card.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "electrodynamics"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "damage",
+      "aoe",
+      "draw"
+    ]
+  },
+  {
+    "id": "turbo",
+    "name": "TURBO",
+    "character": "defect",
+    "rarity": "common",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Gain 2 Energy. Shuffle a Void into your draw pile.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "meteor_strike",
+      "hyperbeam",
+      "sunder"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "energy",
+      "zero_cost"
+    ]
+  },
+  {
+    "id": "tempest",
+    "name": "Tempest",
+    "character": "defect",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": "X",
+    "upgraded": false,
+    "description": "Channel X Lightning. Exhaust.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "electrodynamics",
+      "defragment",
+      "capacitor",
+      "thunder_strike"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "orb",
+      "lightning",
+      "channel",
+      "x_cost",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "thunder_strike",
+    "name": "Thunder Strike",
+    "character": "defect",
+    "rarity": "rare",
+    "type": "attack",
+    "cost": 3,
+    "upgraded": false,
+    "description": "Deal 7 damage to a random enemy for each Lightning Orb channeled this combat.",
+    "tier": "D",
+    "tierRating": 1,
+    "synergies": [
+      "zap",
+      "ball_lightning",
+      "electrodynamics",
+      "tempest",
+      "static_discharge"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "damage",
+      "lightning",
+      "scaling",
+      "random"
+    ]
+  },
+  {
+    "id": "white_noise",
+    "name": "White Noise",
+    "character": "defect",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Add a random Power card to your hand. It costs 0 this turn. Exhaust.",
+    "tier": "D",
+    "tierRating": 1,
+    "synergies": [
+      "force_field",
+      "heatsinks",
+      "storm"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "exhaust",
+      "random"
+    ]
+  },
+  {
+    "id": "zap",
+    "name": "Zap",
+    "character": "defect",
+    "rarity": "starter",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Channel 1 Lightning.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "electrodynamics",
+      "defragment",
+      "static_discharge",
+      "capacitor",
+      "loop",
+      "thunder_strike"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "orb",
+      "lightning",
+      "channel"
+    ]
+  },
+  {
+    "id": "anger",
+    "name": "Anger",
+    "character": "ironclad",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Deal 6 damage. Add a copy of this card into your discard pile.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "dead_branch",
+      "evolve",
+      "fire_breathing"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "self-replicating"
+    ]
+  },
+  {
+    "id": "armaments",
+    "name": "Armaments",
+    "character": "ironclad",
+    "rarity": "common",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Gain 5 Block. Upgrade a card in your hand for the rest of combat.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "searing_blow"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block",
+      "upgrade"
+    ]
+  },
+  {
+    "id": "barricade",
+    "name": "Barricade",
+    "character": "ironclad",
+    "rarity": "rare",
+    "type": "power",
+    "cost": 3,
+    "upgraded": false,
+    "description": "Block is not removed at the start of your turn.",
+    "tier": "S",
+    "tierRating": 5,
+    "synergies": [
+      "body_slam",
+      "entrench",
+      "metallicize",
+      "shrug_it_off"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block",
+      "scaling"
+    ]
+  },
+  {
+    "id": "bash",
+    "name": "Bash",
+    "character": "ironclad",
+    "rarity": "starter",
+    "type": "attack",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Deal 8 damage. Apply 2 Vulnerable.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "heavy_blade",
+      "uppercut",
+      "thunderclap"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "vulnerable",
+      "debuff"
+    ]
+  },
+  {
+    "id": "battle_trance",
+    "name": "Battle Trance",
+    "character": "ironclad",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Draw 3 cards. You cannot draw additional cards this turn.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "offering",
+      "pommel_strike"
+    ],
+    "antiSynergies": [
+      "shrug_it_off"
+    ],
+    "tags": [
+      "draw"
+    ]
+  },
+  {
+    "id": "berserk",
+    "name": "Berserk",
+    "character": "ironclad",
+    "rarity": "rare",
+    "type": "power",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Gain 1 Vulnerable. At the start of your turn, gain 1 Energy.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "orange_pellets"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "energy",
+      "vulnerable"
+    ]
+  },
+  {
+    "id": "blood_for_blood",
+    "name": "Blood for Blood",
+    "character": "ironclad",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 4,
+    "upgraded": false,
+    "description": "Costs 1 less Energy for each time you lose HP in combat. Deal 18 damage.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "rupture",
+      "brutality",
+      "offering"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "cost-reduction",
+      "self-damage-synergy"
+    ]
+  },
+  {
+    "id": "bloodletting",
+    "name": "Bloodletting",
+    "character": "ironclad",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Lose 3 HP. Gain 2 Energy.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "rupture",
+      "brutality",
+      "reaper"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "energy",
+      "self-damage"
+    ]
+  },
+  {
+    "id": "bludgeon",
+    "name": "Bludgeon",
+    "character": "ironclad",
+    "rarity": "rare",
+    "type": "attack",
+    "cost": 3,
+    "upgraded": false,
+    "description": "Deal 32 damage.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "dual_wield"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "frontload"
+    ]
+  },
+  {
+    "id": "body_slam",
+    "name": "Body Slam",
+    "character": "ironclad",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal damage equal to your current Block.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "barricade",
+      "entrench",
+      "metallicize"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block-scaling"
+    ]
+  },
+  {
+    "id": "brutality",
+    "name": "Brutality",
+    "character": "ironclad",
+    "rarity": "rare",
+    "type": "power",
+    "cost": 0,
+    "upgraded": false,
+    "description": "At the start of your turn, lose 1 HP and draw 1 card.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "rupture",
+      "offering",
+      "reaper"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "draw",
+      "self-damage"
+    ]
+  },
+  {
+    "id": "burning_pact",
+    "name": "Burning Pact",
+    "character": "ironclad",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Exhaust 1 card. Draw 2 cards.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "dead_branch",
+      "feel_no_pain",
+      "corruption"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "exhaust",
+      "draw"
+    ]
+  },
+  {
+    "id": "carnage",
+    "name": "Carnage",
+    "character": "ironclad",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Ethereal. Deal 20 damage.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "battle_trance",
+      "offering"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "ethereal",
+      "frontload"
+    ]
+  },
+  {
+    "id": "clash",
+    "name": "Clash",
+    "character": "ironclad",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Can only be played if every card in your hand is an Attack. Deal 14 damage.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "perfected_strike",
+      "dual_wield"
+    ],
+    "antiSynergies": [
+      "shrug_it_off",
+      "offering",
+      "battle_trance"
+    ],
+    "tags": [
+      "conditional"
+    ]
+  },
+  {
+    "id": "cleave",
+    "name": "Cleave",
+    "character": "ironclad",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 8 damage to ALL enemies.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "whirlwind",
+      "immolate"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "aoe"
+    ]
+  },
+  {
+    "id": "clothesline",
+    "name": "Clothesline",
+    "character": "ironclad",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Deal 12 damage. Apply 2 Weak.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "bash",
+      "uppercut"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "weak",
+      "debuff"
+    ]
+  },
+  {
+    "id": "combust",
+    "name": "Combust",
+    "character": "ironclad",
+    "rarity": "uncommon",
+    "type": "power",
+    "cost": 1,
+    "upgraded": false,
+    "description": "At the end of your turn, lose 1 HP and deal 5 damage to ALL enemies.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "rupture",
+      "brutality"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "aoe",
+      "self-damage",
+      "passive-damage"
+    ]
+  },
+  {
+    "id": "corruption",
+    "name": "Corruption",
+    "character": "ironclad",
+    "rarity": "rare",
+    "type": "power",
+    "cost": 3,
+    "upgraded": false,
+    "description": "Skills cost 0. Whenever you play a Skill, Exhaust it.",
+    "tier": "S",
+    "tierRating": 5,
+    "synergies": [
+      "dead_branch",
+      "feel_no_pain",
+      "dark_embrace"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "cost-reduction",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "dark_embrace",
+    "name": "Dark Embrace",
+    "character": "ironclad",
+    "rarity": "uncommon",
+    "type": "power",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Whenever a card is Exhausted, draw 1 card.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "corruption",
+      "fiend_fire",
+      "burning_pact",
+      "true_grit"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "draw",
+      "exhaust-synergy"
+    ]
+  },
+  {
+    "id": "defend_r",
+    "name": "Defend",
+    "character": "ironclad",
+    "rarity": "starter",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Gain 5 Block.",
+    "tier": "D",
+    "tierRating": 1,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": [
+      "basic",
+      "block"
+    ]
+  },
+  {
+    "id": "demon_form",
+    "name": "Demon Form",
+    "character": "ironclad",
+    "rarity": "rare",
+    "type": "power",
+    "cost": 3,
+    "upgraded": false,
+    "description": "At the start of your turn, gain 2 Strength.",
+    "tier": "S",
+    "tierRating": 5,
+    "synergies": [
+      "heavy_blade",
+      "limit_break",
+      "spot_weakness"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "strength",
+      "scaling"
+    ]
+  },
+  {
+    "id": "disarm",
+    "name": "Disarm",
+    "character": "ironclad",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Enemy loses 2 Strength. Exhaust.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "dead_branch",
+      "feel_no_pain",
+      "dark_embrace"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "debuff",
+      "exhaust",
+      "strength-reduction"
+    ]
+  },
+  {
+    "id": "double_tap",
+    "name": "Double Tap",
+    "character": "ironclad",
+    "rarity": "rare",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "This turn, your next Attack is played twice.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "bludgeon",
+      "pummel",
+      "carnage",
+      "heavy_blade",
+      "whirlwind"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "scaling",
+      "synergy"
+    ]
+  },
+  {
+    "id": "dropkick",
+    "name": "Dropkick",
+    "character": "ironclad",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 5 damage. If the enemy has Vulnerable, gain 1 Energy and draw 1 card.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "bash",
+      "uppercut",
+      "thunderclap"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "energy",
+      "draw",
+      "vulnerable-synergy"
+    ]
+  },
+  {
+    "id": "dual_wield",
+    "name": "Dual Wield",
+    "character": "ironclad",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Choose an Attack or Power card. Add a copy into your hand.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "limit_break",
+      "offering",
+      "bludgeon"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "copy"
+    ]
+  },
+  {
+    "id": "entrench",
+    "name": "Entrench",
+    "character": "ironclad",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Double your current Block.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "barricade",
+      "body_slam",
+      "metallicize"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block",
+      "scaling"
+    ]
+  },
+  {
+    "id": "evolve",
+    "name": "Evolve",
+    "character": "ironclad",
+    "rarity": "uncommon",
+    "type": "power",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Whenever you draw a Status card, draw 1 card.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "wild_strike",
+      "fire_breathing",
+      "anger"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "draw",
+      "status-synergy"
+    ]
+  },
+  {
+    "id": "exhume",
+    "name": "Exhume",
+    "character": "ironclad",
+    "rarity": "rare",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Put a card from your Exhaust pile into your hand. Exhaust.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "corruption",
+      "offering",
+      "limit_break"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "exhaust",
+      "recursion"
+    ]
+  },
+  {
+    "id": "feed",
+    "name": "Feed",
+    "character": "ironclad",
+    "rarity": "rare",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 10 damage. If this kills a non-minion enemy, raise your Max HP by 3. Exhaust.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": [
+      "exhaust",
+      "max-hp"
+    ]
+  },
+  {
+    "id": "feel_no_pain",
+    "name": "Feel No Pain",
+    "character": "ironclad",
+    "rarity": "uncommon",
+    "type": "power",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Whenever a card is Exhausted, gain 3 Block.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "corruption",
+      "fiend_fire",
+      "true_grit",
+      "burning_pact"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block",
+      "exhaust-synergy"
+    ]
+  },
+  {
+    "id": "fiend_fire",
+    "name": "Fiend Fire",
+    "character": "ironclad",
+    "rarity": "rare",
+    "type": "attack",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Exhaust your hand. Deal 7 damage for each card Exhausted.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "feel_no_pain",
+      "dark_embrace",
+      "dead_branch"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "exhaust",
+      "scaling"
+    ]
+  },
+  {
+    "id": "fire_breathing",
+    "name": "Fire Breathing",
+    "character": "ironclad",
+    "rarity": "uncommon",
+    "type": "power",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Whenever you draw a Status or Curse card, deal 6 damage to ALL enemies.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "wild_strike",
+      "evolve",
+      "anger"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "aoe",
+      "status-synergy"
+    ]
+  },
+  {
+    "id": "flame_barrier",
+    "name": "Flame Barrier",
+    "character": "ironclad",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Gain 12 Block. Whenever you are attacked this turn, deal 4 damage back.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "barricade"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block",
+      "thorns"
+    ]
+  },
+  {
+    "id": "flex",
+    "name": "Flex",
+    "character": "ironclad",
+    "rarity": "common",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Gain 2 Strength. At the end of your turn, lose 2 Strength.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "limit_break",
+      "girya"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "strength",
+      "temporary"
+    ]
+  },
+  {
+    "id": "ghostly_armor",
+    "name": "Ghostly Armor",
+    "character": "ironclad",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Ethereal. Gain 10 Block.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "battle_trance"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block",
+      "ethereal"
+    ]
+  },
+  {
+    "id": "havoc",
+    "name": "Havoc",
+    "character": "ironclad",
+    "rarity": "common",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Play the top card of your draw pile and Exhaust it.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "corruption",
+      "dead_branch"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "random",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "headbutt",
+    "name": "Headbutt",
+    "character": "ironclad",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 9 damage. Place a card from your discard pile on top of your draw pile.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "rampage",
+      "offering",
+      "limit_break"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "draw-manipulation"
+    ]
+  },
+  {
+    "id": "heavy_blade",
+    "name": "Heavy Blade",
+    "character": "ironclad",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Deal 14 damage. Strength affects Heavy Blade 3 times.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "demon_form",
+      "limit_break",
+      "spot_weakness",
+      "inflame"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "strength-scaling"
+    ]
+  },
+  {
+    "id": "hemokinesis",
+    "name": "Hemokinesis",
+    "character": "ironclad",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Lose 2 HP. Deal 15 damage.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "rupture",
+      "brutality",
+      "reaper"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "self-damage"
+    ]
+  },
+  {
+    "id": "immolate",
+    "name": "Immolate",
+    "character": "ironclad",
+    "rarity": "rare",
+    "type": "attack",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Deal 21 damage to ALL enemies. Add a Burn into your discard pile.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "evolve",
+      "fire_breathing"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "aoe",
+      "burn"
+    ]
+  },
+  {
+    "id": "impervious",
+    "name": "Impervious",
+    "character": "ironclad",
+    "rarity": "rare",
+    "type": "skill",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Gain 30 Block. Exhaust.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "barricade"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "infernal_blade",
+    "name": "Infernal Blade",
+    "character": "ironclad",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Add a random Attack into your hand. It costs 0 this turn. Exhaust.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "dead_branch",
+      "feel_no_pain"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "random",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "inflame",
+    "name": "Inflame",
+    "character": "ironclad",
+    "rarity": "uncommon",
+    "type": "power",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Gain 2 Strength.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "heavy_blade",
+      "limit_break",
+      "demon_form"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "strength",
+      "scaling"
+    ]
+  },
+  {
+    "id": "intimidate",
+    "name": "Intimidate",
+    "character": "ironclad",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Apply 1 Weak to ALL enemies. Exhaust.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "dead_branch",
+      "feel_no_pain",
+      "dark_embrace",
+      "paper_crane"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "aoe",
+      "weak",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "iron_wave",
+    "name": "Iron Wave",
+    "character": "ironclad",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Gain 5 Block. Deal 5 damage.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": [
+      "block",
+      "hybrid"
+    ]
+  },
+  {
+    "id": "juggernaut",
+    "name": "Juggernaut",
+    "character": "ironclad",
+    "rarity": "rare",
+    "type": "power",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Whenever you gain Block, deal 5 damage to a random enemy.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "metallicize",
+      "barricade",
+      "body_slam",
+      "feel_no_pain",
+      "shrug_it_off"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block-synergy",
+      "damage"
+    ]
+  },
+  {
+    "id": "limit_break",
+    "name": "Limit Break",
+    "character": "ironclad",
+    "rarity": "rare",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Double your Strength. Exhaust.",
+    "tier": "S",
+    "tierRating": 5,
+    "synergies": [
+      "demon_form",
+      "spot_weakness",
+      "inflame",
+      "headbutt"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "strength",
+      "scaling",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "metallicize",
+    "name": "Metallicize",
+    "character": "ironclad",
+    "rarity": "uncommon",
+    "type": "power",
+    "cost": 1,
+    "upgraded": false,
+    "description": "At the end of your turn, gain 3 Block.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "barricade",
+      "body_slam",
+      "entrench"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block",
+      "scaling"
+    ]
+  },
+  {
+    "id": "offering",
+    "name": "Offering",
+    "character": "ironclad",
+    "rarity": "rare",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Lose 6 HP. Gain 2 Energy. Draw 3 cards. Exhaust.",
+    "tier": "S",
+    "tierRating": 5,
+    "synergies": [
+      "rupture",
+      "brutality",
+      "reaper"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "energy",
+      "draw",
+      "self-damage",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "perfected_strike",
+    "name": "Perfected Strike",
+    "character": "ironclad",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Deal 6 damage. Deals 2 additional damage for ALL your cards containing 'Strike'.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "twin_strike",
+      "pommel_strike",
+      "strike_r"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "strike-synergy"
+    ]
+  },
+  {
+    "id": "pommel_strike",
+    "name": "Pommel Strike",
+    "character": "ironclad",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 9 damage. Draw 1 card.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "battle_trance",
+      "offering"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "draw",
+      "cycle"
+    ]
+  },
+  {
+    "id": "power_through",
+    "name": "Power Through",
+    "character": "ironclad",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Add 2 Wounds into your hand. Gain 15 Block.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "evolve",
+      "fire_breathing"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block",
+      "wound"
+    ]
+  },
+  {
+    "id": "pummel",
+    "name": "Pummel",
+    "character": "ironclad",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 2 damage 4 times. Exhaust.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "pen_nib",
+      "akabeko"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "exhaust",
+      "multi-hit"
+    ]
+  },
+  {
+    "id": "rage",
+    "name": "Rage",
+    "character": "ironclad",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Whenever you play an Attack this turn, gain 3 Block.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "whirlwind",
+      "sword_boomerang"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block"
+    ]
+  },
+  {
+    "id": "rampage",
+    "name": "Rampage",
+    "character": "ironclad",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 8 damage. Increase this card's damage by 5 this combat.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "headbutt",
+      "warcry",
+      "dual_wield"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "scaling"
+    ]
+  },
+  {
+    "id": "reaper",
+    "name": "Reaper",
+    "character": "ironclad",
+    "rarity": "rare",
+    "type": "attack",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Deal 4 damage to ALL enemies. Heal HP equal to unblocked damage. Exhaust.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "rupture",
+      "brutality",
+      "offering",
+      "strength"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "aoe",
+      "heal",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "reckless_charge",
+    "name": "Reckless Charge",
+    "character": "ironclad",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Deal 7 damage. Shuffle a Dazed into your draw pile.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "evolve",
+      "fire_breathing"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "dazed"
+    ]
+  },
+  {
+    "id": "rupture",
+    "name": "Rupture",
+    "character": "ironclad",
+    "rarity": "uncommon",
+    "type": "power",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Whenever you lose HP from a card, gain 1 Strength.",
+    "tier": "S",
+    "tierRating": 5,
+    "synergies": [
+      "offering",
+      "brutality",
+      "bloodletting",
+      "hemokinesis"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "strength",
+      "self-damage-synergy"
+    ]
+  },
+  {
+    "id": "searing_blow",
+    "name": "Searing Blow",
+    "character": "ironclad",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Deal 12 damage. Can be upgraded any number of times.",
+    "tier": "D",
+    "tierRating": 1,
+    "synergies": [
+      "armaments"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "multi-upgrade"
+    ]
+  },
+  {
+    "id": "second_wind",
+    "name": "Second Wind",
+    "character": "ironclad",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Exhaust all non-Attack cards in your hand. Gain 5 Block for each card Exhausted.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "feel_no_pain",
+      "dark_embrace"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "seeing_red",
+    "name": "Seeing Red",
+    "character": "ironclad",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Gain 2 Energy. Exhaust.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "dead_branch",
+      "feel_no_pain",
+      "dark_embrace"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "energy",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "sentinel",
+    "name": "Sentinel",
+    "character": "ironclad",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Gain 5 Block. If this card is Exhausted, gain 2 Energy.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "corruption",
+      "true_grit"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block",
+      "energy",
+      "exhaust-synergy"
+    ]
+  },
+  {
+    "id": "sever_soul",
+    "name": "Sever Soul",
+    "character": "ironclad",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Exhaust all non-Attack cards in your hand. Deal 16 damage.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "feel_no_pain",
+      "dark_embrace"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "exhaust"
+    ]
+  },
+  {
+    "id": "shockwave",
+    "name": "Shockwave",
+    "character": "ironclad",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Apply 3 Weak and Vulnerable to ALL enemies. Exhaust.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "heavy_blade",
+      "uppercut"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "aoe",
+      "weak",
+      "vulnerable",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "shrug_it_off",
+    "name": "Shrug It Off",
+    "character": "ironclad",
+    "rarity": "common",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Gain 8 Block. Draw 1 card.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "battle_trance",
+      "offering",
+      "barricade"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block",
+      "draw",
+      "cycle"
+    ]
+  },
+  {
+    "id": "spot_weakness",
+    "name": "Spot Weakness",
+    "character": "ironclad",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "If the enemy intends to attack, gain 3 Strength.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "demon_form",
+      "heavy_blade",
+      "limit_break"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "strength",
+      "conditional"
+    ]
+  },
+  {
+    "id": "strike_r",
+    "name": "Strike",
+    "character": "ironclad",
+    "rarity": "starter",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 6 damage.",
+    "tier": "D",
+    "tierRating": 1,
+    "synergies": [
+      "perfected_strike"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "basic"
+    ]
+  },
+  {
+    "id": "sword_boomerang",
+    "name": "Sword Boomerang",
+    "character": "ironclad",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 3 damage to a random enemy 3 times.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "pen_nib",
+      "akabeko"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "random",
+      "multi-hit"
+    ]
+  },
+  {
+    "id": "thunderclap",
+    "name": "Thunderclap",
+    "character": "ironclad",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 4 damage and apply 1 Vulnerable to ALL enemies.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "bash",
+      "uppercut",
+      "heavy_blade"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "aoe",
+      "vulnerable"
+    ]
+  },
+  {
+    "id": "true_grit",
+    "name": "True Grit",
+    "character": "ironclad",
+    "rarity": "common",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Gain 7 Block. Exhaust a random card from your hand.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "dead_branch",
+      "corruption",
+      "feel_no_pain"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "twin_strike",
+    "name": "Twin Strike",
+    "character": "ironclad",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 5 damage twice.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "pen_nib",
+      "akabeko",
+      "perfected_strike"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "multi-hit"
+    ]
+  },
+  {
+    "id": "uppercut",
+    "name": "Uppercut",
+    "character": "ironclad",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Deal 13 damage. Apply 1 Weak. Apply 1 Vulnerable.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "bash",
+      "dropkick",
+      "heavy_blade"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "weak",
+      "vulnerable",
+      "debuff"
+    ]
+  },
+  {
+    "id": "warcry",
+    "name": "Warcry",
+    "character": "ironclad",
+    "rarity": "common",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Draw 1 card. Place a card from your hand on top of your draw pile. Exhaust.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "rampage",
+      "limit_break"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "draw",
+      "exhaust",
+      "draw-manipulation"
+    ]
+  },
+  {
+    "id": "whirlwind",
+    "name": "Whirlwind",
+    "character": "ironclad",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": -1,
+    "upgraded": false,
+    "description": "Deal 5 damage to ALL enemies X times.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "offering",
+      "bloodletting",
+      "seeing_red"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "aoe",
+      "x-cost",
+      "scaling"
+    ]
+  },
+  {
+    "id": "wild_strike",
+    "name": "Wild Strike",
+    "character": "ironclad",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 12 damage. Shuffle a Wound into your draw pile.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "evolve",
+      "fire_breathing"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "wound"
+    ]
+  },
+  {
+    "id": "a_thousand_cuts",
+    "name": "A Thousand Cuts",
+    "character": "silent",
+    "rarity": "rare",
+    "type": "power",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Whenever you play a card, deal 1 damage to ALL enemies.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "blade_dance",
+      "infinite_blades",
+      "after_image"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "aoe",
+      "scaling",
+      "power"
+    ]
+  },
+  {
+    "id": "accuracy",
+    "name": "Accuracy",
+    "character": "silent",
+    "rarity": "uncommon",
+    "type": "power",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Shivs deal 4 additional damage.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "blade_dance",
+      "cloak_and_dagger",
+      "infinite_blades",
+      "storm_of_steel"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "shiv",
+      "scaling",
+      "power"
+    ]
+  },
+  {
+    "id": "acrobatics",
+    "name": "Acrobatics",
+    "character": "silent",
+    "rarity": "common",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Draw 3 cards. Discard 1 card.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "sneaky_strike",
+      "eviscerate",
+      "tactician",
+      "reflex"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "draw",
+      "discard"
+    ]
+  },
+  {
+    "id": "adrenaline",
+    "name": "Adrenaline",
+    "character": "silent",
+    "rarity": "rare",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Gain 1 Energy. Draw 2 cards. Exhaust.",
+    "tier": "S",
+    "tierRating": 5,
+    "synergies": [
+      "dead_branch"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "0-cost",
+      "energy",
+      "draw",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "after_image",
+    "name": "After Image",
+    "character": "silent",
+    "rarity": "rare",
+    "type": "power",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Whenever you play a card, gain 1 Block.",
+    "tier": "S",
+    "tierRating": 5,
+    "synergies": [
+      "blade_dance",
+      "infinite_blades",
+      "a_thousand_cuts"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block",
+      "scaling",
+      "power"
+    ]
+  },
+  {
+    "id": "alchemize",
+    "name": "Alchemize",
+    "character": "silent",
+    "rarity": "rare",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Obtain a random potion. Exhaust.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "dead_branch",
+      "white_beast_statue"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "exhaust",
+      "potion",
+      "generate"
+    ]
+  },
+  {
+    "id": "all_out_attack",
+    "name": "All-Out Attack",
+    "character": "silent",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 10 damage to ALL enemies. Discard 1 card at random.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "tactician",
+      "reflex"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "aoe",
+      "discard"
+    ]
+  },
+  {
+    "id": "backflip",
+    "name": "Backflip",
+    "character": "silent",
+    "rarity": "common",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Gain 5 Block. Draw 2 cards.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "footwork"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block",
+      "draw"
+    ]
+  },
+  {
+    "id": "backstab",
+    "name": "Backstab",
+    "character": "silent",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Innate. Deal 11 damage. Exhaust.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "kunai",
+      "shuriken",
+      "wrist_blade",
+      "ornamental_fan"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "0-cost",
+      "exhaust",
+      "innate",
+      "frontload"
+    ]
+  },
+  {
+    "id": "bane",
+    "name": "Bane",
+    "character": "silent",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 7 damage. If the enemy has Poison, deal 7 damage again.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "deadly_poison",
+      "bouncing_flask",
+      "noxious_fumes",
+      "catalyst",
+      "envenom"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "poison",
+      "conditional"
+    ]
+  },
+  {
+    "id": "blade_dance",
+    "name": "Blade Dance",
+    "character": "silent",
+    "rarity": "common",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Add 3 Shivs into your hand.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "accuracy",
+      "infinite_blades",
+      "envenom",
+      "after_image",
+      "a_thousand_cuts"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "shiv",
+      "generate"
+    ]
+  },
+  {
+    "id": "blur",
+    "name": "Blur",
+    "character": "silent",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Gain 5 Block. Block is not removed at the start of your next turn.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "footwork",
+      "after_image"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block",
+      "retain-block"
+    ]
+  },
+  {
+    "id": "bouncing_flask",
+    "name": "Bouncing Flask",
+    "character": "silent",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Apply 3 Poison to a random enemy 3 times.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "catalyst",
+      "bane",
+      "noxious_fumes"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "poison",
+      "debuff",
+      "random"
+    ]
+  },
+  {
+    "id": "bullet_time",
+    "name": "Bullet Time",
+    "character": "silent",
+    "rarity": "rare",
+    "type": "skill",
+    "cost": 3,
+    "upgraded": false,
+    "description": "You cannot draw additional cards this turn. Reduce the cost of all cards in your hand to 0 this turn.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "well_laid_plans",
+      "setup"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "cost-reduction"
+    ]
+  },
+  {
+    "id": "burst",
+    "name": "Burst",
+    "character": "silent",
+    "rarity": "rare",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "This turn, your next Skill is played twice.",
+    "tier": "S",
+    "tierRating": 5,
+    "synergies": [
+      "catalyst",
+      "bouncing_flask",
+      "footwork",
+      "terror"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "double-play"
+    ]
+  },
+  {
+    "id": "calculated_gamble",
+    "name": "Calculated Gamble",
+    "character": "silent",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Discard your hand, then draw that many cards. Exhaust.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "sneaky_strike",
+      "eviscerate",
+      "tactician",
+      "reflex"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "0-cost",
+      "draw",
+      "discard",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "caltrops",
+    "name": "Caltrops",
+    "character": "silent",
+    "rarity": "uncommon",
+    "type": "power",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Whenever you are attacked, deal 3 damage back.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "bronze_scales"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "thorns",
+      "power"
+    ]
+  },
+  {
+    "id": "catalyst",
+    "name": "Catalyst",
+    "character": "silent",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Double the enemy's Poison. Exhaust.",
+    "tier": "S",
+    "tierRating": 5,
+    "synergies": [
+      "deadly_poison",
+      "bouncing_flask",
+      "noxious_fumes",
+      "envenom"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "poison",
+      "scaling",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "choke",
+    "name": "Choke",
+    "character": "silent",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Deal 12 damage. Whenever you play a card this turn, the enemy loses 3 HP.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "after_image",
+      "a_thousand_cuts",
+      "blade_dance"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "multi-hit",
+      "scaling"
+    ]
+  },
+  {
+    "id": "cloak_and_dagger",
+    "name": "Cloak and Dagger",
+    "character": "silent",
+    "rarity": "common",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Gain 6 Block. Add 1 Shiv into your hand.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "accuracy",
+      "infinite_blades",
+      "envenom",
+      "after_image"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block",
+      "shiv",
+      "generate"
+    ]
+  },
+  {
+    "id": "concentrate",
+    "name": "Concentrate",
+    "character": "silent",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Discard 3 cards. Gain 2 Energy.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "sneaky_strike",
+      "eviscerate",
+      "tactician",
+      "reflex"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "0-cost",
+      "energy",
+      "discard"
+    ]
+  },
+  {
+    "id": "corpse_explosion",
+    "name": "Corpse Explosion",
+    "character": "silent",
+    "rarity": "rare",
+    "type": "skill",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Apply 6 Poison. When the enemy dies, deal damage equal to its max HP to ALL enemies.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "catalyst",
+      "noxious_fumes"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "poison",
+      "aoe",
+      "delayed"
+    ]
+  },
+  {
+    "id": "crippling_cloud",
+    "name": "Crippling Cloud",
+    "character": "silent",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Apply 4 Poison and 2 Weak to ALL enemies. Exhaust.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "catalyst",
+      "bane",
+      "heel_hook"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "poison",
+      "weak",
+      "debuff",
+      "aoe",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "dagger_spray",
+    "name": "Dagger Spray",
+    "character": "silent",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 4 damage to ALL enemies twice.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "envenom",
+      "a_thousand_cuts"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "aoe",
+      "multi-hit"
+    ]
+  },
+  {
+    "id": "dagger_throw",
+    "name": "Dagger Throw",
+    "character": "silent",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 9 damage. Draw 1 card. Discard 1 card.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "sneaky_strike",
+      "eviscerate",
+      "tactician",
+      "reflex"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "draw",
+      "discard"
+    ]
+  },
+  {
+    "id": "dash",
+    "name": "Dash",
+    "character": "silent",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Gain 10 Block. Deal 10 damage.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "footwork"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block",
+      "damage"
+    ]
+  },
+  {
+    "id": "deadly_poison",
+    "name": "Deadly Poison",
+    "character": "silent",
+    "rarity": "common",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Apply 5 Poison.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "catalyst",
+      "bane",
+      "noxious_fumes"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "poison",
+      "debuff"
+    ]
+  },
+  {
+    "id": "defend_g",
+    "name": "Defend",
+    "character": "silent",
+    "rarity": "starter",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Gain 5 Block.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "footwork",
+      "blur"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "basic",
+      "block"
+    ]
+  },
+  {
+    "id": "deflect",
+    "name": "Deflect",
+    "character": "silent",
+    "rarity": "common",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Gain 4 Block.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "footwork",
+      "blur"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "0-cost",
+      "block"
+    ]
+  },
+  {
+    "id": "die_die_die",
+    "name": "Die Die Die",
+    "character": "silent",
+    "rarity": "rare",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 13 damage to ALL enemies. Exhaust.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "dead_branch",
+      "feel_no_pain"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "aoe",
+      "exhaust",
+      "frontload"
+    ]
+  },
+  {
+    "id": "distraction",
+    "name": "Distraction",
+    "character": "silent",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Add a random Skill into your hand. It costs 0 this turn. Exhaust.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "dead_branch"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "exhaust",
+      "generate",
+      "random"
+    ]
+  },
+  {
+    "id": "dodge_and_roll",
+    "name": "Dodge and Roll",
+    "character": "silent",
+    "rarity": "common",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Gain 4 Block. Next turn, gain 4 Block.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "footwork"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block",
+      "delayed"
+    ]
+  },
+  {
+    "id": "doppelganger",
+    "name": "Doppelganger",
+    "character": "silent",
+    "rarity": "rare",
+    "type": "skill",
+    "cost": "X",
+    "upgraded": false,
+    "description": "Next turn, draw X cards and gain X Energy. Exhaust.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "dead_branch"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "x-cost",
+      "energy",
+      "draw",
+      "delayed",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "endless_agony",
+    "name": "Endless Agony",
+    "character": "silent",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Whenever you draw this card, add a copy of it into your hand. Deal 4 damage. Exhaust.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "envenom",
+      "after_image",
+      "a_thousand_cuts"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "0-cost",
+      "exhaust",
+      "generate"
+    ]
+  },
+  {
+    "id": "envenom",
+    "name": "Envenom",
+    "character": "silent",
+    "rarity": "rare",
+    "type": "power",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Whenever an Attack deals unblocked damage, apply 1 Poison.",
+    "tier": "S",
+    "tierRating": 5,
+    "synergies": [
+      "dagger_spray",
+      "eviscerate",
+      "riddle_with_holes",
+      "blade_dance"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "poison",
+      "scaling",
+      "power"
+    ]
+  },
+  {
+    "id": "escape_plan",
+    "name": "Escape Plan",
+    "character": "silent",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Draw 1 card. If you draw a Skill, gain 3 Block.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "kunai",
+      "shuriken",
+      "ornamental_fan",
+      "acrobatics"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "0-cost",
+      "draw",
+      "block",
+      "conditional"
+    ]
+  },
+  {
+    "id": "eviscerate",
+    "name": "Eviscerate",
+    "character": "silent",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 3,
+    "upgraded": false,
+    "description": "Costs 1 less Energy for each card discarded this turn. Deal 7 damage 3 times.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "acrobatics",
+      "survivor",
+      "prepared",
+      "calculated_gamble"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "multi-hit",
+      "discard",
+      "cost-reduction"
+    ]
+  },
+  {
+    "id": "expertise",
+    "name": "Expertise",
+    "character": "silent",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Draw cards until you have 6 in your hand.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "well_laid_plans",
+      "equilibrium"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "draw"
+    ]
+  },
+  {
+    "id": "finisher",
+    "name": "Finisher",
+    "character": "silent",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 6 damage for each Attack played this turn.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "blade_dance",
+      "infinite_blades"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "scaling",
+      "conditional"
+    ]
+  },
+  {
+    "id": "flechettes",
+    "name": "Flechettes",
+    "character": "silent",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 4 damage for each Skill in your hand.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "well_laid_plans"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "scaling",
+      "conditional"
+    ]
+  },
+  {
+    "id": "flying_knee",
+    "name": "Flying Knee",
+    "character": "silent",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 8 damage. Next turn, gain 1 Energy.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "bullet_time",
+      "adrenaline"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "energy",
+      "delayed"
+    ]
+  },
+  {
+    "id": "footwork",
+    "name": "Footwork",
+    "character": "silent",
+    "rarity": "uncommon",
+    "type": "power",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Gain 2 Dexterity.",
+    "tier": "S",
+    "tierRating": 5,
+    "synergies": [
+      "backflip",
+      "blur",
+      "dodge_and_roll"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "dexterity",
+      "scaling",
+      "power"
+    ]
+  },
+  {
+    "id": "glass_knife",
+    "name": "Glass Knife",
+    "character": "silent",
+    "rarity": "rare",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 8 damage twice. Every time this card is played, it permanently loses 2 damage.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "dual_wield",
+      "nightmare"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "multi-hit",
+      "frontload"
+    ]
+  },
+  {
+    "id": "grand_finale",
+    "name": "Grand Finale",
+    "character": "silent",
+    "rarity": "rare",
+    "type": "attack",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Can only be played if there are no cards in your draw pile. Deal 50 damage to ALL enemies.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "blade_dance",
+      "concentrate",
+      "storm_of_steel"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "0-cost",
+      "aoe",
+      "conditional"
+    ]
+  },
+  {
+    "id": "heel_hook",
+    "name": "Heel Hook",
+    "character": "silent",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 5 damage. If the enemy is Weak, gain 1 Energy and draw 1 card.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "neutralize",
+      "sucker_punch",
+      "leg_sweep"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "energy",
+      "draw",
+      "conditional",
+      "weak"
+    ]
+  },
+  {
+    "id": "infinite_blades",
+    "name": "Infinite Blades",
+    "character": "silent",
+    "rarity": "uncommon",
+    "type": "power",
+    "cost": 1,
+    "upgraded": false,
+    "description": "At the start of your turn, add a Shiv into your hand.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "accuracy",
+      "envenom",
+      "after_image"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "shiv",
+      "generate",
+      "power"
+    ]
+  },
+  {
+    "id": "leg_sweep",
+    "name": "Leg Sweep",
+    "character": "silent",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Apply 2 Weak. Gain 11 Block.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "heel_hook",
+      "footwork"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "weak",
+      "block",
+      "debuff"
+    ]
+  },
+  {
+    "id": "malaise",
+    "name": "Malaise",
+    "character": "silent",
+    "rarity": "rare",
+    "type": "skill",
+    "cost": "X",
+    "upgraded": false,
+    "description": "Enemy loses X Strength. Apply X Weak. Exhaust.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "heel_hook"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "x-cost",
+      "weak",
+      "strength-down",
+      "debuff",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "masterful_stab",
+    "name": "Masterful Stab",
+    "character": "silent",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Costs 1 additional Energy for each time you lose HP this combat. Deal 12 damage.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "kunai",
+      "shuriken",
+      "ornamental_fan"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "0-cost",
+      "conditional"
+    ]
+  },
+  {
+    "id": "neutralize",
+    "name": "Neutralize",
+    "character": "silent",
+    "rarity": "starter",
+    "type": "attack",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Deal 3 damage. Apply 1 Weak.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "heel_hook",
+      "envenom"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "0-cost",
+      "weak",
+      "debuff"
+    ]
+  },
+  {
+    "id": "nightmare",
+    "name": "Nightmare",
+    "character": "silent",
+    "rarity": "rare",
+    "type": "skill",
+    "cost": 3,
+    "upgraded": false,
+    "description": "Choose a card. Next turn, add 3 copies of that card into your hand. Exhaust.",
+    "tier": "S",
+    "tierRating": 5,
+    "synergies": [
+      "catalyst",
+      "adrenaline",
+      "burst"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "generate",
+      "delayed",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "noxious_fumes",
+    "name": "Noxious Fumes",
+    "character": "silent",
+    "rarity": "uncommon",
+    "type": "power",
+    "cost": 1,
+    "upgraded": false,
+    "description": "At the start of your turn, apply 2 Poison to ALL enemies.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "catalyst",
+      "bane",
+      "corpse_explosion"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "poison",
+      "scaling",
+      "power",
+      "aoe"
+    ]
+  },
+  {
+    "id": "outmaneuver",
+    "name": "Outmaneuver",
+    "character": "silent",
+    "rarity": "common",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Next turn, gain 2 Energy.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "bullet_time",
+      "adrenaline"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "energy",
+      "delayed"
+    ]
+  },
+  {
+    "id": "phantasmal_killer",
+    "name": "Phantasmal Killer",
+    "character": "silent",
+    "rarity": "rare",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Next turn, your Attacks deal double damage.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "glass_knife",
+      "eviscerate",
+      "die_die_die"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "delayed",
+      "scaling"
+    ]
+  },
+  {
+    "id": "piercing_wail",
+    "name": "Piercing Wail",
+    "character": "silent",
+    "rarity": "common",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "ALL enemies lose 6 Strength this turn. Exhaust.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "dead_branch",
+      "feel_no_pain"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "exhaust",
+      "debuff",
+      "aoe",
+      "strength-down"
+    ]
+  },
+  {
+    "id": "poisoned_stab",
+    "name": "Poisoned Stab",
+    "character": "silent",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 6 damage. Apply 3 Poison.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "catalyst",
+      "bane",
+      "envenom"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "poison",
+      "debuff"
+    ]
+  },
+  {
+    "id": "predator",
+    "name": "Predator",
+    "character": "silent",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Deal 15 damage. Next turn, draw 2 additional cards.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": [
+      "draw",
+      "delayed"
+    ]
+  },
+  {
+    "id": "prepared",
+    "name": "Prepared",
+    "character": "silent",
+    "rarity": "common",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Draw 1 card. Discard 1 card.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "sneaky_strike",
+      "eviscerate",
+      "tactician",
+      "reflex"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "0-cost",
+      "draw",
+      "discard"
+    ]
+  },
+  {
+    "id": "quick_slash",
+    "name": "Quick Slash",
+    "character": "silent",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 8 damage. Draw 1 card.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": [
+      "draw"
+    ]
+  },
+  {
+    "id": "reflex",
+    "name": "Reflex",
+    "character": "silent",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": -1,
+    "upgraded": false,
+    "description": "Unplayable. If this card is discarded from your hand, draw 2 cards.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "acrobatics",
+      "survivor",
+      "calculated_gamble",
+      "tools_of_the_trade"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "unplayable",
+      "discard",
+      "draw"
+    ]
+  },
+  {
+    "id": "riddle_with_holes",
+    "name": "Riddle with Holes",
+    "character": "silent",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Deal 3 damage 5 times.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "envenom"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "multi-hit"
+    ]
+  },
+  {
+    "id": "setup",
+    "name": "Setup",
+    "character": "silent",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Put a card from your hand on top of your draw pile. It costs 0 until played.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "bullet_time",
+      "well_laid_plans"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "cost-reduction",
+      "manipulation"
+    ]
+  },
+  {
+    "id": "skewer",
+    "name": "Skewer",
+    "character": "silent",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": "X",
+    "upgraded": false,
+    "description": "Deal 7 damage X times.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "envenom"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "x-cost",
+      "multi-hit"
+    ]
+  },
+  {
+    "id": "slice",
+    "name": "Slice",
+    "character": "silent",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Deal 6 damage.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "after_image",
+      "a_thousand_cuts",
+      "envenom"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "0-cost"
+    ]
+  },
+  {
+    "id": "sneaky_strike",
+    "name": "Sneaky Strike",
+    "character": "silent",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Deal 12 damage. If you have discarded a card this turn, gain 2 Energy.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "acrobatics",
+      "survivor",
+      "prepared",
+      "calculated_gamble"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "energy",
+      "discard",
+      "conditional"
+    ]
+  },
+  {
+    "id": "storm_of_steel",
+    "name": "Storm of Steel",
+    "character": "silent",
+    "rarity": "rare",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Discard your hand. Add 1 Shiv into your hand for each card discarded.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "accuracy",
+      "infinite_blades",
+      "envenom",
+      "after_image"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "shiv",
+      "generate",
+      "discard"
+    ]
+  },
+  {
+    "id": "strike_g",
+    "name": "Strike",
+    "character": "silent",
+    "rarity": "starter",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 6 damage.",
+    "tier": "D",
+    "tierRating": 1,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": [
+      "basic",
+      "remove-priority"
+    ]
+  },
+  {
+    "id": "sucker_punch",
+    "name": "Sucker Punch",
+    "character": "silent",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 7 damage. Apply 1 Weak.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "heel_hook"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "weak",
+      "debuff"
+    ]
+  },
+  {
+    "id": "survivor",
+    "name": "Survivor",
+    "character": "silent",
+    "rarity": "starter",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Gain 8 Block. Discard 1 card.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "sneaky_strike",
+      "eviscerate",
+      "tactician",
+      "reflex"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block",
+      "discard"
+    ]
+  },
+  {
+    "id": "tactician",
+    "name": "Tactician",
+    "character": "silent",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": -1,
+    "upgraded": false,
+    "description": "Unplayable. If this card is discarded from your hand, gain 1 Energy.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "acrobatics",
+      "survivor",
+      "calculated_gamble",
+      "tools_of_the_trade"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "unplayable",
+      "discard",
+      "energy"
+    ]
+  },
+  {
+    "id": "terror",
+    "name": "Terror",
+    "character": "silent",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Apply 99 Vulnerable. Exhaust.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "dead_branch",
+      "catalyst"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "vulnerable",
+      "debuff",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "tools_of_the_trade",
+    "name": "Tools of the Trade",
+    "character": "silent",
+    "rarity": "rare",
+    "type": "power",
+    "cost": 1,
+    "upgraded": false,
+    "description": "At the start of your turn, draw 1 card and discard 1 card.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "tactician",
+      "reflex",
+      "sneaky_strike"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "draw",
+      "discard",
+      "power"
+    ]
+  },
+  {
+    "id": "unload",
+    "name": "Unload",
+    "character": "silent",
+    "rarity": "rare",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 14 damage. Discard all non-Attack cards in your hand.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "tactician",
+      "reflex"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "discard"
+    ]
+  },
+  {
+    "id": "well_laid_plans",
+    "name": "Well-Laid Plans",
+    "character": "silent",
+    "rarity": "uncommon",
+    "type": "power",
+    "cost": 1,
+    "upgraded": false,
+    "description": "At the end of your turn, Retain up to 1 card.",
+    "tier": "S",
+    "tierRating": 5,
+    "synergies": [
+      "bullet_time",
+      "setup"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "retain",
+      "power"
+    ]
+  },
+  {
+    "id": "wraith_form",
+    "name": "Wraith Form",
+    "character": "silent",
+    "rarity": "rare",
+    "type": "power",
+    "cost": 3,
+    "upgraded": false,
+    "description": "Gain 2 Intangible. At the end of your turn, lose 1 Dexterity.",
+    "tier": "S",
+    "tierRating": 5,
+    "synergies": [
+      "footwork",
+      "orange_pellets"
+    ],
+    "antiSynergies": [
+      "footwork"
+    ],
+    "tags": [
+      "intangible",
+      "power",
+      "dexterity"
+    ]
+  },
+  {
+    "id": "alpha",
+    "name": "Alpha",
+    "character": "watcher",
+    "rarity": "rare",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Shuffle a Beta into your draw pile. Exhaust.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "master_reality"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "exhaust",
+      "generate"
+    ]
+  },
+  {
+    "id": "battle_hymn",
+    "name": "Battle Hymn",
+    "character": "watcher",
+    "rarity": "uncommon",
+    "type": "power",
+    "cost": 1,
+    "upgraded": false,
+    "description": "At the start of each turn, add a Smite into your hand.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "master_reality"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "smite",
+      "generate",
+      "power"
+    ]
+  },
+  {
+    "id": "blasphemy",
+    "name": "Blasphemy",
+    "character": "watcher",
+    "rarity": "rare",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Enter Divinity. Die next turn. Exhaust.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "vault"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "divinity",
+      "stance",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "bowling_bash",
+    "name": "Bowling Bash",
+    "character": "watcher",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 7 damage for each enemy.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "conclude"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "aoe"
+    ]
+  },
+  {
+    "id": "brilliance",
+    "name": "Brilliance",
+    "character": "watcher",
+    "rarity": "rare",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 12 damage. Deals additional damage equal to Mantra gained this combat.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "devotion",
+      "pray",
+      "prostrate",
+      "worship"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "mantra",
+      "scaling"
+    ]
+  },
+  {
+    "id": "carve_reality",
+    "name": "Carve Reality",
+    "character": "watcher",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 6 damage. Add a Smite into your hand.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "master_reality"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "smite",
+      "generate"
+    ]
+  },
+  {
+    "id": "collect",
+    "name": "Collect",
+    "character": "watcher",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": "X",
+    "upgraded": false,
+    "description": "Put a Miracle+ into your hand at the start of your next X turns. Exhaust.",
+    "tier": "D",
+    "tierRating": 1,
+    "synergies": [
+      "rushdown"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "exhaust",
+      "generate",
+      "miracle",
+      "x-cost"
+    ]
+  },
+  {
+    "id": "conclude",
+    "name": "Conclude",
+    "character": "watcher",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 12 damage to ALL enemies. End your turn.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "mental_fortress",
+      "talk_to_the_hand"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "aoe",
+      "end-turn"
+    ]
+  },
+  {
+    "id": "conjure_blade",
+    "name": "Conjure Blade",
+    "character": "watcher",
+    "rarity": "rare",
+    "type": "skill",
+    "cost": "X",
+    "upgraded": false,
+    "description": "Shuffle an Expunger into your draw pile. Exhaust.",
+    "tier": "D",
+    "tierRating": 1,
+    "synergies": [
+      "master_reality"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "exhaust",
+      "generate",
+      "x-cost"
+    ]
+  },
+  {
+    "id": "consecrate",
+    "name": "Consecrate",
+    "character": "watcher",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Deal 5 damage to ALL enemies.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "rushdown"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "aoe",
+      "0-cost"
+    ]
+  },
+  {
+    "id": "crescendo",
+    "name": "Crescendo",
+    "character": "watcher",
+    "rarity": "common",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Retain. Enter Wrath. Exhaust.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "rushdown",
+      "mental_fortress",
+      "establishment"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "stance",
+      "wrath",
+      "retain",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "crush_joints",
+    "name": "Crush Joints",
+    "character": "watcher",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 8 damage. If the last card played this combat was a Skill, apply 1 Vulnerable.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "sanctity",
+      "wave_of_the_hand"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "vulnerable",
+      "conditional"
+    ]
+  },
+  {
+    "id": "cut_through_fate",
+    "name": "Cut Through Fate",
+    "character": "watcher",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 7 damage. Scry 2. Draw 1 card.",
+    "tier": "S",
+    "tierRating": 5,
+    "synergies": [
+      "foresight",
+      "nirvana",
+      "weave",
+      "third_eye"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "scry",
+      "draw"
+    ]
+  },
+  {
+    "id": "deceive_reality",
+    "name": "Deceive Reality",
+    "character": "watcher",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Gain 4 Block. Add a Safety into your hand.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "master_reality"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block",
+      "generate"
+    ]
+  },
+  {
+    "id": "defend_p",
+    "name": "Defend",
+    "character": "watcher",
+    "rarity": "starter",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Gain 5 Block.",
+    "tier": "D",
+    "tierRating": 1,
+    "synergies": [
+      "wave_of_the_hand",
+      "sanctity"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "basic"
+    ]
+  },
+  {
+    "id": "deus_ex_machina",
+    "name": "Deus Ex Machina",
+    "character": "watcher",
+    "rarity": "rare",
+    "type": "skill",
+    "cost": -1,
+    "upgraded": false,
+    "description": "Unplayable. When you draw this card, add 2 Miracles into your hand. Exhaust.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "master_reality"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "exhaust",
+      "generate",
+      "miracle",
+      "unplayable"
+    ]
+  },
+  {
+    "id": "deva_form",
+    "name": "Deva Form",
+    "character": "watcher",
+    "rarity": "rare",
+    "type": "power",
+    "cost": 3,
+    "upgraded": false,
+    "description": "Ethereal. At the start of your turn, gain 1 Energy and increase this gain by 1.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "omniscience",
+      "conjure_blade"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "ethereal",
+      "energy",
+      "scaling",
+      "power"
+    ]
+  },
+  {
+    "id": "devotion",
+    "name": "Devotion",
+    "character": "watcher",
+    "rarity": "rare",
+    "type": "power",
+    "cost": 1,
+    "upgraded": false,
+    "description": "At the start of your turn, gain 2 Mantra.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "brilliance"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "mantra",
+      "power"
+    ]
+  },
+  {
+    "id": "empty_body",
+    "name": "Empty Body",
+    "character": "watcher",
+    "rarity": "common",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Gain 7 Block. Exit your Stance.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "flurry_of_blows"
+    ],
+    "antiSynergies": [
+      "mental_fortress"
+    ],
+    "tags": [
+      "stance",
+      "block"
+    ]
+  },
+  {
+    "id": "empty_fist",
+    "name": "Empty Fist",
+    "character": "watcher",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 9 damage. Exit your Stance.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "flurry_of_blows"
+    ],
+    "antiSynergies": [
+      "mental_fortress"
+    ],
+    "tags": [
+      "stance"
+    ]
+  },
+  {
+    "id": "empty_mind",
+    "name": "Empty Mind",
+    "character": "watcher",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Exit your Stance. Draw 2 cards.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "flurry_of_blows"
+    ],
+    "antiSynergies": [
+      "mental_fortress"
+    ],
+    "tags": [
+      "stance",
+      "draw"
+    ]
+  },
+  {
+    "id": "eruption",
+    "name": "Eruption",
+    "character": "watcher",
+    "rarity": "starter",
+    "type": "attack",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Deal 9 damage. Enter Wrath.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "rushdown",
+      "mental_fortress",
+      "tantrum",
+      "halt"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "stance",
+      "wrath"
+    ]
+  },
+  {
+    "id": "establishment",
+    "name": "Establishment",
+    "character": "watcher",
+    "rarity": "rare",
+    "type": "power",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Whenever a card is Retained, reduce its cost by 1 for the rest of combat.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "protect",
+      "sands_of_time",
+      "meditate",
+      "crescendo",
+      "tranquility"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "retain",
+      "power"
+    ]
+  },
+  {
+    "id": "evaluate",
+    "name": "Evaluate",
+    "character": "watcher",
+    "rarity": "common",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Gain 6 Block. Shuffle an Insight into your draw pile.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "master_reality"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block",
+      "generate"
+    ]
+  },
+  {
+    "id": "fasting",
+    "name": "Fasting",
+    "character": "watcher",
+    "rarity": "uncommon",
+    "type": "power",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Gain 3 Strength. Gain 3 Dexterity. At the start of your turn, lose 1 Energy.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "meditate",
+      "violet_lotus"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "strength",
+      "dexterity",
+      "power"
+    ]
+  },
+  {
+    "id": "fear_no_evil",
+    "name": "Fear No Evil",
+    "character": "watcher",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 8 damage. If the enemy intends to attack, enter Calm.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "inner_peace",
+      "like_water",
+      "mental_fortress"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "calm",
+      "stance",
+      "conditional"
+    ]
+  },
+  {
+    "id": "flurry_of_blows",
+    "name": "Flurry of Blows",
+    "character": "watcher",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Deal 4 damage. Whenever you change Stances, return this from the discard pile to your hand.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "mental_fortress",
+      "rushdown",
+      "empty_fist",
+      "empty_body"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "stance",
+      "recycle",
+      "0-cost"
+    ]
+  },
+  {
+    "id": "flying_sleeves",
+    "name": "Flying Sleeves",
+    "character": "watcher",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Retain. Deal 4 damage twice.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "establishment"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "retain",
+      "multi-hit"
+    ]
+  },
+  {
+    "id": "follow_up",
+    "name": "Follow-Up",
+    "character": "watcher",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 7 damage. If the last card played was an Attack, gain 1 Energy.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "flurry_of_blows",
+      "just_lucky"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "conditional",
+      "energy"
+    ]
+  },
+  {
+    "id": "foreign_influence",
+    "name": "Foreign Influence",
+    "character": "watcher",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Choose 1 of 3 random Attack cards to add to your hand. It costs 0 this turn. Exhaust.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": [
+      "exhaust",
+      "generate",
+      "0-cost"
+    ]
+  },
+  {
+    "id": "foresight",
+    "name": "Foresight",
+    "character": "watcher",
+    "rarity": "uncommon",
+    "type": "power",
+    "cost": 1,
+    "upgraded": false,
+    "description": "At the start of your turn, Scry 3.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "nirvana",
+      "weave",
+      "third_eye"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "scry",
+      "power"
+    ]
+  },
+  {
+    "id": "halt",
+    "name": "Halt",
+    "character": "watcher",
+    "rarity": "common",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Gain 3 Block. Wrath: Gain 9 additional Block.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "eruption",
+      "tantrum",
+      "crescendo"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block",
+      "wrath",
+      "conditional",
+      "0-cost"
+    ]
+  },
+  {
+    "id": "indignation",
+    "name": "Indignation",
+    "character": "watcher",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "If you are in Wrath, apply 3 Vulnerable to ALL enemies. Otherwise, enter Wrath.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "eruption",
+      "tantrum",
+      "rushdown"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "wrath",
+      "stance",
+      "vulnerable",
+      "conditional"
+    ]
+  },
+  {
+    "id": "inner_peace",
+    "name": "Inner Peace",
+    "character": "watcher",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "If you are in Calm, draw 3 cards. Otherwise, enter Calm.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "vigilance",
+      "tranquility",
+      "fear_no_evil"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "calm",
+      "stance",
+      "draw",
+      "conditional"
+    ]
+  },
+  {
+    "id": "judgment",
+    "name": "Judgment",
+    "character": "watcher",
+    "rarity": "rare",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "If the enemy has 30 or less HP, set their HP to 0.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": [
+      "execute"
+    ]
+  },
+  {
+    "id": "just_lucky",
+    "name": "Just Lucky",
+    "character": "watcher",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Scry 1. Gain 2 Block. Deal 3 damage.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "foresight",
+      "nirvana",
+      "weave"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "scry",
+      "block",
+      "0-cost"
+    ]
+  },
+  {
+    "id": "lesson_learned",
+    "name": "Lesson Learned",
+    "character": "watcher",
+    "rarity": "rare",
+    "type": "attack",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Deal 10 damage. If Fatal, Upgrade a random card in your deck. Exhaust.",
+    "tier": "S",
+    "tierRating": 5,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": [
+      "exhaust",
+      "upgrade"
+    ]
+  },
+  {
+    "id": "like_water",
+    "name": "Like Water",
+    "character": "watcher",
+    "rarity": "uncommon",
+    "type": "power",
+    "cost": 1,
+    "upgraded": false,
+    "description": "At the end of your turn, if you are in Calm, gain 5 Block.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "vigilance",
+      "tranquility",
+      "fear_no_evil"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "calm",
+      "block",
+      "conditional",
+      "power"
+    ]
+  },
+  {
+    "id": "master_reality",
+    "name": "Master Reality",
+    "character": "watcher",
+    "rarity": "rare",
+    "type": "power",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Whenever a card is created during combat, Upgrade it.",
+    "tier": "D",
+    "tierRating": 1,
+    "synergies": [
+      "battle_hymn",
+      "carve_reality",
+      "evaluate",
+      "pray",
+      "alpha",
+      "conjure_blade"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "upgrade",
+      "generate",
+      "power"
+    ]
+  },
+  {
+    "id": "meditate",
+    "name": "Meditate",
+    "character": "watcher",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Put a card from your discard pile into your hand and Retain it. Enter Calm. End your turn.",
+    "tier": "S",
+    "tierRating": 5,
+    "synergies": [
+      "establishment",
+      "inner_peace"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "calm",
+      "stance",
+      "retain",
+      "end-turn"
+    ]
+  },
+  {
+    "id": "mental_fortress",
+    "name": "Mental Fortress",
+    "character": "watcher",
+    "rarity": "uncommon",
+    "type": "power",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Whenever you change Stances, gain 4 Block.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "flurry_of_blows",
+      "eruption",
+      "vigilance",
+      "tantrum"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "stance",
+      "block",
+      "power"
+    ]
+  },
+  {
+    "id": "nirvana",
+    "name": "Nirvana",
+    "character": "watcher",
+    "rarity": "uncommon",
+    "type": "power",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Whenever you Scry, gain 3 Block.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "foresight",
+      "third_eye",
+      "cut_through_fate",
+      "just_lucky"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "scry",
+      "block",
+      "power"
+    ]
+  },
+  {
+    "id": "omniscience",
+    "name": "Omniscience",
+    "character": "watcher",
+    "rarity": "rare",
+    "type": "skill",
+    "cost": 4,
+    "upgraded": false,
+    "description": "Choose a card in your draw pile. Play the chosen card twice and Exhaust it. Exhaust.",
+    "tier": "S",
+    "tierRating": 5,
+    "synergies": [
+      "deva_form",
+      "ragnarok"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "exhaust"
+    ]
+  },
+  {
+    "id": "perseverance",
+    "name": "Perseverance",
+    "character": "watcher",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Retain. Gain 5 Block. Increase the Block gained by this card by 2 this combat.",
+    "tier": "D",
+    "tierRating": 1,
+    "synergies": [
+      "establishment"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "retain",
+      "block",
+      "scaling"
+    ]
+  },
+  {
+    "id": "pray",
+    "name": "Pray",
+    "character": "watcher",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Gain 3 Mantra. Shuffle an Insight into your draw pile.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "devotion",
+      "brilliance",
+      "master_reality"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "mantra",
+      "generate"
+    ]
+  },
+  {
+    "id": "pressure_points",
+    "name": "Pressure Points",
+    "character": "watcher",
+    "rarity": "common",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Apply 8 Mark. ALL enemies lose HP equal to their Mark.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "pressure_points"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "mark",
+      "scaling"
+    ]
+  },
+  {
+    "id": "prostrate",
+    "name": "Prostrate",
+    "character": "watcher",
+    "rarity": "common",
+    "type": "skill",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Gain 2 Mantra. Gain 4 Block.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "devotion",
+      "brilliance"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "mantra",
+      "block",
+      "0-cost"
+    ]
+  },
+  {
+    "id": "protect",
+    "name": "Protect",
+    "character": "watcher",
+    "rarity": "common",
+    "type": "skill",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Retain. Gain 12 Block.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "establishment"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "retain",
+      "block"
+    ]
+  },
+  {
+    "id": "ragnarok",
+    "name": "Ragnarok",
+    "character": "watcher",
+    "rarity": "rare",
+    "type": "attack",
+    "cost": 3,
+    "upgraded": false,
+    "description": "Deal 5 damage to a random enemy 5 times.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "omniscience",
+      "swivel"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "multi-hit",
+      "random"
+    ]
+  },
+  {
+    "id": "reach_heaven",
+    "name": "Reach Heaven",
+    "character": "watcher",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Deal 10 damage. Shuffle a Through Violence into your draw pile.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "master_reality"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "generate"
+    ]
+  },
+  {
+    "id": "rushdown",
+    "name": "Rushdown",
+    "character": "watcher",
+    "rarity": "uncommon",
+    "type": "power",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Whenever you enter Wrath, draw 2 cards.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "eruption",
+      "tantrum",
+      "crescendo",
+      "indignation"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "wrath",
+      "draw",
+      "power"
+    ]
+  },
+  {
+    "id": "sanctity",
+    "name": "Sanctity",
+    "character": "watcher",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Gain 6 Block. If the last card played was a Skill, draw 2 cards.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "crush_joints"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block",
+      "draw",
+      "conditional"
+    ]
+  },
+  {
+    "id": "sands_of_time",
+    "name": "Sands of Time",
+    "character": "watcher",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 4,
+    "upgraded": false,
+    "description": "Retain. Deal 20 damage. When Retained, reduce its cost by 1 this combat.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "establishment"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "retain",
+      "scaling"
+    ]
+  },
+  {
+    "id": "sash_whip",
+    "name": "Sash Whip",
+    "character": "watcher",
+    "rarity": "common",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 8 damage. If the last card played was an Attack, apply 1 Weak.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "pressure_points"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "weak",
+      "conditional"
+    ]
+  },
+  {
+    "id": "scrawl",
+    "name": "Scrawl",
+    "character": "watcher",
+    "rarity": "rare",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Draw cards until your hand is full. Exhaust.",
+    "tier": "S",
+    "tierRating": 5,
+    "synergies": [
+      "spirit_shield"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "draw",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "signature_move",
+    "name": "Signature Move",
+    "character": "watcher",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Can only be played if this is the only Attack in your hand. Deal 30 damage.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": [
+      "conditional"
+    ]
+  },
+  {
+    "id": "simmering_fury",
+    "name": "Simmering Fury",
+    "character": "watcher",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "At the start of your next turn, enter Wrath and draw 2 cards.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "rushdown",
+      "mental_fortress"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "wrath",
+      "stance",
+      "draw"
+    ]
+  },
+  {
+    "id": "spirit_shield",
+    "name": "Spirit Shield",
+    "character": "watcher",
+    "rarity": "rare",
+    "type": "skill",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Gain 3 Block for each card in your hand.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "scrawl"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block"
+    ]
+  },
+  {
+    "id": "strike_p",
+    "name": "Strike",
+    "character": "watcher",
+    "rarity": "starter",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 6 damage.",
+    "tier": "D",
+    "tierRating": 1,
+    "synergies": [
+      "follow_up",
+      "sash_whip",
+      "signature_move"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "basic"
+    ]
+  },
+  {
+    "id": "study",
+    "name": "Study",
+    "character": "watcher",
+    "rarity": "uncommon",
+    "type": "power",
+    "cost": 2,
+    "upgraded": false,
+    "description": "At the end of your turn, shuffle an Insight into your draw pile.",
+    "tier": "D",
+    "tierRating": 1,
+    "synergies": [
+      "master_reality"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "generate",
+      "power"
+    ]
+  },
+  {
+    "id": "swivel",
+    "name": "Swivel",
+    "character": "watcher",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Gain 8 Block. The next Attack you play costs 0.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "ragnarok"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block"
+    ]
+  },
+  {
+    "id": "talk_to_the_hand",
+    "name": "Talk to the Hand",
+    "character": "watcher",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 5 damage. Whenever you attack this enemy, gain 2 Block. Exhaust.",
+    "tier": "S",
+    "tierRating": 5,
+    "synergies": [
+      "conclude",
+      "windmill_strike"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "exhaust",
+      "block"
+    ]
+  },
+  {
+    "id": "tantrum",
+    "name": "Tantrum",
+    "character": "watcher",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Deal 3 damage 3 times. Enter Wrath. Shuffle this card into your draw pile.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "rushdown",
+      "mental_fortress"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "wrath",
+      "stance",
+      "multi-hit",
+      "recycle"
+    ]
+  },
+  {
+    "id": "third_eye",
+    "name": "Third Eye",
+    "character": "watcher",
+    "rarity": "common",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Gain 7 Block. Scry 3.",
+    "tier": "S",
+    "tierRating": 5,
+    "synergies": [
+      "foresight",
+      "nirvana",
+      "weave"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "block",
+      "scry"
+    ]
+  },
+  {
+    "id": "tranquility",
+    "name": "Tranquility",
+    "character": "watcher",
+    "rarity": "common",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Retain. Enter Calm. Exhaust.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "inner_peace",
+      "like_water",
+      "mental_fortress",
+      "establishment"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "stance",
+      "calm",
+      "retain",
+      "exhaust"
+    ]
+  },
+  {
+    "id": "vault",
+    "name": "Vault",
+    "character": "watcher",
+    "rarity": "rare",
+    "type": "skill",
+    "cost": 3,
+    "upgraded": false,
+    "description": "Take an extra turn after this one. End your turn. Exhaust.",
+    "tier": "S",
+    "tierRating": 5,
+    "synergies": [
+      "blasphemy",
+      "enlightenment"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "exhaust",
+      "end-turn",
+      "extra-turn"
+    ]
+  },
+  {
+    "id": "vigilance",
+    "name": "Vigilance",
+    "character": "watcher",
+    "rarity": "starter",
+    "type": "skill",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Enter Calm. Gain 8 Block.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "inner_peace",
+      "like_water",
+      "mental_fortress"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "stance",
+      "calm",
+      "block"
+    ]
+  },
+  {
+    "id": "wallop",
+    "name": "Wallop",
+    "character": "watcher",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Deal 9 damage. Gain Block equal to unblocked damage dealt.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": [
+      "block"
+    ]
+  },
+  {
+    "id": "wave_of_the_hand",
+    "name": "Wave of the Hand",
+    "character": "watcher",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Whenever you gain Block this turn, apply 1 Weak to ALL enemies.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "third_eye",
+      "halt"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "weak"
+    ]
+  },
+  {
+    "id": "weave",
+    "name": "Weave",
+    "character": "watcher",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Deal 4 damage. Whenever you Scry, return this from your discard pile to your hand.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "foresight",
+      "third_eye",
+      "cut_through_fate",
+      "just_lucky"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "scry",
+      "recycle",
+      "0-cost"
+    ]
+  },
+  {
+    "id": "wheel_kick",
+    "name": "Wheel Kick",
+    "character": "watcher",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Deal 15 damage. Draw 2 cards.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [
+      "rushdown"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "draw"
+    ]
+  },
+  {
+    "id": "windmill_strike",
+    "name": "Windmill Strike",
+    "character": "watcher",
+    "rarity": "uncommon",
+    "type": "attack",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Retain. Deal 7 damage. Increase the damage by 4 this combat.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "establishment"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "retain",
+      "scaling"
+    ]
+  },
+  {
+    "id": "wish",
+    "name": "Wish",
+    "character": "watcher",
+    "rarity": "rare",
+    "type": "skill",
+    "cost": 3,
+    "upgraded": false,
+    "description": "Choose one: Gain 6 Plated Armor, 3 Strength, or 25 Gold. Exhaust.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": [
+      "exhaust",
+      "choice"
+    ]
+  },
+  {
+    "id": "worship",
+    "name": "Worship",
+    "character": "watcher",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 2,
+    "upgraded": false,
+    "description": "Gain 5 Mantra.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": [
+      "devotion",
+      "brilliance"
+    ],
+    "antiSynergies": [],
+    "tags": [
+      "mantra"
+    ]
+  },
+  {
+    "id": "wreath_of_flame",
+    "name": "Wreath of Flame",
+    "character": "watcher",
+    "rarity": "uncommon",
+    "type": "skill",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Your next Attack deals 5 additional damage.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": [
+      "rushdown"
+    ],
+    "antiSynergies": [],
+    "tags": []
+  },
+  {
+    "id": "ascenders_bane",
+    "name": "Ascender's Bane",
+    "character": "colorless",
+    "rarity": "curse",
+    "type": "curse",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Unplayable. Ethereal. Cannot be removed from your deck.",
+    "tier": "F",
+    "tierRating": 1,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": ["curse", "ethereal", "unplayable"]
+  },
+  {
+    "id": "clumsy",
+    "name": "Clumsy",
+    "character": "colorless",
+    "rarity": "curse",
+    "type": "curse",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Unplayable. Ethereal.",
+    "tier": "F",
+    "tierRating": 1,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": ["curse", "ethereal", "unplayable"]
+  },
+  {
+    "id": "curse_of_the_bell",
+    "name": "Curse of the Bell",
+    "character": "colorless",
+    "rarity": "curse",
+    "type": "curse",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Unplayable. Cannot be removed from your deck.",
+    "tier": "F",
+    "tierRating": 1,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": ["curse", "unplayable"]
+  },
+  {
+    "id": "decay",
+    "name": "Decay",
+    "character": "colorless",
+    "rarity": "curse",
+    "type": "curse",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Unplayable. At the end of your turn, take 2 damage.",
+    "tier": "F",
+    "tierRating": 1,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": ["curse", "unplayable"]
+  },
+  {
+    "id": "doubt",
+    "name": "Doubt",
+    "character": "colorless",
+    "rarity": "curse",
+    "type": "curse",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Unplayable.",
+    "tier": "F",
+    "tierRating": 1,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": ["curse", "unplayable"]
+  },
+  {
+    "id": "injury",
+    "name": "Injury",
+    "character": "colorless",
+    "rarity": "curse",
+    "type": "curse",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Unplayable.",
+    "tier": "F",
+    "tierRating": 1,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": ["curse", "unplayable"]
+  },
+  {
+    "id": "necronomicurse",
+    "name": "Necronomicurse",
+    "character": "colorless",
+    "rarity": "curse",
+    "type": "curse",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Unplayable. Cannot be removed from your deck. When you play a card, a copy of this is shuffled into your discard pile.",
+    "tier": "F",
+    "tierRating": 1,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": ["curse", "unplayable"]
+  },
+  {
+    "id": "normality",
+    "name": "Normality",
+    "character": "colorless",
+    "rarity": "curse",
+    "type": "curse",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Unplayable. You can only play 3 cards this turn.",
+    "tier": "F",
+    "tierRating": 1,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": ["curse", "unplayable"]
+  },
+  {
+    "id": "pain",
+    "name": "Pain",
+    "character": "colorless",
+    "rarity": "curse",
+    "type": "curse",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Unplayable. While in hand, lose 1 HP when playing a card.",
+    "tier": "F",
+    "tierRating": 1,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": ["curse", "unplayable"]
+  },
+  {
+    "id": "parasite",
+    "name": "Parasite",
+    "character": "colorless",
+    "rarity": "curse",
+    "type": "curse",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Unplayable. When removed from deck, lose 3 Max HP.",
+    "tier": "F",
+    "tierRating": 1,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": ["curse", "unplayable"]
+  },
+  {
+    "id": "pride",
+    "name": "Pride",
+    "character": "colorless",
+    "rarity": "curse",
+    "type": "curse",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Innate. Exhaust. When Exhausted, add a copy of this card to your deck.",
+    "tier": "F",
+    "tierRating": 1,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": ["curse", "innate", "exhaust"]
+  },
+  {
+    "id": "regret",
+    "name": "Regret",
+    "character": "colorless",
+    "rarity": "curse",
+    "type": "curse",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Unplayable. Non-Ethereal. At the end of your turn, lose 1 HP for each card in your hand.",
+    "tier": "F",
+    "tierRating": 1,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": ["curse", "unplayable"]
+  },
+  {
+    "id": "shame",
+    "name": "Shame",
+    "character": "colorless",
+    "rarity": "curse",
+    "type": "curse",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Unplayable.",
+    "tier": "F",
+    "tierRating": 1,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": ["curse", "unplayable"]
+  },
+  {
+    "id": "writhe",
+    "name": "Writhe",
+    "character": "colorless",
+    "rarity": "curse",
+    "type": "curse",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Unplayable. Innate.",
+    "tier": "F",
+    "tierRating": 1,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": ["curse", "unplayable", "innate"]
+  },
+  {
+    "id": "burn",
+    "name": "Burn",
+    "character": "colorless",
+    "rarity": "status",
+    "type": "status",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Unplayable. At the end of your turn, take 2 damage.",
+    "tier": "F",
+    "tierRating": 1,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": ["status", "unplayable"]
+  },
+  {
+    "id": "dazed",
+    "name": "Dazed",
+    "character": "colorless",
+    "rarity": "status",
+    "type": "status",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Unplayable. Ethereal.",
+    "tier": "F",
+    "tierRating": 1,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": ["status", "unplayable", "ethereal"]
+  },
+  {
+    "id": "slimed",
+    "name": "Slimed",
+    "character": "colorless",
+    "rarity": "status",
+    "type": "status",
+    "cost": 1,
+    "upgraded": false,
+    "description": "Exhaust.",
+    "tier": "F",
+    "tierRating": 1,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": ["status", "exhaust"]
+  },
+  {
+    "id": "void",
+    "name": "Void",
+    "character": "colorless",
+    "rarity": "status",
+    "type": "status",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Unplayable. Ethereal. When Exhausted, lose 1 energy.",
+    "tier": "F",
+    "tierRating": 1,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": ["status", "unplayable", "ethereal"]
+  },
+  {
+    "id": "wound",
+    "name": "Wound",
+    "character": "colorless",
+    "rarity": "status",
+    "type": "status",
+    "cost": 0,
+    "upgraded": false,
+    "description": "Unplayable.",
+    "tier": "F",
+    "tierRating": 1,
+    "synergies": [],
+    "antiSynergies": [],
+    "tags": ["status", "unplayable"]
+  }
+]

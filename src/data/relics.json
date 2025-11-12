@@ -1,0 +1,862 @@
+[
+  {
+    "id": "burning_blood",
+    "name": "Burning Blood",
+    "rarity": "starter",
+    "character": "ironclad",
+    "description": "At the end of combat, heal 6 HP.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": []
+  },
+  {
+    "id": "ring_of_the_snake",
+    "name": "Ring of the Snake",
+    "rarity": "starter",
+    "character": "silent",
+    "description": "At the start of each combat, draw 2 additional cards.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": []
+  },
+  {
+    "id": "cracked_core",
+    "name": "Cracked Core",
+    "rarity": "starter",
+    "character": "defect",
+    "description": "At the start of each combat, channel 1 Lightning.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": []
+  },
+  {
+    "id": "pure_water",
+    "name": "Pure Water",
+    "rarity": "starter",
+    "character": "watcher",
+    "description": "At the start of each combat, add a Miracle to your hand.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": []
+  },
+  {
+    "id": "akabeko",
+    "name": "Akabeko",
+    "rarity": "common",
+    "character": "shared",
+    "description": "Your first Attack each combat deals 8 additional damage.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": []
+  },
+  {
+    "id": "anchor",
+    "name": "Anchor",
+    "rarity": "common",
+    "character": "shared",
+    "description": "At the start of each combat, gain 10 Block.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": ["barricade"]
+  },
+  {
+    "id": "ancient_tea_set",
+    "name": "Ancient Tea Set",
+    "rarity": "common",
+    "character": "shared",
+    "description": "Whenever you enter a Rest Site, start the next combat with 2 additional Energy.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": []
+  },
+  {
+    "id": "art_of_war",
+    "name": "Art of War",
+    "rarity": "common",
+    "character": "shared",
+    "description": "If you do not play Attacks during your turn, gain an extra Energy next turn.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": []
+  },
+  {
+    "id": "bag_of_marbles",
+    "name": "Bag of Marbles",
+    "rarity": "common",
+    "character": "shared",
+    "description": "At the start of each combat, apply 1 Vulnerable to ALL enemies.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": ["bash", "dropkick"]
+  },
+  {
+    "id": "bag_of_preparation",
+    "name": "Bag of Preparation",
+    "rarity": "common",
+    "character": "shared",
+    "description": "At the start of each combat, draw 2 additional cards.",
+    "tier": "S",
+    "tierRating": 5,
+    "synergies": []
+  },
+  {
+    "id": "blood_vial",
+    "name": "Blood Vial",
+    "rarity": "common",
+    "character": "shared",
+    "description": "At the start of each combat, heal 2 HP.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": []
+  },
+  {
+    "id": "bronze_scales",
+    "name": "Bronze Scales",
+    "rarity": "common",
+    "character": "shared",
+    "description": "Whenever you take damage, deal 3 damage back.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": []
+  },
+  {
+    "id": "centennial_puzzle",
+    "name": "Centennial Puzzle",
+    "rarity": "common",
+    "character": "shared",
+    "description": "The first time you lose HP each combat, draw 3 cards.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": []
+  },
+  {
+    "id": "ceramic_fish",
+    "name": "Ceramic Fish",
+    "rarity": "common",
+    "character": "shared",
+    "description": "Whenever you add a card to your deck, gain 9 Gold.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": []
+  },
+  {
+    "id": "lantern",
+    "name": "Lantern",
+    "rarity": "common",
+    "character": "shared",
+    "description": "Gain 1 Energy on the first turn of each combat.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": []
+  },
+  {
+    "id": "meal_ticket",
+    "name": "Meal Ticket",
+    "rarity": "common",
+    "character": "shared",
+    "description": "Whenever you enter a shop, heal 15 HP.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": []
+  },
+  {
+    "id": "nunchaku",
+    "name": "Nunchaku",
+    "rarity": "common",
+    "character": "shared",
+    "description": "Every time you play 10 Attacks, gain 1 Energy.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": []
+  },
+  {
+    "id": "oddly_smooth_stone",
+    "name": "Oddly Smooth Stone",
+    "rarity": "common",
+    "character": "shared",
+    "description": "At the start of each combat, gain 1 Dexterity.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": []
+  },
+  {
+    "id": "pen_nib",
+    "name": "Pen Nib",
+    "rarity": "common",
+    "character": "shared",
+    "description": "Every 10th Attack you play deals double damage.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": ["twin_strike", "sword_boomerang", "pummel"]
+  },
+  {
+    "id": "preserved_insect",
+    "name": "Preserved Insect",
+    "rarity": "common",
+    "character": "shared",
+    "description": "Enemies in Elite rooms have 25% less HP.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": []
+  },
+  {
+    "id": "red_skull",
+    "name": "Red Skull",
+    "rarity": "common",
+    "character": "shared",
+    "description": "While your HP is at or below 50%, you have 3 additional Strength.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": ["rupture", "brutality"]
+  },
+  {
+    "id": "vajra",
+    "name": "Vajra",
+    "rarity": "common",
+    "character": "shared",
+    "description": "At the start of each combat, gain 1 Strength.",
+    "tier": "S",
+    "tierRating": 5,
+    "synergies": ["heavy_blade", "demon_form"]
+  },
+  {
+    "id": "war_paint",
+    "name": "War Paint",
+    "rarity": "common",
+    "character": "shared",
+    "description": "Whenever you take damage, gain 2 Block.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": []
+  },
+  {
+    "id": "whetstone",
+    "name": "Whetstone",
+    "rarity": "common",
+    "character": "shared",
+    "description": "Upon pickup, upgrade 2 random Attacks.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": []
+  },
+  {
+    "id": "blue_candle",
+    "name": "Blue Candle",
+    "rarity": "uncommon",
+    "character": "shared",
+    "description": "Whenever you Curse a card, you may play it. If you do, Exhaust it and lose 1 HP.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": []
+  },
+  {
+    "id": "bottled_flame",
+    "name": "Bottled Flame",
+    "rarity": "uncommon",
+    "character": "shared",
+    "description": "Upon pickup, choose an Attack. Start each combat with this card in your hand.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": ["offering", "carnage"]
+  },
+  {
+    "id": "bottled_lightning",
+    "name": "Bottled Lightning",
+    "rarity": "uncommon",
+    "character": "shared",
+    "description": "Upon pickup, choose a Skill. Start each combat with this card in your hand.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": ["offering", "battle_trance"]
+  },
+  {
+    "id": "bottled_tornado",
+    "name": "Bottled Tornado",
+    "rarity": "uncommon",
+    "character": "shared",
+    "description": "Upon pickup, choose a Power. Start each combat with this card in your hand.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": ["demon_form", "corruption"]
+  },
+  {
+    "id": "dark_stone_periapt",
+    "name": "Darkstone Periapt",
+    "rarity": "uncommon",
+    "character": "shared",
+    "description": "Whenever you obtain a Curse, increase your Max HP by 6.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": []
+  },
+  {
+    "id": "eternal_feather",
+    "name": "Eternal Feather",
+    "rarity": "uncommon",
+    "character": "shared",
+    "description": "For every 3 cards in your deck, heal 3 HP whenever you enter a Rest Site.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": []
+  },
+  {
+    "id": "frozen_egg",
+    "name": "Frozen Egg 2.0",
+    "rarity": "uncommon",
+    "character": "shared",
+    "description": "Whenever you add a Skill to your deck, upgrade it.",
+    "tier": "S",
+    "tierRating": 5,
+    "synergies": []
+  },
+  {
+    "id": "ginger",
+    "name": "Ginger",
+    "rarity": "uncommon",
+    "character": "shared",
+    "description": "You can no longer become Weakened.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": []
+  },
+  {
+    "id": "horn_cleat",
+    "name": "Horn Cleat",
+    "rarity": "uncommon",
+    "character": "shared",
+    "description": "At the start of your second turn, gain 14 Block.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": ["barricade"]
+  },
+  {
+    "id": "ink_bottle",
+    "name": "Ink Bottle",
+    "rarity": "uncommon",
+    "character": "shared",
+    "description": "Every 10 cards you play, draw 1 card.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": []
+  },
+  {
+    "id": "kunai",
+    "name": "Kunai",
+    "rarity": "uncommon",
+    "character": "shared",
+    "description": "Every time you play 3 Attacks in a single turn, gain 1 Dexterity.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": ["twin_strike", "whirlwind"]
+  },
+  {
+    "id": "letter_opener",
+    "name": "Letter Opener",
+    "rarity": "uncommon",
+    "character": "shared",
+    "description": "Every time you play 3 Skills in a single turn, deal 5 damage to ALL enemies.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": ["shrug_it_off"]
+  },
+  {
+    "id": "mummified_hand",
+    "name": "Mummified Hand",
+    "rarity": "uncommon",
+    "character": "shared",
+    "description": "Whenever you play a Power card, a random card in your hand costs 0 for the turn.",
+    "tier": "S",
+    "tierRating": 5,
+    "synergies": ["demon_form", "corruption", "inflame"]
+  },
+  {
+    "id": "ornamental_fan",
+    "name": "Ornamental Fan",
+    "rarity": "uncommon",
+    "character": "shared",
+    "description": "Every time you play 3 Attacks in a single turn, gain 4 Block.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": ["twin_strike", "whirlwind"]
+  },
+  {
+    "id": "pantograph",
+    "name": "Pantograph",
+    "rarity": "uncommon",
+    "character": "shared",
+    "description": "At the start of boss combats, heal 25 HP.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": []
+  },
+  {
+    "id": "paper_crane",
+    "name": "Paper Crane",
+    "rarity": "uncommon",
+    "character": "shared",
+    "description": "Enemies with Weak deal 40% less damage rather than 25%.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": ["clothesline", "uppercut"]
+  },
+  {
+    "id": "paper_frog",
+    "name": "Paper Frog",
+    "rarity": "uncommon",
+    "character": "shared",
+    "description": "Enemies with Vulnerable take 75% more damage rather than 50%.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": ["bash", "uppercut", "thunderclap"]
+  },
+  {
+    "id": "pear",
+    "name": "Pear",
+    "rarity": "uncommon",
+    "character": "shared",
+    "description": "Upon pickup, raise your Max HP by 10.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": []
+  },
+  {
+    "id": "question_card",
+    "name": "Question Card",
+    "rarity": "uncommon",
+    "character": "shared",
+    "description": "Upon pickup, obtain a random card. The card can be any rarity and color.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": []
+  },
+  {
+    "id": "shuriken",
+    "name": "Shuriken",
+    "rarity": "uncommon",
+    "character": "shared",
+    "description": "Every time you play 3 Attacks in a single turn, gain 1 Strength.",
+    "tier": "S",
+    "tierRating": 5,
+    "synergies": ["twin_strike", "whirlwind", "heavy_blade"]
+  },
+  {
+    "id": "singing_bowl",
+    "name": "Singing Bowl",
+    "rarity": "uncommon",
+    "character": "shared",
+    "description": "Whenever you choose to skip a card reward, gain 2 Max HP.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": []
+  },
+  {
+    "id": "strike_dummy",
+    "name": "Strike Dummy",
+    "rarity": "uncommon",
+    "character": "shared",
+    "description": "Cards containing 'Strike' deal 3 additional damage.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": ["perfected_strike"]
+  },
+  {
+    "id": "sundial",
+    "name": "Sundial",
+    "rarity": "uncommon",
+    "character": "shared",
+    "description": "Every 3 times you shuffle your deck, gain 2 Energy.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": []
+  },
+  {
+    "id": "symbiotic_virus",
+    "name": "Symbiotic Virus",
+    "rarity": "uncommon",
+    "character": "shared",
+    "description": "At the start of each combat, channel 1 Dark.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": []
+  },
+  {
+    "id": "the_boot",
+    "name": "The Boot",
+    "rarity": "uncommon",
+    "character": "shared",
+    "description": "Whenever you would deal 4 or less unblocked Attack damage, increase it to 5.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": []
+  },
+  {
+    "id": "toxic_egg",
+    "name": "Toxic Egg 2.0",
+    "rarity": "uncommon",
+    "character": "shared",
+    "description": "Whenever you add a Power to your deck, upgrade it.",
+    "tier": "S",
+    "tierRating": 5,
+    "synergies": []
+  },
+  {
+    "id": "turnip",
+    "name": "Turnip",
+    "rarity": "uncommon",
+    "character": "shared",
+    "description": "At the end of combat, heal 5 HP.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": []
+  },
+  {
+    "id": "charons_ashes",
+    "name": "Charon's Ashes",
+    "rarity": "uncommon",
+    "character": "shared",
+    "description": "Whenever you defeat an enemy, deal 3 damage to all enemies.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": []
+  },
+  {
+    "id": "bird_faced_urn",
+    "name": "Bird-Faced Urn",
+    "rarity": "rare",
+    "character": "shared",
+    "description": "Whenever you play a Power card, heal 2 HP.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": ["demon_form", "corruption", "inflame"]
+  },
+  {
+    "id": "calipers",
+    "name": "Calipers",
+    "rarity": "rare",
+    "character": "shared",
+    "description": "At the start of your turn, lose 15 Block rather than all of your Block.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": ["barricade", "entrench"]
+  },
+  {
+    "id": "dead_branch",
+    "name": "Dead Branch",
+    "rarity": "rare",
+    "character": "shared",
+    "description": "Whenever you Exhaust a card, add a random card to your hand.",
+    "tier": "S",
+    "tierRating": 5,
+    "synergies": ["corruption", "fiend_fire", "true_grit", "feel_no_pain"]
+  },
+  {
+    "id": "du_vu_doll",
+    "name": "Du-Vu Doll",
+    "rarity": "rare",
+    "character": "shared",
+    "description": "For each Curse in your deck, start each combat with 1 additional Strength.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": []
+  },
+  {
+    "id": "fossilized_helix",
+    "name": "Fossilized Helix",
+    "rarity": "rare",
+    "character": "shared",
+    "description": "Prevent the next 5 times you would lose HP in combat.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": []
+  },
+  {
+    "id": "gambling_chip",
+    "name": "Gambling Chip",
+    "rarity": "rare",
+    "character": "shared",
+    "description": "At the start of combat, discard any number of cards, then draw that many cards.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": []
+  },
+  {
+    "id": "gremlin_horn",
+    "name": "Gremlin Horn",
+    "rarity": "rare",
+    "character": "shared",
+    "description": "Whenever an enemy dies, draw 1 card and gain 1 Energy.",
+    "tier": "S",
+    "tierRating": 5,
+    "synergies": []
+  },
+  {
+    "id": "ice_cream",
+    "name": "Ice Cream",
+    "rarity": "rare",
+    "character": "shared",
+    "description": "Energy is now conserved between turns.",
+    "tier": "S",
+    "tierRating": 5,
+    "synergies": []
+  },
+  {
+    "id": "incense_burner",
+    "name": "Incense Burner",
+    "rarity": "rare",
+    "character": "shared",
+    "description": "Every 6 turns, gain 1 Intangible.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": []
+  },
+  {
+    "id": "lizard_tail",
+    "name": "Lizard Tail",
+    "rarity": "rare",
+    "character": "shared",
+    "description": "If you would die, heal to 50% of your Max HP instead (works once).",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": []
+  },
+  {
+    "id": "mango",
+    "name": "Mango",
+    "rarity": "rare",
+    "character": "shared",
+    "description": "Upon pickup, increase your Max HP by 14.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": []
+  },
+  {
+    "id": "old_coin",
+    "name": "Old Coin",
+    "rarity": "rare",
+    "character": "shared",
+    "description": "Gain 300 Gold.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": []
+  },
+  {
+    "id": "orange_pellets",
+    "name": "Orange Pellets",
+    "rarity": "rare",
+    "character": "shared",
+    "description": "Whenever you play a Power, Attack, and Skill in the same turn, remove all of your debuffs.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": ["berserk"]
+  },
+  {
+    "id": "peace_pipe",
+    "name": "Peace Pipe",
+    "rarity": "rare",
+    "character": "shared",
+    "description": "At Rest Sites, you may now remove a card from your deck.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": []
+  },
+  {
+    "id": "pocketwatch",
+    "name": "Pocketwatch",
+    "rarity": "rare",
+    "character": "shared",
+    "description": "Whenever you play 3 or less cards during your turn, draw 3 additional cards at the start of your next turn.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": []
+  },
+  {
+    "id": "prayer_wheel",
+    "name": "Prayer Wheel",
+    "rarity": "rare",
+    "character": "shared",
+    "description": "Normal combats reward an additional card choice.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": []
+  },
+  {
+    "id": "shovel",
+    "name": "Shovel",
+    "rarity": "rare",
+    "character": "shared",
+    "description": "At Rest Sites, you may dig for a random Relic.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": []
+  },
+  {
+    "id": "stone_calendar",
+    "name": "Stone Calendar",
+    "rarity": "rare",
+    "character": "shared",
+    "description": "Every 7 turns, gain 2 Strength.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": ["heavy_blade", "demon_form"]
+  },
+  {
+    "id": "torii",
+    "name": "Torii",
+    "rarity": "rare",
+    "character": "shared",
+    "description": "Whenever you would receive 5 or less unblocked attack damage, reduce it to 1.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": []
+  },
+  {
+    "id": "tough_bandages",
+    "name": "Tough Bandages",
+    "rarity": "rare",
+    "character": "shared",
+    "description": "Whenever you discard a card, gain 3 Block.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": []
+  },
+  {
+    "id": "tungsten_rod",
+    "name": "Tungsten Rod",
+    "rarity": "rare",
+    "character": "shared",
+    "description": "Whenever you would lose HP, lose 1 less.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": ["rupture", "brutality"]
+  },
+  {
+    "id": "warped_tongs",
+    "name": "Warped Tongs",
+    "rarity": "rare",
+    "character": "shared",
+    "description": "Whenever you add a card to your deck, you may upgrade it.",
+    "tier": "S",
+    "tierRating": 5,
+    "synergies": []
+  },
+  {
+    "id": "champs_belt",
+    "name": "Champion Belt",
+    "rarity": "boss",
+    "character": "ironclad",
+    "description": "Whenever you apply Vulnerable, also apply 1 Weak.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": ["bash", "uppercut", "thunderclap"]
+  },
+  {
+    "id": "cursed_key",
+    "name": "Cursed Key",
+    "rarity": "boss",
+    "character": "shared",
+    "description": "Gain 1 Energy at the start of each turn. Whenever you open a chest, become Cursed.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": []
+  },
+  {
+    "id": "ectoplasm",
+    "name": "Ectoplasm",
+    "rarity": "boss",
+    "character": "shared",
+    "description": "Gain 1 Energy at the start of each turn. You can no longer gain Gold.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": []
+  },
+  {
+    "id": "fusion_hammer",
+    "name": "Fusion Hammer",
+    "rarity": "boss",
+    "character": "shared",
+    "description": "Gain 1 Energy at the start of each turn. You can no longer Smith at Rest Sites.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": []
+  },
+  {
+    "id": "philosophers_stone",
+    "name": "Philosopher's Stone",
+    "rarity": "boss",
+    "character": "shared",
+    "description": "Gain 1 Energy at the start of each turn. ALL enemies start with 1 Strength.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": []
+  },
+  {
+    "id": "runic_dome",
+    "name": "Runic Dome",
+    "rarity": "boss",
+    "character": "shared",
+    "description": "Gain 1 Energy at the start of each turn. You can no longer see enemy intents.",
+    "tier": "C",
+    "tierRating": 2,
+    "synergies": []
+  },
+  {
+    "id": "runic_cube",
+    "name": "Runic Cube",
+    "rarity": "boss",
+    "character": "shared",
+    "description": "Whenever you lose HP in combat, draw 1 card.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": ["rupture", "brutality", "combust"]
+  },
+  {
+    "id": "runic_pyramid",
+    "name": "Runic Pyramid",
+    "rarity": "boss",
+    "character": "shared",
+    "description": "At the end of your turn, you no longer discard your hand.",
+    "tier": "S",
+    "tierRating": 5,
+    "synergies": []
+  },
+  {
+    "id": "slavers_collar",
+    "name": "Slaver's Collar",
+    "rarity": "boss",
+    "character": "shared",
+    "description": "Elite combats are easier. Elites have 50% less HP.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": []
+  },
+  {
+    "id": "snecko_eye",
+    "name": "Snecko Eye",
+    "rarity": "boss",
+    "character": "shared",
+    "description": "Draw 2 additional cards each turn. Start each combat Confused.",
+    "tier": "A",
+    "tierRating": 4,
+    "synergies": ["offering", "demon_form", "bludgeon"]
+  },
+  {
+    "id": "sozu",
+    "name": "Sozu",
+    "rarity": "boss",
+    "character": "shared",
+    "description": "Gain 1 Energy at the start of each turn. You can no longer obtain Potions.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": []
+  },
+  {
+    "id": "velvet_choker",
+    "name": "Velvet Choker",
+    "rarity": "boss",
+    "character": "shared",
+    "description": "Gain 1 Energy at the start of each turn. You cannot play more than 6 cards per turn.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": []
+  }
+]

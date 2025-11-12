@@ -1,0 +1,326 @@
+[
+  {
+    "id": "attack_potion",
+    "name": "Attack Potion",
+    "rarity": "uncommon",
+    "character": "silent",
+    "description": "Add 3 Shivs to your hand",
+    "effect": "Draw 3 Shivs (0-cost attacks)",
+    "useCase": "Trigger attack-based relics (Shuriken, Kunai, Pen Nib)"
+  },
+  {
+    "id": "skill_potion",
+    "name": "Skill Potion",
+    "rarity": "uncommon",
+    "character": "shared",
+    "description": "Add 3 random skills to your hand",
+    "effect": "Draw 3 random skills",
+    "useCase": "With Corruption or skill synergies"
+  },
+  {
+    "id": "power_potion",
+    "name": "Power Potion",
+    "rarity": "uncommon",
+    "character": "shared",
+    "description": "Add a random Power to your hand that costs 0 this turn",
+    "effect": "Free random Power card",
+    "useCase": "Get a free setup turn, especially in longer fights"
+  },
+  {
+    "id": "block_potion",
+    "name": "Block Potion",
+    "rarity": "common",
+    "character": "shared",
+    "description": "Gain 12 Block",
+    "effect": "Gain 12 Block",
+    "useCase": "Survive a big attack when low on HP"
+  },
+  {
+    "id": "energy_potion",
+    "name": "Energy Potion",
+    "rarity": "common",
+    "character": "shared",
+    "description": "Gain 2 Energy",
+    "effect": "Gain 2 Energy this turn",
+    "useCase": "Enable big combo turns or expensive cards"
+  },
+  {
+    "id": "explosive_potion",
+    "name": "Explosive Potion",
+    "rarity": "common",
+    "character": "shared",
+    "description": "Deal 10 damage to ALL enemies",
+    "effect": "Deal 10 AOE damage",
+    "useCase": "Multi-enemy hallway fights, finish low HP enemies"
+  },
+  {
+    "id": "fire_potion",
+    "name": "Fire Potion",
+    "rarity": "common",
+    "character": "shared",
+    "description": "Deal 20 damage",
+    "effect": "Deal 20 damage",
+    "useCase": "Burst damage for elites or finishing bosses"
+  },
+  {
+    "id": "swift_potion",
+    "name": "Swift Potion",
+    "rarity": "common",
+    "character": "shared",
+    "description": "Draw 3 cards",
+    "effect": "Draw 3 cards",
+    "useCase": "Find key cards, combos, or defensive cards when needed"
+  },
+  {
+    "id": "fear_potion",
+    "name": "Fear Potion",
+    "rarity": "common",
+    "character": "shared",
+    "description": "Apply 3 Vulnerable",
+    "effect": "Apply 3 Vulnerable to enemy",
+    "useCase": "Increase damage on elites/bosses (50% more damage)"
+  },
+  {
+    "id": "weak_potion",
+    "name": "Weak Potion",
+    "rarity": "common",
+    "character": "shared",
+    "description": "Apply 3 Weak",
+    "effect": "Apply 3 Weak to enemy",
+    "useCase": "Reduce incoming damage by 25% for 3 turns"
+  },
+  {
+    "id": "strength_potion",
+    "name": "Strength Potion",
+    "rarity": "uncommon",
+    "character": "shared",
+    "description": "Gain 2 Strength",
+    "effect": "Gain 2 Strength",
+    "useCase": "Elites and bosses, especially with multi-hit attacks"
+  },
+  {
+    "id": "dexterity_potion",
+    "name": "Dexterity Potion",
+    "rarity": "uncommon",
+    "character": "shared",
+    "description": "Gain 2 Dexterity",
+    "effect": "Gain 2 Dexterity (permanent block boost)",
+    "useCase": "Long fights where you need sustained defense"
+  },
+  {
+    "id": "ancient_potion",
+    "name": "Ancient Potion",
+    "rarity": "uncommon",
+    "character": "shared",
+    "description": "Gain 1 Artifact",
+    "effect": "Gain 1 Artifact (negate next debuff)",
+    "useCase": "Against enemies that apply Weak/Vulnerable/Frail"
+  },
+  {
+    "id": "regen_potion",
+    "name": "Regen Potion",
+    "rarity": "uncommon",
+    "character": "shared",
+    "description": "Gain 5 Regeneration",
+    "effect": "Heal 5 HP per turn for 5 turns (25 HP total)",
+    "useCase": "Boss fights for sustained healing"
+  },
+  {
+    "id": "fruit_juice",
+    "name": "Fruit Juice",
+    "rarity": "rare",
+    "character": "shared",
+    "description": "Gain 5 Max HP",
+    "effect": "Permanent +5 Max HP",
+    "useCase": "Always use immediately - free permanent HP boost"
+  },
+  {
+    "id": "entropic_brew",
+    "name": "Entropic Brew",
+    "rarity": "rare",
+    "character": "shared",
+    "description": "Choose 3 different potions to gain",
+    "effect": "Gain 3 potions of your choice",
+    "useCase": "Boss/elite prep - select exactly what you need"
+  },
+  {
+    "id": "cultist_potion",
+    "name": "Cultist Potion",
+    "rarity": "rare",
+    "character": "shared",
+    "description": "Gain 1 Ritual (3 Strength per turn)",
+    "effect": "Gain 1 Ritual (Cultist's scaling)",
+    "useCase": "Boss fights for infinite strength scaling"
+  },
+  {
+    "id": "fairy_potion",
+    "name": "Fairy in a Bottle",
+    "rarity": "rare",
+    "character": "shared",
+    "description": "When you would die, heal 30% HP instead. Consumed automatically.",
+    "effect": "Revive at 30% HP on death",
+    "useCase": "Always keep as insurance - auto-saves you from lethal"
+  },
+  {
+    "id": "gamblers_brew",
+    "name": "Gambler's Brew",
+    "rarity": "uncommon",
+    "character": "shared",
+    "description": "Discard any number of cards, then draw that many",
+    "effect": "Discard + draw cards",
+    "useCase": "Cycle bad hands, trigger discard synergies"
+  },
+  {
+    "id": "liquid_bronze",
+    "name": "Liquid Bronze",
+    "rarity": "uncommon",
+    "character": "shared",
+    "description": "Gain 3 Thorns",
+    "effect": "Reflect 3 damage per attack received",
+    "useCase": "Multi-hit enemies (Byrds, Slimes, Book of Stabbing)"
+  },
+  {
+    "id": "liquid_memories",
+    "name": "Liquid Memories",
+    "rarity": "uncommon",
+    "character": "shared",
+    "description": "Choose a card. Play it twice this turn",
+    "effect": "Double a card's effect",
+    "useCase": "Double big attacks or key skills (Catalyst, Whirlwind, etc.)"
+  },
+  {
+    "id": "distilled_chaos",
+    "name": "Distilled Chaos",
+    "rarity": "uncommon",
+    "character": "shared",
+    "description": "Play 3 random cards from your draw pile",
+    "effect": "Random 3 free card plays",
+    "useCase": "High-variance - best with expensive or powerful cards in deck"
+  },
+  {
+    "id": "blessing_of_the_forge",
+    "name": "Blessing of the Forge",
+    "rarity": "uncommon",
+    "character": "shared",
+    "description": "Upgrade all cards in your hand for this combat",
+    "effect": "Upgrade entire hand temporarily",
+    "useCase": "Elites/bosses when you have weak starter cards"
+  },
+  {
+    "id": "duplication_potion",
+    "name": "Duplication Potion",
+    "rarity": "uncommon",
+    "character": "shared",
+    "description": "This turn, your next card is played twice",
+    "effect": "Double the next card played",
+    "useCase": "Double Corruption, Wraith Form, Catalyst, or big attacks"
+  },
+  {
+    "id": "essence_of_steel",
+    "name": "Essence of Steel",
+    "rarity": "uncommon",
+    "character": "shared",
+    "description": "Gain 4 Plated Armor",
+    "effect": "Gain 4 Plated Armor (permanent block per turn)",
+    "useCase": "Boss fights for permanent passive defense"
+  },
+  {
+    "id": "ghost_in_a_jar",
+    "name": "Ghost in a Jar",
+    "rarity": "rare",
+    "character": "shared",
+    "description": "Gain 1 Intangible",
+    "effect": "Take 1 damage from all attacks this turn",
+    "useCase": "Survive massive attacks (Heart, Deca laser, Champ execute)"
+  },
+  {
+    "id": "heart_of_iron",
+    "name": "Heart of Iron",
+    "rarity": "rare",
+    "character": "shared",
+    "description": "Gain 6 Metallicize",
+    "effect": "Gain 6 block at end of each turn permanently",
+    "useCase": "Boss fights for permanent passive block"
+  },
+  {
+    "id": "smoke_bomb",
+    "name": "Smoke Bomb",
+    "rarity": "rare",
+    "character": "shared",
+    "description": "Escape from a non-boss combat. You receive no rewards.",
+    "effect": "Flee combat",
+    "useCase": "Escape bad hallway fights or when low HP"
+  },
+  {
+    "id": "blood_potion",
+    "name": "Blood Potion",
+    "rarity": "common",
+    "character": "ironclad",
+    "description": "Heal 20% of max HP",
+    "effect": "Heal 20% max HP",
+    "useCase": "Ironclad sustain between fights"
+  },
+  {
+    "id": "elixir",
+    "name": "Elixir Potion",
+    "rarity": "uncommon",
+    "character": "ironclad",
+    "description": "Exhaust any number of cards",
+    "effect": "Exhaust cards from hand",
+    "useCase": "Remove curses/status, trigger exhaust synergies"
+  },
+  {
+    "id": "poison_potion",
+    "name": "Poison Potion",
+    "rarity": "common",
+    "character": "silent",
+    "description": "Apply 6 Poison",
+    "effect": "Apply 6 Poison",
+    "useCase": "Frontload poison damage, especially with Catalyst"
+  },
+  {
+    "id": "cunning_potion",
+    "name": "Cunning Potion",
+    "rarity": "uncommon",
+    "character": "silent",
+    "description": "Discard 3 cards, draw 3 cards",
+    "effect": "Cycle 3 cards",
+    "useCase": "Silent discard synergies (Tactician, Eviscerate, Acrobatics)"
+  },
+  {
+    "id": "focus_potion",
+    "name": "Focus Potion",
+    "rarity": "common",
+    "character": "defect",
+    "description": "Gain 2 Focus",
+    "effect": "Gain 2 Focus (boost orb power)",
+    "useCase": "Boss fights with orb-heavy decks"
+  },
+  {
+    "id": "essence_of_darkness",
+    "name": "Essence of Darkness",
+    "rarity": "uncommon",
+    "character": "defect",
+    "description": "Channel 1 Dark orb",
+    "effect": "Channel 1 Dark orb",
+    "useCase": "Extra orb slot or evoke for burst damage"
+  },
+  {
+    "id": "stance_potion",
+    "name": "Stance Potion",
+    "rarity": "uncommon",
+    "character": "watcher",
+    "description": "Enter Wrath or Calm stance",
+    "effect": "Instantly enter Wrath or Calm",
+    "useCase": "Emergency damage (Wrath) or energy (exit Calm for energy)"
+  },
+  {
+    "id": "bottled_miracle",
+    "name": "Bottled Miracle",
+    "rarity": "common",
+    "character": "watcher",
+    "description": "Add 2 Miracles to your hand",
+    "effect": "Gain 2 free energy (via Miracle cards)",
+    "useCase": "Enable expensive combo turns"
+  }
+]

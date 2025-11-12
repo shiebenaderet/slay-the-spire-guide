@@ -1,0 +1,888 @@
+[
+  {
+    "id": "jaw_worm",
+    "name": "Jaw Worm",
+    "act": 1,
+    "hp": "42-46",
+    "difficulty": "easy",
+    "attacks": [
+      { "name": "Chomp", "damage": "11", "hits": 1 }
+    ],
+    "abilities": ["Gains 3-5 Block and 3 Strength when below 50% HP"],
+    "strategy": "Kill quickly before it gets strong. Focus damage over block early.",
+    "weaknesses": ["Vulnerable", "Front-loaded damage"],
+    "dangers": ["Becomes much stronger at low HP"],
+    "deckRequirements": {
+      "damage": "high",
+      "block": "low",
+      "scaling": "low"
+    }
+  },
+  {
+    "id": "cultist",
+    "name": "Cultist",
+    "act": 1,
+    "hp": "48-54",
+    "difficulty": "easy",
+    "attacks": [
+      { "name": "Dark Strike", "damage": "6", "hits": 1 }
+    ],
+    "abilities": ["Gains 3-5 Ritual Strength each turn"],
+    "strategy": "Kill ASAP. Every turn it lives makes it stronger. Prioritize damage.",
+    "weaknesses": ["Low HP", "Weak initially"],
+    "dangers": ["Scales infinitely with Ritual"],
+    "deckRequirements": {
+      "damage": "critical",
+      "block": "low",
+      "scaling": "low"
+    }
+  },
+  {
+    "id": "louse_red",
+    "name": "Red Louse",
+    "act": 1,
+    "hp": "10-15",
+    "difficulty": "easy",
+    "attacks": [
+      { "name": "Bite", "damage": "5-7", "hits": 1 }
+    ],
+    "abilities": ["Gains 3-9 Strength when hit for the first time"],
+    "strategy": "One-shot if possible. If you can't, prepare for increased damage.",
+    "weaknesses": ["Very low HP"],
+    "dangers": ["Strength gain on first hit"],
+    "deckRequirements": {
+      "damage": "medium",
+      "block": "low",
+      "scaling": "low"
+    }
+  },
+  {
+    "id": "louse_green",
+    "name": "Green Louse",
+    "act": 1,
+    "hp": "11-16",
+    "difficulty": "easy",
+    "attacks": [
+      { "name": "Bite", "damage": "5-7", "hits": 1 }
+    ],
+    "abilities": ["Curls up for 3-7 Block when hit for the first time"],
+    "strategy": "Similar to Red Louse. Kill quickly to avoid defensive buff.",
+    "weaknesses": ["Very low HP"],
+    "dangers": ["Block gain can extend the fight"],
+    "deckRequirements": {
+      "damage": "medium",
+      "block": "low",
+      "scaling": "low"
+    }
+  },
+  {
+    "id": "slime_s",
+    "name": "Acid Slime (S)",
+    "act": 1,
+    "hp": "8-12",
+    "difficulty": "easy",
+    "attacks": [
+      { "name": "Lick", "damage": "3", "hits": 1, "effect": "Apply 1 Weak" }
+    ],
+    "abilities": ["Applies Weak"],
+    "strategy": "Low threat. Focus on bigger threats first in multi-enemy fights.",
+    "weaknesses": ["Very low HP and damage"],
+    "dangers": ["Weak debuff reduces your damage"],
+    "deckRequirements": {
+      "damage": "low",
+      "block": "low",
+      "scaling": "low"
+    }
+  },
+  {
+    "id": "slime_m",
+    "name": "Acid Slime (M)",
+    "act": 1,
+    "hp": "28-32",
+    "difficulty": "medium",
+    "attacks": [
+      { "name": "Corrosive Spit", "damage": "7", "hits": 1 },
+      { "name": "Lick", "damage": "0", "hits": 1, "effect": "Apply 2 Weak" }
+    ],
+    "abilities": ["Splits into 2 small slimes when killed", "Applies Weak"],
+    "strategy": "Save AOE for after it splits. Weak debuff hurts scaling decks.",
+    "weaknesses": ["Moderate HP"],
+    "dangers": ["Splits into more enemies", "Weak application"],
+    "deckRequirements": {
+      "damage": "medium",
+      "block": "low",
+      "aoe": "helpful"
+    }
+  },
+  {
+    "id": "slime_l",
+    "name": "Acid Slime (L)",
+    "act": 1,
+    "hp": "65-69",
+    "difficulty": "medium",
+    "attacks": [
+      { "name": "Corrosive Spit", "damage": "11", "hits": 1 },
+      { "name": "Lick", "damage": "0", "hits": 1, "effect": "Apply 2 Weak" }
+    ],
+    "abilities": ["Splits into 2 medium slimes when killed"],
+    "strategy": "Long fight. Need sustained damage and AOE. Weak hurts badly.",
+    "weaknesses": ["Slow damage output"],
+    "dangers": ["Splits multiple times", "Heavy Weak application"],
+    "deckRequirements": {
+      "damage": "high",
+      "block": "medium",
+      "aoe": "recommended"
+    }
+  },
+  {
+    "id": "gremlin_nob",
+    "name": "Gremlin Nob",
+    "act": 1,
+    "hp": "82-86",
+    "difficulty": "hard",
+    "attacks": [
+      { "name": "Bludgeon", "damage": "14", "hits": 1 },
+      { "name": "Skull Bash", "damage": "6", "hits": 1, "effect": "Apply 2 Vulnerable" }
+    ],
+    "abilities": ["Gains 3 Strength whenever you play a Skill"],
+    "strategy": "CRITICAL: Avoid Skills! Use only Attacks and Powers. Kill quickly.",
+    "weaknesses": ["No block", "Vulnerable to attack-heavy decks"],
+    "dangers": ["Massive damage", "Punishes skill cards severely"],
+    "deckRequirements": {
+      "damage": "critical",
+      "attacks": "many",
+      "skills": "avoid",
+      "block": "low"
+    }
+  },
+  {
+    "id": "lagavulin",
+    "name": "Lagavulin",
+    "act": 1,
+    "hp": "109-112",
+    "difficulty": "hard",
+    "attacks": [
+      { "name": "Attack", "damage": "18", "hits": 1 },
+      { "name": "Siphon Soul", "damage": "0", "hits": 1, "effect": "Apply -1 Strength and -1 Dexterity" }
+    ],
+    "abilities": ["Sleeps for 3 turns (Debuffs -3 Strength)", "Wakes up when attacked"],
+    "strategy": "Choose: Kill while asleep (need damage) OR let it sleep and debuff you. Usually kill ASAP.",
+    "weaknesses": ["Vulnerable while sleeping"],
+    "dangers": ["Massive damage when awake", "Permanent debuffs"],
+    "deckRequirements": {
+      "damage": "very_high",
+      "block": "high",
+      "scaling": "medium"
+    }
+  },
+  {
+    "id": "sentry",
+    "name": "Sentry",
+    "act": 1,
+    "hp": "38-42",
+    "difficulty": "hard",
+    "attacks": [
+      { "name": "Bolt", "damage": "9", "hits": 1 }
+    ],
+    "abilities": ["Adds 2 Dazes to your discard when damaged"],
+    "strategy": "Kill with big hits, not many small ones. Each attack adds Dazes to deck!",
+    "weaknesses": ["Low HP", "No block"],
+    "dangers": ["Clogs deck with Dazes", "Painful in groups of 3"],
+    "deckRequirements": {
+      "damage": "high_per_hit",
+      "block": "medium",
+      "draw": "helpful"
+    }
+  },
+  {
+    "id": "hexaghost",
+    "name": "Hexaghost",
+    "act": 1,
+    "type": "boss",
+    "hp": "250",
+    "difficulty": "boss",
+    "attacks": [
+      { "name": "Sear", "damage": "6x6", "hits": 6 },
+      { "name": "Tackle", "damage": "5x2", "hits": 2 },
+      { "name": "Inflame", "damage": "0", "hits": 1, "effect": "Gain 2 Strength x6" }
+    ],
+    "abilities": ["Cycles through 6 orbs", "Scales with Strength"],
+    "strategy": "Block the multi-hit attacks. Need scaling or burst damage. Strength debuffs help a lot.",
+    "weaknesses": ["Predictable pattern"],
+    "dangers": ["Multi-hit attacks", "Gains lots of Strength"],
+    "deckRequirements": {
+      "damage": "very_high",
+      "block": "high",
+      "scaling": "high",
+      "multi_block": "recommended"
+    }
+  },
+  {
+    "id": "slime_boss",
+    "name": "Slime Boss",
+    "act": 1,
+    "type": "boss",
+    "hp": "140",
+    "difficulty": "boss",
+    "attacks": [
+      { "name": "Slam", "damage": "35", "hits": 1 },
+      { "name": "Goop Spray", "damage": "0", "hits": 1, "effect": "Add 3 Slimed to deck" }
+    ],
+    "abilities": ["Splits into 2 slimes at 70 HP"],
+    "strategy": "Save AOE for after split. Don't overcommit powers before split. Need deck control.",
+    "weaknesses": ["Telegraphed big attacks"],
+    "dangers": ["Huge single-target damage", "Clogs deck with Slimed", "Splits into 2"],
+    "deckRequirements": {
+      "damage": "high",
+      "block": "very_high",
+      "aoe": "recommended",
+      "draw": "recommended"
+    }
+  },
+  {
+    "id": "guardian",
+    "name": "The Guardian",
+    "act": 1,
+    "type": "boss",
+    "hp": "240",
+    "difficulty": "boss",
+    "attacks": [
+      { "name": "Charging Up", "damage": "0", "hits": 1, "effect": "Gain 9 Block" },
+      { "name": "Fierce Bash", "damage": "32", "hits": 1 }
+    ],
+    "abilities": ["Gains Thorns when attacking", "Mode shift at 50% HP"],
+    "strategy": "Multi-hit attacks hurt from Thorns. Use big single hits. Prepare for mode change.",
+    "weaknesses": ["Vulnerable to large single hits"],
+    "dangers": ["Thorns damage", "Heavy hits", "Mode change buffs"],
+    "deckRequirements": {
+      "damage": "high_per_hit",
+      "block": "very_high",
+      "scaling": "medium",
+      "avoid_multi_hit": "yes"
+    }
+  },
+  {
+    "id": "spheric_guardian",
+    "name": "Spheric Guardian",
+    "act": 2,
+    "hp": "20",
+    "difficulty": "medium",
+    "attacks": [
+      { "name": "Slam", "damage": "10", "hits": 1 },
+      { "name": "Harden", "damage": "0", "hits": 1, "effect": "Gain 15 Block + Artifact" }
+    ],
+    "abilities": ["Activates with Artifact", "Reflects debuffs when has Artifact"],
+    "strategy": "Don't use debuffs while it has Artifact! Wait for Harden, then debuff next turn.",
+    "weaknesses": ["Low HP", "Vulnerable after Artifact is consumed"],
+    "dangers": ["Artifact reflects debuffs", "Can block heavily"],
+    "deckRequirements": {
+      "damage": "medium",
+      "block": "medium",
+      "debuffs": "careful"
+    }
+  },
+  {
+    "id": "chosen",
+    "name": "Chosen",
+    "act": 2,
+    "hp": "95-99",
+    "difficulty": "medium",
+    "attacks": [
+      { "name": "Poke", "damage": "5x2", "hits": 2 },
+      { "name": "Zap", "damage": "18", "hits": 1 },
+      { "name": "Debilitate", "damage": "10", "hits": 1, "effect": "Apply 2 Weak + 2 Vulnerable" }
+    ],
+    "abilities": ["Hexes you with Weak and Vulnerable"],
+    "strategy": "Block multi-hits and big attacks. Debuffs make you fragile - prioritize killing quickly.",
+    "weaknesses": ["Moderate HP", "Predictable pattern"],
+    "dangers": ["Strong debuffs", "Multi-hit attacks"],
+    "deckRequirements": {
+      "damage": "high",
+      "block": "high",
+      "artifact": "helpful"
+    }
+  },
+  {
+    "id": "byrd",
+    "name": "Byrd",
+    "act": 2,
+    "hp": "25-31",
+    "difficulty": "medium",
+    "attacks": [
+      { "name": "Peck", "damage": "1", "hits": 1 },
+      { "name": "Swoop", "damage": "12", "hits": 1 },
+      { "name": "Headbutt", "damage": "3", "hits": 1 }
+    ],
+    "abilities": ["Flies away when damaged (gains 10-15 Block)"],
+    "strategy": "Kill in one hit or prepare for block. AOE helps when fighting multiple Byrds.",
+    "weaknesses": ["Very low HP"],
+    "dangers": ["Gains block when hit", "Swoop hits hard", "Annoying in groups"],
+    "deckRequirements": {
+      "damage": "high_per_hit",
+      "block": "medium",
+      "aoe": "helpful"
+    }
+  },
+  {
+    "id": "shelled_parasite",
+    "name": "Shelled Parasite",
+    "act": 2,
+    "hp": "68-72",
+    "difficulty": "medium",
+    "attacks": [
+      { "name": "Double Strike", "damage": "6x2", "hits": 2 },
+      { "name": "Fell", "damage": "18", "hits": 1 }
+    ],
+    "abilities": ["Starts with Plated Armor (14)", "Loses armor at 50% HP"],
+    "strategy": "Plated armor reduces damage. Multi-hit attacks or heavy piercing damage needed.",
+    "weaknesses": ["Loses armor at low HP"],
+    "dangers": ["Plated armor reduces all damage", "Multi-hit attacks"],
+    "deckRequirements": {
+      "damage": "very_high",
+      "block": "medium",
+      "piercing": "helpful"
+    }
+  },
+  {
+    "id": "fungi_beast",
+    "name": "Fungi Beast",
+    "act": 2,
+    "hp": "22-28",
+    "difficulty": "easy",
+    "attacks": [
+      { "name": "Bite", "damage": "6", "hits": 1 },
+      { "name": "Grow", "damage": "0", "hits": 1, "effect": "Gain 3 Strength" }
+    ],
+    "abilities": ["Gains Strength over time"],
+    "strategy": "Kill quickly before it scales. Low HP makes it an easy priority target.",
+    "weaknesses": ["Very low HP", "Slow to scale"],
+    "dangers": ["Can become threatening if ignored"],
+    "deckRequirements": {
+      "damage": "medium",
+      "block": "low",
+      "scaling": "low"
+    }
+  },
+  {
+    "id": "snake_plant",
+    "name": "Snake Plant",
+    "act": 2,
+    "hp": "75-80",
+    "difficulty": "medium",
+    "attacks": [
+      { "name": "Chomp", "damage": "7x3", "hits": 3 }
+    ],
+    "abilities": ["Frail debuff on hit (3 turns)", "Malleable (3 Block per card played)"],
+    "strategy": "Multi-hits hurt. Malleable means it gains block from your actions. Minimize cards played.",
+    "weaknesses": ["No huge single attacks"],
+    "dangers": ["Applies Frail", "Malleable blocks your turns", "Triple hit"],
+    "deckRequirements": {
+      "damage": "high",
+      "block": "high",
+      "efficiency": "important"
+    }
+  },
+  {
+    "id": "taskmaster",
+    "name": "Taskmaster",
+    "act": 2,
+    "hp": "54-60",
+    "difficulty": "medium",
+    "attacks": [
+      { "name": "Scouring Whip", "damage": "7", "hits": 1, "effect": "Add Wound to discard" }
+    ],
+    "abilities": ["Adds Wounds to your deck"],
+    "strategy": "Kill quickly to minimize Wounds. Each Wound clogs your deck permanently.",
+    "weaknesses": ["Low damage output", "Moderate HP"],
+    "dangers": ["Deck clogging with Wounds", "Dangerous in long fights"],
+    "deckRequirements": {
+      "damage": "high",
+      "block": "medium",
+      "exhaust": "helpful"
+    }
+  },
+  {
+    "id": "snecko",
+    "name": "Snecko",
+    "act": 2,
+    "hp": "114-120",
+    "difficulty": "medium",
+    "attacks": [
+      { "name": "Bite", "damage": "15", "hits": 1 },
+      { "name": "Tail Whip", "damage": "8", "hits": 1, "effect": "Apply 1 Vulnerable" }
+    ],
+    "abilities": ["Muddle: Randomizes your card costs for 1 turn"],
+    "strategy": "Muddle ruins your energy planning. Have backup options for bad RNG turns.",
+    "weaknesses": ["High HP takes time to kill"],
+    "dangers": ["Muddle disrupts combos", "Decent damage", "Vulnerable application"],
+    "deckRequirements": {
+      "damage": "high",
+      "block": "high",
+      "flexibility": "important"
+    }
+  },
+  {
+    "id": "centurion",
+    "name": "Centurion",
+    "act": 2,
+    "hp": "76-80",
+    "difficulty": "medium",
+    "attacks": [
+      { "name": "Slash", "damage": "12", "hits": 1 },
+      { "name": "Fury", "damage": "6x3", "hits": 3 }
+    ],
+    "abilities": ["Defends in alternating pattern"],
+    "strategy": "Watch the pattern. Fury hits hard with multi-hit. Block or kill before rage.",
+    "weaknesses": ["Predictable pattern"],
+    "dangers": ["Heavy multi-hit damage"],
+    "deckRequirements": {
+      "damage": "high",
+      "block": "high",
+      "scaling": "medium"
+    }
+  },
+  {
+    "id": "mystic",
+    "name": "Mystic",
+    "act": 2,
+    "hp": "48-56",
+    "difficulty": "medium",
+    "attacks": [
+      { "name": "Attack Buff", "damage": "0", "hits": 1, "effect": "Give ally 3 Strength" },
+      { "name": "Heal", "damage": "0", "hits": 1, "effect": "Heal ally for 16 HP" }
+    ],
+    "abilities": ["Buffs and heals other enemies"],
+    "strategy": "PRIORITY TARGET! Kill first or it will buff/heal allies constantly.",
+    "weaknesses": ["Low HP", "Can't attack directly"],
+    "dangers": ["Makes other enemies much stronger", "Heals allies"],
+    "deckRequirements": {
+      "damage": "high",
+      "block": "medium",
+      "targeting": "smart"
+    }
+  },
+  {
+    "id": "gremlin_leader",
+    "name": "Gremlin Leader",
+    "act": 2,
+    "type": "elite",
+    "hp": "140-148",
+    "difficulty": "hard",
+    "attacks": [
+      { "name": "Stab", "damage": "6x3", "hits": 3 },
+      { "name": "Rally", "damage": "0", "hits": 1, "effect": "Summon 3 Gremlins" }
+    ],
+    "abilities": ["Summons 3 random Gremlins on first turn", "Buffs all Gremlins"],
+    "strategy": "AOE essential! Focus Leader or control minions. Don't let them swarm you.",
+    "weaknesses": ["Weak without minions"],
+    "dangers": ["Multiple enemies", "Minion buffs", "Can resummon minions"],
+    "deckRequirements": {
+      "damage": "very_high",
+      "block": "very_high",
+      "aoe": "critical",
+      "scaling": "high"
+    }
+  },
+  {
+    "id": "book_of_stabbing",
+    "name": "Book of Stabbing",
+    "act": 2,
+    "type": "elite",
+    "hp": "160-168",
+    "difficulty": "hard",
+    "attacks": [
+      { "name": "Single Stab", "damage": "6", "hits": 1 },
+      { "name": "Multi Stab", "damage": "6x4", "hits": 4 },
+      { "name": "Big Stab", "damage": "21", "hits": 1 }
+    ],
+    "abilities": ["Escalating multi-hit attacks"],
+    "strategy": "Block scales rapidly needed. Multi-hit attacks get worse. Kill fast or have strong block.",
+    "weaknesses": ["Telegraphs attacks"],
+    "dangers": ["Multi-hit scaling", "Big damage spike", "Hard to block everything"],
+    "deckRequirements": {
+      "damage": "very_high",
+      "block": "very_high",
+      "multi_block": "critical",
+      "scaling": "high"
+    }
+  },
+  {
+    "id": "slavers",
+    "name": "Slavers",
+    "act": 2,
+    "type": "elite",
+    "hp": "46-50 each (x3)",
+    "difficulty": "hard",
+    "attacks": [
+      { "name": "Red Slaver - Stab", "damage": "13", "hits": 1 },
+      { "name": "Red Slaver - Scrape", "damage": "7", "hits": 1, "effect": "Apply 2 Weak + 1 Vulnerable" },
+      { "name": "Blue Slaver - Rake", "damage": "7", "hits": 1 },
+      { "name": "Blue Slaver - Stab", "damage": "13", "hits": 1 }
+    ],
+    "abilities": ["Red entangles you (can't change position)", "Blue chains allies together"],
+    "strategy": "AOE very helpful. Red debuffs hurt. Focus one at a time or spread AOE damage.",
+    "weaknesses": ["Individual HP is low"],
+    "dangers": ["3 enemies attacking", "Debuffs from Red", "Entangle"],
+    "deckRequirements": {
+      "damage": "very_high",
+      "block": "very_high",
+      "aoe": "recommended",
+      "artifact": "helpful"
+    }
+  },
+  {
+    "id": "bronze_automaton",
+    "name": "Bronze Automaton",
+    "act": 2,
+    "type": "boss",
+    "hp": "300",
+    "difficulty": "boss",
+    "attacks": [
+      { "name": "Boost", "damage": "0", "hits": 1, "effect": "Gain 3 Strength + 3 Block" },
+      { "name": "Flail", "damage": "7x2", "hits": 2 },
+      { "name": "Hyper Beam", "damage": "45", "hits": 1, "effect": "Apply 1 Vulnerable" },
+      { "name": "Spawn", "damage": "0", "hits": 1, "effect": "Summon 2 Bronze Orbs" }
+    ],
+    "abilities": ["Summons Bronze Orbs", "Gains Strength", "MASSIVE Hyper Beam at 50% HP"],
+    "strategy": "Save burst for Hyper Beam turn. Kill orbs or tank 9 damage each. Scales over time.",
+    "weaknesses": ["Telegraphs Hyper Beam"],
+    "dangers": ["Hyper Beam kills unprepared players", "Orbs add damage", "Strength scaling"],
+    "deckRequirements": {
+      "damage": "very_high",
+      "block": "extreme",
+      "scaling": "high",
+      "aoe": "recommended"
+    }
+  },
+  {
+    "id": "champ",
+    "name": "The Champ",
+    "act": 2,
+    "type": "boss",
+    "hp": "400-410",
+    "difficulty": "boss",
+    "attacks": [
+      { "name": "Face Slap", "damage": "12", "hits": 1 },
+      { "name": "Heavy Slash", "damage": "16", "hits": 1 },
+      { "name": "Execute", "damage": "10x2", "hits": 2, "effect": "Only when you're below 50% HP" }
+    ],
+    "abilities": ["Gains Strength when you're below 50% HP", "Becomes Defensive at 50% HP", "Becomes Aggressive again at low HP"],
+    "strategy": "Stay above 50% HP to avoid Execute. Phase 2 is defensive - set up scaling. Phase 3 hits hard.",
+    "weaknesses": ["Defensive phase allows setup time"],
+    "dangers": ["Execute punishes low HP", "Gains Strength", "Very high HP pool"],
+    "deckRequirements": {
+      "damage": "extreme",
+      "block": "very_high",
+      "healing": "recommended",
+      "scaling": "very_high"
+    }
+  },
+  {
+    "id": "collector",
+    "name": "The Collector",
+    "act": 2,
+    "type": "boss",
+    "hp": "282-298",
+    "difficulty": "boss",
+    "attacks": [
+      { "name": "Fireball", "damage": "18", "hits": 1 },
+      { "name": "Buff", "damage": "0", "hits": 1, "effect": "Give minion 3 Strength" },
+      { "name": "Spawn", "damage": "0", "hits": 1, "effect": "Summon minion" }
+    ],
+    "abilities": ["Summons minions every 3 turns", "Minions have various abilities"],
+    "strategy": "AOE critical! Kill minions quickly or they overwhelm you. Focus Collector when minions are down.",
+    "weaknesses": ["Weak when minions are dead"],
+    "dangers": ["Minion swarm", "Buffs minions", "Can spiral out of control"],
+    "deckRequirements": {
+      "damage": "very_high",
+      "block": "very_high",
+      "aoe": "critical",
+      "scaling": "high"
+    }
+  },
+  {
+    "id": "darklings",
+    "name": "Darklings (x3)",
+    "act": 3,
+    "hp": "48-54 each",
+    "difficulty": "hard",
+    "attacks": [
+      { "name": "Caw", "damage": "8", "hits": 1 },
+      { "name": "Nip", "damage": "6", "hits": 1 }
+    ],
+    "abilities": ["Regrow: When one dies, others gain Strength and HP", "Harden for block"],
+    "strategy": "Kill all at once with AOE or kill one and burst the buffed survivors immediately.",
+    "weaknesses": ["Moderate individual HP"],
+    "dangers": ["Regrow buffs survivors massively", "3 enemies attacking", "Snowballs if not handled correctly"],
+    "deckRequirements": {
+      "damage": "very_high",
+      "block": "high",
+      "aoe": "highly_recommended",
+      "burst": "important"
+    }
+  },
+  {
+    "id": "orb_walker",
+    "name": "Orb Walker",
+    "act": 3,
+    "hp": "87-93",
+    "difficulty": "medium",
+    "attacks": [
+      { "name": "Claw", "damage": "15", "hits": 1 },
+      { "name": "Laser", "damage": "10", "hits": 1 }
+    ],
+    "abilities": ["Orbs circle it (Lightning orbs attack for 3 each)", "Evokes orbs"],
+    "strategy": "Each turn orbs trigger. 4 orbs = 12 extra damage. Block accordingly and kill fast.",
+    "weaknesses": ["Orbs are predictable"],
+    "dangers": ["Orb damage adds up", "Multi-source damage"],
+    "deckRequirements": {
+      "damage": "high",
+      "block": "high",
+      "scaling": "medium"
+    }
+  },
+  {
+    "id": "jaw_worm_horde",
+    "name": "Jaw Worm Horde (x3)",
+    "act": 3,
+    "hp": "42-46 each",
+    "difficulty": "medium",
+    "attacks": [
+      { "name": "Chomp", "damage": "11", "hits": 1 }
+    ],
+    "abilities": ["Each gains 3-5 Block and 3 Strength when below 50% HP"],
+    "strategy": "AOE essential. Kill all before they enrage or face triple-buffed worms.",
+    "weaknesses": ["Low individual HP before enrage"],
+    "dangers": ["All three can enrage", "Damage scales significantly", "3 attacks per turn"],
+    "deckRequirements": {
+      "damage": "very_high",
+      "block": "high",
+      "aoe": "critical",
+      "burst": "important"
+    }
+  },
+  {
+    "id": "spheric_guardian_act3",
+    "name": "Spheric Guardian (Buffed)",
+    "act": 3,
+    "hp": "20 each (x2)",
+    "difficulty": "medium",
+    "attacks": [
+      { "name": "Slam", "damage": "10", "hits": 1 },
+      { "name": "Harden", "damage": "0", "hits": 1, "effect": "Gain 15 Block + Artifact" }
+    ],
+    "abilities": ["Activates with Artifact", "Usually fought in pairs"],
+    "strategy": "Same as Act 2 but TWO of them. Don't debuff while they have Artifact!",
+    "weaknesses": ["Low HP each"],
+    "dangers": ["Artifact reflects debuffs", "Two enemies", "Can stagger Artifacts"],
+    "deckRequirements": {
+      "damage": "high",
+      "block": "medium",
+      "aoe": "helpful",
+      "debuffs": "careful"
+    }
+  },
+  {
+    "id": "transient",
+    "name": "Transient",
+    "act": 3,
+    "hp": "999",
+    "difficulty": "hard",
+    "attacks": [
+      { "name": "Attack", "damage": "30", "hits": 1 }
+    ],
+    "abilities": ["Fades away after 6 turns (instant kill)", "Loses 999 HP per turn"],
+    "strategy": "You MUST kill in 6 turns! Massive HP pool but loses HP fast. Setup fast, burst hard.",
+    "weaknesses": ["Dies automatically after 6 turns", "Loses HP rapidly"],
+    "dangers": ["HUGE damage", "Time limit pressure", "Punishes slow decks"],
+    "deckRequirements": {
+      "damage": "extreme",
+      "block": "very_high",
+      "burst": "critical",
+      "scaling": "fast"
+    }
+  },
+  {
+    "id": "maw",
+    "name": "Maw",
+    "act": 3,
+    "hp": "300-315",
+    "difficulty": "hard",
+    "attacks": [
+      { "name": "Nom", "damage": "5", "hits": 1 },
+      { "name": "Roar", "damage": "0", "hits": 1, "effect": "Apply 3 Weak + 3 Frail" },
+      { "name": "Slam", "damage": "30", "hits": 1 }
+    ],
+    "abilities": ["Drool: You take 3 damage when drawing Slimed cards"],
+    "strategy": "Heavy debuffs hurt badly. Artifact helps. Don't draw Slimed cards carelessly!",
+    "weaknesses": ["Telegraphs big attacks"],
+    "dangers": ["Massive debuffs", "Slimed card damage", "High damage output"],
+    "deckRequirements": {
+      "damage": "very_high",
+      "block": "very_high",
+      "artifact": "recommended",
+      "draw": "careful"
+    }
+  },
+  {
+    "id": "writhing_mass",
+    "name": "Writhing Mass",
+    "act": 3,
+    "hp": "165-175",
+    "difficulty": "hard",
+    "attacks": [
+      { "name": "Flail", "damage": "15", "hits": 1 },
+      { "name": "Wither", "damage": "10", "hits": 1, "effect": "Add 2 Wounds + 1 Dazed to discard" },
+      { "name": "Strong Strike", "damage": "32", "hits": 1 }
+    ],
+    "abilities": ["Malleable (3 Block per card played)", "Parasite curse if alive too long"],
+    "strategy": "Minimize cards played due to Malleable. Kill quickly to avoid curse. Very tanky fight.",
+    "weaknesses": ["Predictable pattern"],
+    "dangers": ["Malleable blocks heavily", "Deck clogging", "Parasite curse", "High damage"],
+    "deckRequirements": {
+      "damage": "extreme",
+      "block": "high",
+      "efficiency": "critical",
+      "exhaust": "helpful"
+    }
+  },
+  {
+    "id": "giant_head",
+    "name": "Giant Head",
+    "act": 3,
+    "type": "elite",
+    "hp": "500-520",
+    "difficulty": "hard",
+    "attacks": [
+      { "name": "Count", "damage": "13x?", "hits": "varies", "effect": "Hits = cards played last turn" },
+      { "name": "Glare", "damage": "0", "hits": 1, "effect": "Apply 2 Weak" }
+    ],
+    "abilities": ["Attacks based on cards you played last turn", "Slow debuff (can't play 2 cards of same type)"],
+    "strategy": "MINIMIZE cards played! Each card = 13 damage. Play 1-2 efficient cards per turn max.",
+    "weaknesses": ["Can be outscaled with efficiency"],
+    "dangers": ["Punishes card spam", "Massive HP", "Slow debuff restricts options"],
+    "deckRequirements": {
+      "damage": "extreme",
+      "efficiency": "critical",
+      "block": "high",
+      "scaling": "very_high"
+    }
+  },
+  {
+    "id": "nemesis",
+    "name": "Nemesis",
+    "act": 3,
+    "type": "elite",
+    "hp": "200-210",
+    "difficulty": "hard",
+    "attacks": [
+      { "name": "Attack", "damage": "6-45", "hits": 1, "effect": "Damage increases each turn" }
+    ],
+    "abilities": ["Intangible (damage capped at 1)", "Gains 1 Strength every turn", "Burns (take 1 damage per card played)"],
+    "strategy": "Turn limit fight! Damage scales massively. Multi-hit attacks pierce Intangible. Need burst.",
+    "weaknesses": ["Intangible caps damage but allows multi-hit strategies"],
+    "dangers": ["Scaling damage kills you", "Burns hurt", "Time limit pressure"],
+    "deckRequirements": {
+      "damage": "extreme",
+      "multi_hit": "critical",
+      "block": "very_high",
+      "burst": "important"
+    }
+  },
+  {
+    "id": "reptomancer",
+    "name": "Reptomancer",
+    "act": 3,
+    "type": "elite",
+    "hp": "180-190",
+    "difficulty": "hard",
+    "attacks": [
+      { "name": "Snake Strike", "damage": "13x2", "hits": 2 },
+      { "name": "Big Bite", "damage": "30", "hits": 1 },
+      { "name": "Summon", "damage": "0", "hits": 1, "effect": "Summon 2 Daggers" }
+    ],
+    "abilities": ["Summons 2 Daggers on turn 1 and later", "Daggers attack for 9 damage"],
+    "strategy": "AOE ESSENTIAL! Kill Daggers first or take massive damage. 2 daggers + boss = 3 attacks per turn.",
+    "weaknesses": ["Weak without daggers"],
+    "dangers": ["Dagger spam", "Multi-hit attacks", "Can resummon daggers", "Overwhelming without AOE"],
+    "deckRequirements": {
+      "damage": "extreme",
+      "block": "very_high",
+      "aoe": "critical",
+      "scaling": "high"
+    }
+  },
+  {
+    "id": "awakened_one",
+    "name": "Awakened One",
+    "act": 3,
+    "type": "boss",
+    "hp": "300",
+    "difficulty": "boss",
+    "attacks": [
+      { "name": "Slash", "damage": "20", "hits": 1 },
+      { "name": "Soul Strike", "damage": "6x4", "hits": 4 },
+      { "name": "Rebirth", "damage": "0", "hits": 1, "effect": "Full heal, Strength, loses debuffs" }
+    ],
+    "abilities": ["Phase 1: Gains Strength when you play Powers", "Phase 2: Heals to full, removes debuffs, hits harder"],
+    "strategy": "Phase 1: AVOID POWERS or gain 2 Strength each. Phase 2: Go all out. Save burst for phase 2.",
+    "weaknesses": ["Vulnerable if you avoid Powers in phase 1"],
+    "dangers": ["Punishes Power-heavy decks", "Full heal at phase 2", "Multi-hit attacks", "Strength scaling"],
+    "deckRequirements": {
+      "damage": "extreme",
+      "block": "extreme",
+      "powers": "minimal_or_late",
+      "burst": "critical",
+      "scaling": "very_high"
+    }
+  },
+  {
+    "id": "time_eater",
+    "name": "Time Eater",
+    "act": 3,
+    "type": "boss",
+    "hp": "420-440",
+    "difficulty": "boss",
+    "attacks": [
+      { "name": "Reverberate", "damage": "7x3", "hits": 3 },
+      { "name": "Head Slam", "damage": "26", "hits": 1 },
+      { "name": "Haste", "damage": "0", "hits": 1, "effect": "Gain 2 Strength" }
+    ],
+    "abilities": ["Takes turn after you play 12 cards", "Gains Strength over time"],
+    "strategy": "Limit to 11 cards per turn! Build efficient deck. Each extra turn gives boss Strength.",
+    "weaknesses": ["Predictable turn limit"],
+    "dangers": ["Punishes card spam", "Strength scaling", "Time pressure", "Very high HP"],
+    "deckRequirements": {
+      "damage": "extreme",
+      "block": "extreme",
+      "efficiency": "critical",
+      "scaling": "very_high",
+      "card_draw": "careful"
+    }
+  },
+  {
+    "id": "donu_deca",
+    "name": "Donu & Deca",
+    "act": 3,
+    "type": "boss",
+    "hp": "250 each",
+    "difficulty": "boss",
+    "attacks": [
+      { "name": "Donu - Circle of Power", "damage": "0", "hits": 1, "effect": "Gain 3 Strength" },
+      { "name": "Donu - Beam", "damage": "10x2", "hits": 2 },
+      { "name": "Deca - Square of Protection", "damage": "0", "hits": 1, "effect": "Gain 16 Block" },
+      { "name": "Deca - Beam", "damage": "10x2", "hits": 2 }
+    ],
+    "abilities": ["When one dies, the other gains Strength and Artifact", "Both gain Strength and Block over time"],
+    "strategy": "Kill both at same time or survivor becomes unkillable. AOE or balanced damage needed.",
+    "weaknesses": ["Can be bursted together"],
+    "dangers": ["Survivor enrages", "Both scale", "Artifact on survivor", "Requires split focus"],
+    "deckRequirements": {
+      "damage": "extreme",
+      "block": "extreme",
+      "aoe": "highly_recommended",
+      "scaling": "very_high",
+      "burst": "important"
+    }
+  }
+]

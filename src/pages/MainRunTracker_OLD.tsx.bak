@@ -1,0 +1,1528 @@
+import { useState, useEffect, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useGameStore, useHasHydrated } from '../store/gameStore';
+import { DeckView } from '../components/DeckView';
+import { DeckStatistics } from '../components/DeckStatistics';
+import { RelicHoverZoom } from '../components/RelicHoverZoom';
+import { PotionPicker } from '../components/PotionPicker';
+import { CardRewardModal } from '../components/CardRewardModal';
+import { BossRewardModal } from '../components/BossRewardModal';
+import { EliteRewardModal } from '../components/EliteRewardModal';
+import { EventModal } from '../components/EventModal';
+import { FloorWizard } from '../components/FloorWizard';
+import { AscensionKeyAdvisor } from '../components/AscensionKeyAdvisor';
+import { BuildAdvisoryBox } from '../components/BuildAdvisoryBox';
+import { Toast } from '../components/Toast';
+import { analyzeCombatReadiness } from '../utils/combatAdvisor';
+import { evaluateRelic } from '../utils/relicEvaluator';
+import { generateShopAdvice, evaluateCardRemoval } from '../utils/shopAdvisor';
+import { getCardImagePath, getMonsterImagePath, handleImageError } from '../utils/imageHelpers';
+import { calculateRelicBuffs, getBuffSummary } from '../utils/relicBuffs';
+import { StSCard } from '../components/StSCard';
+import { HallwayFightModal } from '../components/HallwayFightModal';
+import { CardZoomModal } from '../components/CardZoomModal';
+import type { Monster } from '../utils/combatAdvisor';
+import monstersData from '../data/monsters.json';
+import relicsData from '../data/relics.json';
+import cardsData from '../data/cards.json';
+import type { Relic, Card, Potion } from '../types';
+
+type ActionMode = 'idle' | 'card-reward' | 'card-picker' | 'boss-reward' | 'elite-reward' | 'event' | 'shop' | 'ascension-keys' | 'combat-preview' | 'campfire' | 'potion-picker' | 'relic-picker' | 'hallway-fight';
+
+interface ToastMessage {
+  message: string;
+  type: 'success' | 'error' | 'info';
+}
+
+export function MainRunTracker() {
+  const navigate = useNavigate();
+  const hasHydrated = useHasHydrated();
+  const {
+    character,
+    deck,
+    relics,
+    potions,
+    stats,
+    isRunActive,
+    addCard,
+    removeCard,
+    upgradeCard,
+    addRelic,
+    removeRelic,
+    addPotion,
+    removePotion,
+    updateStats,
+    resetRun,
+    getPotionSlots,
+  } = useGameStore();
+
+  const [actionMode, setActionMode] = useState<ActionMode>('idle');
+  const [selectedMonster, setSelectedMonster] = useState<Monster | null>(null);
+  const [toast, setToast] = useState<ToastMessage | null>(null);
+  const [zoomedCard, setZoomedCard] = useState<Card | null>(null);
+  const [campfireChoice, setCampfireChoice] = useState<'rest' | 'upgrade' | 'recall' | 'dig' | 'smoke' | null>(null);
+  const [relicSearchTerm, setRelicSearchTerm] = useState('');
+  const [relicSortBy, setRelicSortBy] = useState<'rating' | 'name' | 'rarity'>('rating');
+
+  // Memoize expensive calculations to avoid recalculating on every render
+  // IMPORTANT: These must come before early returns to satisfy Rules of Hooks
+  const currentAct = useMemo(
+    () => stats.floorNumber <= 16 ? 1 : stats.floorNumber <= 33 ? 2 : 3,
+    [stats.floorNumber]
+  );
+
+  const monsters = useMemo(
+    () => (monstersData as Monster[]).filter(m => m.act === currentAct),
+    [currentAct]
+  );
+
+  const availableRelics = useMemo(
+    () => (relicsData as any[])
+      .map(relic => ({
+        ...relic,
+        tier: typeof relic.tier === 'string' ? parseInt(relic.tier, 10) : relic.tier
+      }))
+      .filter(
+        (relic) =>
+          (relic.character === character || relic.character === 'shared') &&
+          !relics.some((r) => r.id === relic.id)
+      ) as Relic[],
+    [character, relics]
+  );
+
+  const relicBuffs = useMemo(
+    () => calculateRelicBuffs(relics, stats.currentHP, stats.maxHP),
+    [relics, stats.currentHP, stats.maxHP]
+  );
+
+  const combatAdvice = useMemo(
+    () => selectedMonster
+      ? analyzeCombatReadiness(selectedMonster, deck, relics, potions, stats.ascensionLevel, stats.currentHP, stats.maxHP, relicBuffs)
+      : null,
+    [selectedMonster, deck, relics, potions, stats.ascensionLevel, stats.currentHP, stats.maxHP, relicBuffs]
+  );
+
+  // Wait for store to hydrate from localStorage before checking state
+  useEffect(() => {
+    if (hasHydrated && (!character || !isRunActive)) {
+      navigate('/');
+    }
+  }, [hasHydrated, character, isRunActive, navigate]);
+
+  // Show loading state while hydrating from localStorage
+  if (!hasHydrated) {
+    return (
+      <div className="min-h-screen bg-sts-darker flex items-center justify-center">
+        <div className="text-sts-light text-xl">Loading...</div>
+      </div>
+    );
+  }
+
+  if (!character || !isRunActive) {
+    return null;
+  }
+
+  const potionSlots = getPotionSlots();
+
+  const handleResetRun = () => {
+    if (confirm('Are you sure you want to end this run?')) {
+      resetRun();
+      navigate('/');
+    }
+  };
+
+  const handleAddCard = (card: Card) => {
+    // Check for egg relics and auto-upgrade matching card types
+    const hasMoltenEgg = relics.some(r => r.id === 'molten_egg');
+    const hasToxicEgg = relics.some(r => r.id === 'toxic_egg');
+    const hasFrozenEgg = relics.some(r => r.id === 'frozen_egg');
+
+    const shouldUpgrade =
+      (hasMoltenEgg && card.type === 'attack') ||
+      (hasToxicEgg && card.type === 'skill') ||
+      (hasFrozenEgg && card.type === 'power');
+
+    const cardToAdd = shouldUpgrade ? { ...card, upgraded: true } : card;
+
+    addCard(cardToAdd);
+    showToast(
+      `Added ${shouldUpgrade ? cardToAdd.name + '+' : card.name} to deck${shouldUpgrade ? ' (Auto-upgraded by egg relic)' : ''}`,
+      'success'
+    );
+  };
+
+  const handleRemoveCard = (cardId: string) => {
+    const card = deck.find(c => c.id === cardId);
+    removeCard(cardId);
+    showToast(`Removed ${card?.name} from deck`, 'info');
+  };
+
+  const handleUpgradeCard = (cardId: string) => {
+    const card = deck.find(c => c.id === cardId);
+    upgradeCard(cardId);
+    showToast(`Upgraded ${card?.name}!`, 'success');
+  };
+
+  const handleAddRelic = (relic: Relic) => {
+    addRelic(relic);
+    showToast(`Acquired ${relic.name}!`, 'success');
+    setActionMode('idle');
+  };
+
+  const handleAddPotion = (potion: Potion) => {
+    if (potions.length >= potionSlots) {
+      showToast(`Potion slots full (${potionSlots}/${potionSlots})!`, 'error');
+      return;
+    }
+    addPotion(potion);
+    showToast(`Acquired ${potion.name}!`, 'success');
+  };
+
+  const handleRemovePotion = (potionId: string) => {
+    const potion = potions.find(p => p.id === potionId);
+    removePotion(potionId);
+    showToast(`Used ${potion?.name}`, 'info');
+  };
+
+  const handleRemoveRelic = (relicId: string) => {
+    const relic = relics.find(r => r.id === relicId);
+    removeRelic(relicId);
+    showToast(`Removed ${relic?.name}`, 'info');
+  };
+
+  const showToast = (message: string, type: ToastMessage['type']) => {
+    setToast({ message, type });
+    setTimeout(() => setToast(null), 3000);
+  };
+
+  const handleCampfireChoice = (choice: 'rest' | 'upgrade' | 'recall' | 'dig' | 'smoke') => {
+    setCampfireChoice(choice);
+    if (choice === 'rest') {
+      const healAmount = Math.floor(stats.maxHP * 0.3);
+      const newHP = Math.min(stats.currentHP + healAmount, stats.maxHP);
+      updateStats({ currentHP: newHP });
+      showToast(`Rested: Healed ${newHP - stats.currentHP} HP`, 'success');
+      setActionMode('idle');
+      setCampfireChoice(null);
+    }
+    // Other choices handled by their respective UIs
+  };
+
+  const handleFloorAdvance = () => {
+    updateStats({ floorNumber: stats.floorNumber + 1 });
+    setActionMode('idle');
+    setSelectedMonster(null);
+    setCampfireChoice(null);
+  };
+
+  const handleHallwayFightComplete = (result: {
+    won: boolean;
+    hpLost: number;
+    goldGained: number;
+    showCardReward: boolean;
+  }) => {
+    // Update HP and gold
+    const newHP = Math.max(0, stats.currentHP - result.hpLost);
+    const newGold = stats.gold + result.goldGained;
+    updateStats({ currentHP: newHP, gold: newGold });
+
+    // Show feedback
+    if (result.won) {
+      showToast(`Victory! Lost ${result.hpLost} HP, gained ${result.goldGained} gold`, 'success');
+      // Show card reward modal
+      if (result.showCardReward) {
+        setActionMode('card-reward');
+      } else {
+        handleFloorAdvance();
+      }
+    } else {
+      showToast(`Defeated! Lost ${result.hpLost} HP`, 'error');
+      handleFloorAdvance();
+    }
+  };
+
+  const handleFloorRetreat = () => {
+    if (stats.floorNumber > 1) {
+      updateStats({ floorNumber: stats.floorNumber - 1 });
+      setActionMode('idle');
+      setSelectedMonster(null);
+      setCampfireChoice(null);
+    }
+  };
+
+  const handleFloorComplete = (data: {
+    goldGained: number;
+    cardsAdded: Card[];
+    relicsAdded: Relic[];
+    enemiesDefeated: string[];
+  }) => {
+    // Update gold
+    updateStats({ gold: stats.gold + data.goldGained });
+
+    // Add cards and relics
+    data.cardsAdded.forEach(card => addCard(card));
+    data.relicsAdded.forEach(relic => addRelic(relic));
+
+    // Show summary toast
+    showToast(
+      `Floor ${stats.floorNumber} complete! +${data.goldGained}g, +${data.cardsAdded.length} cards, +${data.relicsAdded.length} relics`,
+      'success'
+    );
+
+    // Advance floor
+    handleFloorAdvance();
+  };
+
+  return (
+    <div className="min-h-screen bg-sts-darker">
+      {/* Top Bar - Ultra Compact with Relics and Potions */}
+      <div className="bg-sts-dark border-b border-sts-light/20 sticky top-0 z-50">
+        <div className="max-w-[1800px] mx-auto px-3 py-1.5">
+          <div className="flex items-center justify-between gap-2 text-sm">
+            {/* Left: Relics */}
+            <div className="flex items-center gap-1.5 min-w-0">
+              <button
+                onClick={() => setActionMode('relic-picker')}
+                className="px-2 py-1 bg-yellow-600/80 hover:bg-yellow-700 text-white rounded transition-colors whitespace-nowrap text-sm font-semibold"
+                title="Add a relic"
+              >
+                +🏺
+              </button>
+              <div className="flex items-center gap-0.5 overflow-x-auto max-w-[200px]">
+                {relics.slice(0, 10).map((relic) => (
+                  <div key={relic.id} className="group relative flex-shrink-0 w-6 h-6">
+                    <RelicHoverZoom relic={relic} showRarity={false} />
+                    <button
+                      onClick={() => handleRemoveRelic(relic.id)}
+                      className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded text-red-400 text-xs font-bold"
+                      title="Remove relic"
+                    >
+                      ×
+                    </button>
+                  </div>
+                ))}
+                {relics.length > 10 && (
+                  <div className="text-xs text-sts-light/80 font-semibold flex-shrink-0">
+                    +{relics.length - 10}
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Center-Left: Character, Floor, Ascension */}
+            <div className="flex items-center gap-2 flex-shrink-0">
+              <span className="font-bold text-sts-light capitalize">{character}</span>
+              <span className="text-sts-light/70">·</span>
+              <span className="text-sts-light/90">F<span className="font-bold text-sts-light">{stats.floorNumber}</span></span>
+              <span className="text-sts-light/70">·</span>
+              <span className="text-sts-light/90">A<span className="font-bold text-purple-300">{stats.ascensionLevel}</span></span>
+            </div>
+
+            {/* Center: Potions */}
+            <div className="flex items-center gap-1.5 min-w-0">
+              <button
+                onClick={() => setActionMode('potion-picker')}
+                className="px-2 py-1 bg-purple-600/80 hover:bg-purple-700 text-white rounded transition-colors whitespace-nowrap text-sm font-semibold"
+                title="Add a potion"
+              >
+                +🧪
+              </button>
+              <div className="flex items-center gap-0.5">
+                {potions.map((potion) => (
+                  <div
+                    key={potion.id}
+                    className="w-6 h-6 bg-sts-darker rounded border border-purple-500/40 hover:border-purple-500 cursor-pointer transition-all group relative flex-shrink-0"
+                    onClick={() => handleRemovePotion(potion.id)}
+                    title={`${potion.name} (Click to use)`}
+                  >
+                    <div className="absolute inset-0 flex items-center justify-center text-[10px]">
+                      🧪
+                    </div>
+                    <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-red-400 text-xs font-bold">
+                      ×
+                    </div>
+                  </div>
+                ))}
+                {Array.from({ length: potionSlots - potions.length }).map((_, i) => (
+                  <div
+                    key={`empty-${i}`}
+                    className="w-6 h-6 bg-sts-darker/50 rounded border border-sts-light/10 flex items-center justify-center text-[10px] text-sts-light/30 flex-shrink-0"
+                  >
+                    ·
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right: HP, Gold */}
+            <div className="flex items-center gap-2.5 flex-shrink-0">
+              {/* HP with adjustment controls */}
+              <div className="flex items-center gap-1">
+                <button
+                  onClick={() => updateStats({ currentHP: Math.max(0, stats.currentHP - 1) })}
+                  className="w-5 h-5 flex items-center justify-center bg-red-900/30 hover:bg-red-900/50 text-red-400 rounded text-xs transition-colors font-semibold"
+                  title="Remove 1 HP"
+                >
+                  −
+                </button>
+                <input
+                  type="number"
+                  value={stats.currentHP}
+                  onChange={(e) => updateStats({ currentHP: Math.max(0, Math.min(stats.maxHP, parseInt(e.target.value) || 0)) })}
+                  className="w-12 bg-sts-darker text-green-300 text-center font-bold rounded px-1 border border-sts-light/20 focus:border-green-500 focus:outline-none"
+                  min="0"
+                  max={stats.maxHP}
+                />
+                <button
+                  onClick={() => updateStats({ currentHP: Math.min(stats.maxHP, stats.currentHP + 1) })}
+                  className="w-5 h-5 flex items-center justify-center bg-green-900/30 hover:bg-green-900/50 text-green-400 rounded text-xs transition-colors font-semibold"
+                  title="Add 1 HP"
+                >
+                  +
+                </button>
+                <span className="text-sts-light/70">/</span>
+                <button
+                  onClick={() => updateStats({
+                    maxHP: Math.max(1, stats.maxHP - 1),
+                    currentHP: Math.min(stats.currentHP, stats.maxHP - 1)
+                  })}
+                  className="w-5 h-5 flex items-center justify-center bg-red-900/30 hover:bg-red-900/50 text-red-400 rounded text-xs transition-colors font-semibold"
+                  title="Remove 1 max HP"
+                >
+                  −
+                </button>
+                <input
+                  type="number"
+                  value={stats.maxHP}
+                  onChange={(e) => {
+                    const newMaxHP = Math.max(1, parseInt(e.target.value) || 1);
+                    updateStats({
+                      maxHP: newMaxHP,
+                      currentHP: Math.min(stats.currentHP, newMaxHP)
+                    });
+                  }}
+                  className="w-12 bg-sts-darker text-sts-light text-center font-bold rounded px-1 border border-sts-light/20 focus:border-blue-500 focus:outline-none"
+                  min="1"
+                />
+                <button
+                  onClick={() => updateStats({ maxHP: stats.maxHP + 1 })}
+                  className="w-5 h-5 flex items-center justify-center bg-green-900/30 hover:bg-green-900/50 text-green-400 rounded text-xs transition-colors font-semibold"
+                  title="Add 1 max HP"
+                >
+                  +
+                </button>
+              </div>
+
+              {/* Gold with +/- controls */}
+              <div className="flex items-center gap-1.5">
+                <span className="text-sts-light/90 text-lg">💰</span>
+                <button
+                  onClick={() => updateStats({ gold: Math.max(0, stats.gold - 1) })}
+                  className="w-5 h-5 flex items-center justify-center bg-red-900/30 hover:bg-red-900/50 text-red-400 rounded text-xs transition-colors font-semibold"
+                  title="Remove 1 gold"
+                >
+                  -
+                </button>
+                <input
+                  type="number"
+                  value={stats.gold}
+                  onChange={(e) => updateStats({ gold: Math.max(0, parseInt(e.target.value) || 0) })}
+                  className="w-16 bg-sts-darker text-yellow-400 text-center font-bold text-lg rounded px-1 border border-sts-light/20 focus:border-yellow-500 focus:outline-none"
+                  min="0"
+                />
+                <button
+                  onClick={() => updateStats({ gold: stats.gold + 1 })}
+                  className="w-5 h-5 flex items-center justify-center bg-green-900/30 hover:bg-green-900/50 text-green-400 rounded text-xs transition-colors font-semibold"
+                  title="Add 1 gold"
+                >
+                  +
+                </button>
+              </div>
+
+              {/* Relic Buffs Display */}
+              {(relicBuffs.strength > 0 || relicBuffs.dexterity > 0 || relicBuffs.startingBlock > 0) && (
+                <div
+                  className="flex items-center gap-1.5 px-2 py-1 bg-blue-900/20 border border-blue-500/30 rounded text-xs"
+                  title={relicBuffs.notes.join('\n')}
+                >
+                  {relicBuffs.strength > 0 && (
+                    <span className="text-red-300 font-semibold">💪+{relicBuffs.strength}</span>
+                  )}
+                  {relicBuffs.dexterity > 0 && (
+                    <span className="text-green-300 font-semibold">🛡️+{relicBuffs.dexterity}</span>
+                  )}
+                  {relicBuffs.startingBlock > 0 && (
+                    <span className="text-blue-300 font-semibold">🔰+{relicBuffs.startingBlock}</span>
+                  )}
+                </div>
+              )}
+
+              <button
+                onClick={handleResetRun}
+                className="px-2 py-1 bg-red-600/80 hover:bg-red-700 text-white rounded text-xs font-semibold whitespace-nowrap"
+              >
+                End
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Dashboard - Ultra Compact Wide Layout */}
+      <div className="max-w-[1800px] mx-auto px-3 py-2">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-2">
+
+          {/* LEFT SIDEBAR - Current Run State (20%) */}
+          <div className="lg:col-span-2 space-y-2">
+            {/* Deck Overview */}
+            <div className="bg-sts-dark rounded p-2.5">
+              <div className="flex items-center justify-between mb-2">
+                <h2 className="text-base font-bold text-sts-light flex items-center gap-1.5">
+                  <span className="text-sm">🎴</span>
+                  <span>Deck ({deck.length})</span>
+                </h2>
+                <button
+                  onClick={() => setActionMode('card-picker')}
+                  className="text-xs px-2 py-1 bg-green-600 hover:bg-green-700 text-white rounded transition-colors font-semibold"
+                  title="Add a card"
+                >
+                  +
+                </button>
+              </div>
+              <DeckView
+                deck={deck}
+                character={character}
+                relics={relics}
+                onRemoveCard={handleRemoveCard}
+                onUpgradeCard={handleUpgradeCard}
+                onCardClick={setZoomedCard}
+              />
+            </div>
+
+            {/* Deck Statistics */}
+            {deck.length > 0 && (
+              <DeckStatistics deck={deck} />
+            )}
+          </div>
+
+          {/* CENTER PANEL - Context-Based Workflow (60%) */}
+          <div className="lg:col-span-7 space-y-2">
+            {actionMode === 'idle' && (
+              <>
+                {/* Floor Wizard - Sequential Gameplay Flow */}
+                <FloorWizard
+                  currentFloor={stats.floorNumber}
+                  character={character}
+                  currentDeck={deck}
+                  currentGold={stats.gold}
+                  relics={relics}
+                  potions={potions}
+                  currentHP={stats.currentHP}
+                  maxHP={stats.maxHP}
+                  ascensionLevel={stats.ascensionLevel}
+                  onFloorComplete={handleFloorComplete}
+                  onOpenCardReward={() => setActionMode('card-reward')}
+                  onOpenRelicReward={() => setActionMode('relic-picker')}
+                  onOpenShop={() => setActionMode('shop')}
+                  onOpenEvent={() => setActionMode('event')}
+                  onOpenRest={() => setActionMode('campfire')}
+                  onOpenTreasure={() => setActionMode('relic-picker')}
+                />
+
+                {/* Additional Actions */}
+                <div className="bg-sts-dark rounded p-2.5 border border-sts-light/20">
+                  <h3 className="text-xs font-bold text-sts-light/90 mb-1.5">Other Actions</h3>
+                  <div className="grid grid-cols-4 gap-1.5">
+                    <button
+                      onClick={() => setActionMode('combat-preview')}
+                      className="p-2 bg-orange-900/30 hover:bg-orange-900/50 border border-orange-500/50 rounded text-xs font-semibold text-sts-light transition-colors"
+                    >
+                      ⚔️ Combat
+                    </button>
+
+                    <button
+                      onClick={() => setActionMode('potion-picker')}
+                      className="p-2 bg-purple-900/30 hover:bg-purple-900/50 border border-purple-500/50 rounded text-xs font-semibold text-sts-light transition-colors"
+                    >
+                      🧪 Potion
+                    </button>
+
+                    <button
+                      onClick={() => setActionMode('relic-picker')}
+                      className="p-2 bg-blue-900/30 hover:bg-blue-900/50 border border-blue-500/50 rounded text-xs font-semibold text-sts-light transition-colors"
+                    >
+                      🏺 Relic
+                    </button>
+
+                    {stats.ascensionLevel >= 15 && (
+                      <button
+                        onClick={() => setActionMode('ascension-keys')}
+                        className="p-2 bg-cyan-900/30 hover:bg-cyan-900/50 border border-cyan-500/50 rounded text-xs font-semibold text-sts-light transition-colors"
+                      >
+                        🔑 Keys
+                      </button>
+                    )}
+                  </div>
+                </div>
+
+                {/* Floor Navigation */}
+                <div className="bg-sts-dark rounded p-2.5 border border-sts-light/20">
+                  <div className="flex items-center justify-between gap-2">
+                    <button
+                      onClick={handleFloorRetreat}
+                      disabled={stats.floorNumber <= 1}
+                      className="flex-1 p-2 bg-gray-900/30 hover:bg-gray-900/50 border border-gray-500/50 rounded text-xs font-semibold text-sts-light transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      ⬅️ Prev
+                    </button>
+
+                    <div className="text-center px-2">
+                      <div className="text-base font-bold text-sts-light">Floor {stats.floorNumber}</div>
+                      <div className="text-xs text-sts-light/70">Act {currentAct}</div>
+                    </div>
+
+                    <button
+                      onClick={handleFloorAdvance}
+                      className="flex-1 p-2 bg-gray-900/30 hover:bg-gray-900/50 border border-gray-500/50 rounded text-xs font-semibold text-sts-light transition-colors"
+                    >
+                      Next ➡️
+                    </button>
+                  </div>
+                </div>
+              </>
+            )}
+
+            {actionMode === 'combat-preview' && (
+              <div className="bg-sts-dark rounded-lg p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="text-2xl font-bold text-sts-light">Combat Preview</h2>
+                  <button
+                    onClick={() => {
+                      setActionMode('idle');
+                      setSelectedMonster(null);
+                    }}
+                    className="px-3 py-1 bg-gray-600 hover:bg-gray-700 text-white rounded text-sm"
+                  >
+                    Back
+                  </button>
+                </div>
+
+                <div className="mb-4">
+                  <label className="text-sm text-sts-light/80 mb-2 block">Select Enemy:</label>
+                  <select
+                    value={selectedMonster?.id || ''}
+                    onChange={(e) => {
+                      const monster = monsters.find(m => m.id === e.target.value);
+                      setSelectedMonster(monster || null);
+                    }}
+                    className="w-full bg-sts-darker text-sts-light px-3 py-2 rounded border border-sts-light/20"
+                  >
+                    <option value="">Choose an enemy...</option>
+                    {monsters.filter(m => m.type !== 'boss').map(monster => (
+                      <option key={monster.id} value={monster.id}>{monster.name}</option>
+                    ))}
+                    <optgroup label="Bosses">
+                      {monsters.filter(m => m.type === 'boss').map(monster => (
+                        <option key={monster.id} value={monster.id}>{monster.name}</option>
+                      ))}
+                    </optgroup>
+                  </select>
+                </div>
+
+                {selectedMonster && combatAdvice && (
+                  <div className="space-y-4">
+                    {/* Enemy Info */}
+                    <div className="bg-sts-darker rounded-lg p-4 flex gap-4">
+                      <img
+                        src={getMonsterImagePath(selectedMonster.act, selectedMonster.id)}
+                        alt={selectedMonster.name}
+                        onError={handleImageError}
+                        className="w-32 h-32 object-contain rounded"
+                      />
+                      <div className="flex-1">
+                        <h3 className="text-xl font-bold text-sts-light mb-2">{selectedMonster.name}</h3>
+                        <div className="text-sm space-y-1">
+                          <div className="text-sts-light/80">HP: <span className="font-semibold">{selectedMonster.hp}</span></div>
+                          <div className={`inline-block px-2 py-1 rounded text-xs font-semibold ${
+                            combatAdvice.readiness === 'ready' ? 'bg-green-600' :
+                            combatAdvice.readiness === 'caution' ? 'bg-yellow-600' : 'bg-red-600'
+                          }`}>
+                            {combatAdvice.readiness === 'ready' ? 'READY' :
+                             combatAdvice.readiness === 'caution' ? 'CAUTION' : 'DANGER'}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Combat Advice - Compact */}
+                    <div className="space-y-3">
+                      {combatAdvice.strengthAnalysis.length > 0 && (
+                        <div className="bg-green-900/20 border border-green-500/30 rounded-lg p-3">
+                          <h4 className="text-sm font-semibold text-green-400 mb-2">✓ Strengths</h4>
+                          <ul className="text-xs text-sts-light/80 space-y-1">
+                            {combatAdvice.strengthAnalysis.slice(0, 3).map((s, i) => (
+                              <li key={i}>• {s}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+
+                      {combatAdvice.weaknessAnalysis.length > 0 && (
+                        <div className="bg-red-900/20 border border-red-500/30 rounded-lg p-3">
+                          <h4 className="text-sm font-semibold text-red-400 mb-2">⚠️ Concerns</h4>
+                          <ul className="text-xs text-sts-light/80 space-y-1">
+                            {combatAdvice.weaknessAnalysis.slice(0, 3).map((w, i) => (
+                              <li key={i}>• {w}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+
+                      {combatAdvice.recommendations.length > 0 && (
+                        <div className="bg-blue-900/20 border border-blue-500/30 rounded-lg p-3">
+                          <h4 className="text-sm font-semibold text-blue-400 mb-2">💡 Recommendations</h4>
+                          <ul className="text-xs text-sts-light/80 space-y-1">
+                            {combatAdvice.recommendations.slice(0, 3).map((r, i) => (
+                              <li key={i}>• {r}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+
+                    <button
+                      onClick={handleFloorAdvance}
+                      className="w-full px-4 py-3 bg-green-600 hover:bg-green-700 text-white rounded font-semibold"
+                    >
+                      Fight & Continue →
+                    </button>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {actionMode === 'shop' && (
+              <div className="bg-sts-dark rounded-lg p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="text-2xl font-bold text-yellow-400 flex items-center gap-2">
+                    <span>🏪</span>
+                    <span>Merchant</span>
+                  </h2>
+                  <div className="flex items-center gap-4">
+                    <div className="text-lg font-bold text-yellow-500">
+                      💰 {stats.gold}G
+                    </div>
+                    <button
+                      onClick={() => setActionMode('idle')}
+                      className="px-3 py-1 bg-gray-600 hover:bg-gray-700 text-white rounded text-sm"
+                    >
+                      Back
+                    </button>
+                  </div>
+                </div>
+
+                {/* Shop Advisory Guidance */}
+                {(() => {
+                  const advice = generateShopAdvice(deck, relics, character, stats.gold);
+                  const recommendedCards = (cardsData as Card[]).filter(c => advice.recommendedCardIds.includes(c.id));
+                  const avoidCards = (cardsData as Card[]).filter(c => advice.cardsToAvoid.includes(c.id));
+
+                  return (
+                    <div className="bg-yellow-900/20 border border-yellow-500/30 rounded-lg p-4 mb-6">
+                      <h3 className="text-yellow-400 font-bold mb-3 flex items-center gap-2">
+                        <span>💡</span>
+                        <span>Shopping Advice</span>
+                      </h3>
+                      <div className="space-y-4 text-sm">
+                        <div>
+                          <p className="text-sts-light font-semibold mb-1">{advice.generalAdvice}</p>
+                        </div>
+
+                        {/* Cards to Look For - with actual card visuals */}
+                        <div>
+                          <div className="text-green-400 font-semibold mb-2 text-base">✅ Cards to Look For:</div>
+                          <div className="flex flex-wrap gap-3 mb-2">
+                            {recommendedCards.slice(0, 6).map((card) => (
+                              <div key={card.id} className="w-28 ring-2 ring-green-400/60 rounded-xl hover:ring-green-400 transition-all">
+                                <StSCard card={card} showHoverEffect={true} onClick={() => setZoomedCard(card)} />
+                              </div>
+                            ))}
+                          </div>
+                          <p className="text-sts-light/70 text-xs italic">
+                            {advice.cardPriorities.join(' • ')}
+                          </p>
+                        </div>
+
+                        {/* Cards to Avoid - with actual card visuals */}
+                        {avoidCards.length > 0 && (
+                          <div>
+                            <div className="text-red-400 font-semibold mb-2 text-base">❌ Cards to Avoid:</div>
+                            <div className="flex flex-wrap gap-3 mb-2">
+                              {avoidCards.slice(0, 6).map((card) => (
+                                <div key={card.id} className="w-28 opacity-70 hover:opacity-90 transition-all ring-2 ring-red-400/40 rounded-xl">
+                                  <StSCard card={card} showHoverEffect={false} onClick={() => setZoomedCard(card)} />
+                                </div>
+                              ))}
+                            </div>
+                            <p className="text-sts-light/70 text-xs italic">
+                              These cards don't synergize with your current build
+                            </p>
+                          </div>
+                        )}
+
+                        {/* Cards to Remove from Your Deck - with actual card visuals */}
+                        {(() => {
+                          const cardsToRemove = deck
+                            .map(card => ({
+                              card,
+                              evaluation: evaluateCardRemoval(card, deck, relics)
+                            }))
+                            .filter(({ evaluation }) =>
+                              evaluation.priority === 'must-remove' || evaluation.priority === 'should-remove'
+                            )
+                            .sort((a, b) => {
+                              // Sort must-remove first
+                              if (a.evaluation.priority === 'must-remove' && b.evaluation.priority === 'should-remove') return -1;
+                              if (a.evaluation.priority === 'should-remove' && b.evaluation.priority === 'must-remove') return 1;
+                              return 0;
+                            });
+
+                          if (cardsToRemove.length > 0) {
+                            return (
+                              <div className="pt-2 border-t border-yellow-500/20">
+                                <div className="text-orange-400 font-semibold mb-2 text-base">🗑️ Cards to Consider Removing from Your Deck:</div>
+                                <div className="flex flex-wrap gap-3 mb-2">
+                                  {cardsToRemove.slice(0, 8).map(({ card, evaluation }) => (
+                                    <div key={card.id} className="relative group">
+                                      <div className={`w-28 transition-all ${
+                                        evaluation.priority === 'must-remove'
+                                          ? 'ring-2 ring-red-600 opacity-75 hover:opacity-95'
+                                          : 'ring-2 ring-orange-400/60 opacity-80 hover:opacity-100'
+                                      } rounded-xl`}>
+                                        <StSCard card={card} showHoverEffect={false} onClick={() => setZoomedCard(card)} />
+                                      </div>
+                                      {evaluation.priority === 'must-remove' && (
+                                        <div className="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center shadow-lg border-2 border-white">
+                                          !
+                                        </div>
+                                      )}
+                                      {/* Tooltip on hover */}
+                                      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50 mt-2">
+                                        <div className="bg-black/95 text-white text-xs px-2 py-1 rounded whitespace-nowrap border border-gray-700">
+                                          {evaluation.reason}
+                                        </div>
+                                      </div>
+                                    </div>
+                                  ))}
+                                </div>
+                                <p className="text-sts-light/70 text-xs italic">
+                                  Red ring with "!" = Must remove • Orange ring = Should remove • Hover for reason
+                                </p>
+                              </div>
+                            );
+                          }
+                          return null;
+                        })()}
+
+                        {/* Relics and Removal in smaller sections */}
+                        <div className="grid grid-cols-2 gap-4 pt-2 border-t border-yellow-500/20">
+                          <div>
+                            <div className="text-purple-400 font-semibold mb-1">🏺 Relic Priorities:</div>
+                            <ul className="text-sts-light/80 text-xs space-y-0.5">
+                              {advice.relicPriorities.map((priority, idx) => (
+                                <li key={idx}>• {priority}</li>
+                              ))}
+                            </ul>
+                          </div>
+                          <div>
+                            <div className="text-orange-400 font-semibold mb-1">🗑️ General Removal Advice:</div>
+                            <ul className="text-sts-light/80 text-xs space-y-0.5">
+                              {advice.removalPriorities.map((priority, idx) => (
+                                <li key={idx}>• {priority}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })()}
+
+                <p className="text-sts-light/60 text-sm mb-4 italic">
+                  Note: Shop inventory is randomized in the actual game. Browse the shop and make your own purchasing decisions based on the advisory guidance above.
+                </p>
+
+                <div className="flex gap-4">
+                  <button
+                    onClick={() => {
+                      setActionMode('idle');
+                      handleFloorAdvance();
+                    }}
+                    className="flex-1 px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white font-semibold rounded transition-colors"
+                  >
+                    Leave Shop & Continue
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {actionMode === 'campfire' && (
+              <div className="bg-sts-dark rounded-lg p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="text-2xl font-bold text-sts-light">🔥 Campfire</h2>
+                  <button
+                    onClick={() => {
+                      setActionMode('idle');
+                      setCampfireChoice(null);
+                    }}
+                    className="px-3 py-1 bg-gray-600 hover:bg-gray-700 text-white rounded text-sm"
+                  >
+                    Back
+                  </button>
+                </div>
+
+                {!campfireChoice && (
+                  <>
+                    {(() => {
+                      const hasDreamCatcher = relics.some(r => r.id === 'dream_catcher');
+                      const hasToke = relics.some(r => r.id === 'toke');
+                      const hasPeacePipe = relics.some(r => r.id === 'peace_pipe');
+                      const optionCount = 2 + (hasDreamCatcher ? 1 : 0) + (hasToke ? 1 : 0) + (hasPeacePipe ? 1 : 0);
+                      const gridCols = optionCount <= 2 ? 'grid-cols-2' : optionCount === 3 ? 'grid-cols-3' : 'grid-cols-2';
+
+                      return (
+                        <div className={`grid ${gridCols} gap-4 mb-6`}>
+                          <button
+                            onClick={() => handleCampfireChoice('rest')}
+                            className="p-6 bg-green-900/30 hover:bg-green-900/50 border-2 border-green-500/50 rounded-lg transition-colors"
+                          >
+                            <div className="text-4xl mb-2">❤️</div>
+                            <div className="font-semibold text-sts-light mb-2">Rest</div>
+                            <div className="text-sm text-sts-light/60">Heal {Math.floor(stats.maxHP * 0.3)} HP</div>
+                            <div className="text-xs text-sts-light/40 mt-2">
+                              {stats.currentHP}/{stats.maxHP} → {Math.min(stats.currentHP + Math.floor(stats.maxHP * 0.3), stats.maxHP)}/{stats.maxHP}
+                            </div>
+                          </button>
+
+                          <button
+                            onClick={() => handleCampfireChoice('upgrade')}
+                            className="p-6 bg-blue-900/30 hover:bg-blue-900/50 border-2 border-blue-500/50 rounded-lg transition-colors"
+                          >
+                            <div className="text-4xl mb-2">⬆️</div>
+                            <div className="font-semibold text-sts-light mb-2">Upgrade</div>
+                            <div className="text-sm text-sts-light/60">Upgrade a card</div>
+                            <div className="text-xs text-sts-light/40 mt-2">
+                              {deck.filter(c => !c.upgraded).length} cards available
+                            </div>
+                          </button>
+
+                          {hasDreamCatcher && (
+                            <button
+                              onClick={() => handleCampfireChoice('recall')}
+                              className="p-6 bg-purple-900/30 hover:bg-purple-900/50 border-2 border-purple-500/50 rounded-lg transition-colors"
+                            >
+                              <div className="text-4xl mb-2">🔮</div>
+                              <div className="font-semibold text-sts-light mb-2">Recall</div>
+                              <div className="text-sm text-sts-light/60">Add a card to your deck</div>
+                              <div className="text-xs text-sts-light/40 mt-2">
+                                (Dream Catcher)
+                              </div>
+                            </button>
+                          )}
+
+                          {hasToke && (
+                            <button
+                              onClick={() => handleCampfireChoice('dig')}
+                              className="p-6 bg-yellow-900/30 hover:bg-yellow-900/50 border-2 border-yellow-500/50 rounded-lg transition-colors"
+                            >
+                              <div className="text-4xl mb-2">💎</div>
+                              <div className="font-semibold text-sts-light mb-2">Dig</div>
+                              <div className="text-sm text-sts-light/60">Add a colorless card</div>
+                              <div className="text-xs text-sts-light/40 mt-2">
+                                (Toké)
+                              </div>
+                            </button>
+                          )}
+
+                          {hasPeacePipe && (
+                            <button
+                              onClick={() => handleCampfireChoice('smoke')}
+                              className="p-6 bg-red-900/30 hover:bg-red-900/50 border-2 border-red-500/50 rounded-lg transition-colors"
+                            >
+                              <div className="text-4xl mb-2">🚬</div>
+                              <div className="font-semibold text-sts-light mb-2">Smoke</div>
+                              <div className="text-sm text-sts-light/60">Remove a card from your deck</div>
+                              <div className="text-xs text-sts-light/40 mt-2">
+                                (Peace Pipe)
+                              </div>
+                            </button>
+                          )}
+                        </div>
+                      );
+                    })()}
+                  </>
+                )}
+
+                {campfireChoice === 'upgrade' && (
+                  <div className="space-y-2">
+                    <h3 className="text-lg font-semibold text-sts-light mb-3">Select Card to Upgrade:</h3>
+                    <div className="max-h-96 overflow-y-auto space-y-2">
+                      {deck.filter(c => !c.upgraded).map(card => (
+                        <div
+                          key={card.id}
+                          className="bg-sts-darker p-3 rounded flex items-center gap-3 cursor-pointer hover:bg-sts-darker/80"
+                          onClick={() => {
+                            handleUpgradeCard(card.id);
+                            handleFloorAdvance();
+                          }}
+                        >
+                          <img
+                            src={getCardImagePath(card.character, card.id)}
+                            alt={card.name}
+                            onError={handleImageError}
+                            className="w-12 h-12 rounded"
+                          />
+                          <div className="flex-1">
+                            <div className="font-semibold text-sts-light">{card.name}</div>
+                            <div className="text-xs text-sts-light/60">{card.description}</div>
+                          </div>
+                          <button className="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded text-sm">
+                            Upgrade
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {campfireChoice === 'recall' && (
+                  <div className="space-y-2">
+                    <h3 className="text-lg font-semibold text-sts-light mb-3">Dream Catcher - Choose a Card to Add:</h3>
+                    <CardRewardModal
+                      isOpen={true}
+                      onClose={() => {
+                        setCampfireChoice(null);
+                        handleFloorAdvance();
+                      }}
+                      onSelectCard={(card) => {
+                        handleAddCard(card);
+                        setCampfireChoice(null);
+                        handleFloorAdvance();
+                      }}
+                      character={character}
+                      currentDeck={deck}
+                      relics={relics}
+                    />
+                  </div>
+                )}
+
+                {campfireChoice === 'dig' && (
+                  <div className="space-y-2">
+                    <h3 className="text-lg font-semibold text-sts-light mb-3">Toké - Choose a Colorless Card to Add:</h3>
+                    <CardRewardModal
+                      isOpen={true}
+                      onClose={() => {
+                        setCampfireChoice(null);
+                        handleFloorAdvance();
+                      }}
+                      onSelectCard={(card) => {
+                        handleAddCard(card);
+                        setCampfireChoice(null);
+                        handleFloorAdvance();
+                      }}
+                      character="colorless"
+                      currentDeck={deck}
+                      relics={relics}
+                    />
+                  </div>
+                )}
+
+                {campfireChoice === 'smoke' && (
+                  <div className="space-y-2">
+                    <h3 className="text-lg font-semibold text-sts-light mb-3">Peace Pipe - Select Card to Remove:</h3>
+                    <div className="max-h-96 overflow-y-auto space-y-2">
+                      {deck.map(card => (
+                        <div
+                          key={card.id}
+                          className="bg-sts-darker p-3 rounded flex items-center gap-3 cursor-pointer hover:bg-sts-darker/80"
+                          onClick={() => {
+                            handleRemoveCard(card.id);
+                            setCampfireChoice(null);
+                            handleFloorAdvance();
+                          }}
+                        >
+                          <img
+                            src={getCardImagePath(card.character, card.id)}
+                            alt={card.name}
+                            onError={handleImageError}
+                            className="w-12 h-12 rounded"
+                          />
+                          <div className="flex-1">
+                            <div className="font-semibold text-sts-light">{card.name}{card.upgraded ? '+' : ''}</div>
+                            <div className="text-xs text-sts-light/60">{card.description}</div>
+                          </div>
+                          <button className="px-3 py-1 bg-red-600 hover:bg-red-700 text-white rounded text-sm">
+                            Remove
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Card Reward - Inline */}
+            {actionMode === 'card-reward' && (
+              <div className="bg-sts-dark rounded-lg p-6">
+                <CardRewardModal
+                  isOpen={true}
+                  character={character}
+                  currentDeck={deck}
+                  relics={relics}
+                  onClose={() => {
+                    setActionMode('idle');
+                    handleFloorAdvance();
+                  }}
+                  onSelectCard={(card) => {
+                    handleAddCard(card);
+                    setActionMode('idle');
+                    handleFloorAdvance();
+                  }}
+                />
+              </div>
+            )}
+
+            {/* Card Picker - Manual Add - Inline */}
+            {actionMode === 'card-picker' && (
+              <div className="bg-sts-dark rounded-lg p-6">
+                <CardRewardModal
+                  isOpen={true}
+                  character={character}
+                  currentDeck={deck}
+                  relics={relics}
+                  onClose={() => setActionMode('idle')}
+                  onSelectCard={(card) => {
+                    handleAddCard(card);
+                    setActionMode('idle');
+                  }}
+                />
+              </div>
+            )}
+
+            {/* Potion Picker - Inline */}
+            {actionMode === 'potion-picker' && (
+              <div className="bg-sts-dark rounded-lg p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="text-2xl font-bold text-sts-light">Found Potion</h2>
+                  <button
+                    onClick={() => setActionMode('idle')}
+                    className="px-3 py-1 bg-gray-600 hover:bg-gray-700 text-white rounded text-sm"
+                  >
+                    Back
+                  </button>
+                </div>
+                <PotionPicker
+                  character={character}
+                  onAddPotion={(potion) => {
+                    handleAddPotion(potion);
+                    setActionMode('idle');
+                  }}
+                  maxSlots={potionSlots}
+                  currentPotions={potions}
+                />
+              </div>
+            )}
+
+            {/* Relic Picker - Inline */}
+            {actionMode === 'relic-picker' && (
+              <div className="bg-sts-dark rounded-lg p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="text-2xl font-bold text-sts-light">Found Relic</h2>
+                  <button
+                    onClick={() => setActionMode('idle')}
+                    className="px-3 py-1 bg-gray-600 hover:bg-gray-700 text-white rounded text-sm"
+                  >
+                    Back
+                  </button>
+                </div>
+
+                {/* Search and Sort Controls */}
+                <div className="flex gap-3 mb-4">
+                  <input
+                    type="text"
+                    placeholder="Search relics..."
+                    value={relicSearchTerm}
+                    onChange={(e) => setRelicSearchTerm(e.target.value)}
+                    className="flex-1 bg-sts-darker text-sts-light px-3 py-2 rounded border border-sts-light/20 focus:border-yellow-500 focus:outline-none"
+                  />
+                  <select
+                    value={relicSortBy}
+                    onChange={(e) => setRelicSortBy(e.target.value as 'rating' | 'name' | 'rarity')}
+                    className="bg-sts-darker text-sts-light px-3 py-2 rounded border border-sts-light/20 focus:border-yellow-500 focus:outline-none"
+                  >
+                    <option value="rating">Sort by Rating</option>
+                    <option value="name">Sort by Name</option>
+                    <option value="rarity">Sort by Rarity</option>
+                  </select>
+                </div>
+
+                <div className="space-y-3 max-h-[60vh] overflow-y-auto">
+                  {availableRelics
+                    .filter(relic =>
+                      relic.name.toLowerCase().includes(relicSearchTerm.toLowerCase()) ||
+                      relic.description.toLowerCase().includes(relicSearchTerm.toLowerCase())
+                    )
+                    .sort((a, b) => {
+                      if (relicSortBy === 'rating') {
+                        const evalA = evaluateRelic(a, deck, relics, character!);
+                        const evalB = evaluateRelic(b, deck, relics, character!);
+                        return evalB.rating - evalA.rating;
+                      } else if (relicSortBy === 'name') {
+                        return a.name.localeCompare(b.name);
+                      } else { // rarity
+                        const rarityOrder = { 'starter': 0, 'common': 1, 'uncommon': 2, 'rare': 3, 'boss': 4, 'shop': 5, 'special': 6 };
+                        return (rarityOrder[a.rarity as keyof typeof rarityOrder] || 0) - (rarityOrder[b.rarity as keyof typeof rarityOrder] || 0);
+                      }
+                    })
+                    .map((relic) => {
+                    const evaluation = evaluateRelic(relic, deck, relics, character!);
+                    const recommendationColors = {
+                      'must-take': 'border-l-green-500 bg-green-900/20',
+                      'good-take': 'border-l-blue-500 bg-blue-900/20',
+                      'situational': 'border-l-yellow-500 bg-yellow-900/20',
+                      'skip': 'border-l-red-500 bg-red-900/20',
+                    };
+
+                    return (
+                      <div
+                        key={relic.id}
+                        className={`bg-sts-darker p-3 rounded border-l-4 ${recommendationColors[evaluation.recommendation]} hover:bg-sts-darker/80`}
+                      >
+                        <div className="flex justify-between items-start">
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2 mb-1">
+                              <h3 className="text-sts-light font-semibold">
+                                {relic.name}
+                              </h3>
+                              <span className={`text-xs px-2 py-0.5 rounded font-semibold ${
+                                evaluation.recommendation === 'must-take' ? 'bg-green-600 text-white' :
+                                evaluation.recommendation === 'good-take' ? 'bg-blue-600 text-white' :
+                                evaluation.recommendation === 'situational' ? 'bg-yellow-600 text-black' :
+                                'bg-red-600 text-white'
+                              }`}>
+                                {evaluation.recommendation.toUpperCase().replace('-', ' ')}
+                              </span>
+                            </div>
+                            <p className="text-xs text-sts-light/60 mt-1">
+                              {relic.description}
+                            </p>
+                            <p className="text-xs text-sts-light/80 font-semibold mt-2">
+                              💡 {evaluation.reason}
+                            </p>
+                            {evaluation.synergies.length > 0 && (
+                              <div className="mt-2">
+                                <p className="text-xs text-green-400">✓ {evaluation.synergies.join(', ')}</p>
+                              </div>
+                            )}
+                            {evaluation.antiSynergies.length > 0 && (
+                              <div className="mt-1">
+                                <p className="text-xs text-red-400">✗ {evaluation.antiSynergies.join(', ')}</p>
+                              </div>
+                            )}
+                            <div className="flex gap-2 items-center mt-2">
+                              <span className="text-xs px-2 py-0.5 rounded bg-sts-light/10 text-sts-light/70">
+                                {relic.rarity}
+                              </span>
+                              <span className="text-xs text-yellow-500">
+                                {'★'.repeat(Math.floor(evaluation.rating))}{'☆'.repeat(5 - Math.floor(evaluation.rating))}
+                              </span>
+                              <span className="text-xs text-sts-light/60">
+                                {evaluation.rating.toFixed(1)}/5
+                              </span>
+                            </div>
+                          </div>
+                          <button
+                            onClick={() => handleAddRelic(relic)}
+                            className="ml-2 px-3 py-1 text-sm bg-green-600 hover:bg-green-700 text-white rounded flex-shrink-0"
+                          >
+                            Add
+                          </button>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            {/* Hallway Fight Modal */}
+            {actionMode === 'hallway-fight' && (
+              <HallwayFightModal
+                act={currentAct}
+                deck={deck}
+                currentHp={stats.currentHP}
+                maxHp={stats.maxHP}
+                gold={stats.gold}
+                onComplete={handleHallwayFightComplete}
+                onCancel={() => setActionMode('idle')}
+              />
+            )}
+
+            {/* Event Modal */}
+            {actionMode === 'event' && (
+              <EventModal
+                character={character}
+                deck={deck}
+                relics={relics}
+                currentHp={stats.currentHP}
+                maxHp={stats.maxHP}
+                gold={stats.gold}
+                onEventComplete={(goldChange, hpChange, maxHpChange) => {
+                  updateStats({
+                    gold: Math.max(0, stats.gold + goldChange),
+                    currentHP: Math.min(stats.maxHP, Math.max(0, stats.currentHP + hpChange)),
+                    maxHP: Math.max(1, stats.maxHP + maxHpChange),
+                  });
+
+                  if (goldChange !== 0 || hpChange !== 0 || maxHpChange !== 0) {
+                    const changes = [];
+                    if (goldChange > 0) changes.push(`+${goldChange}G`);
+                    if (goldChange < 0) changes.push(`${goldChange}G`);
+                    if (hpChange > 0) changes.push(`+${hpChange} HP`);
+                    if (hpChange < 0) changes.push(`${hpChange} HP`);
+                    if (maxHpChange > 0) changes.push(`+${maxHpChange} Max HP`);
+                    if (maxHpChange < 0) changes.push(`${maxHpChange} Max HP`);
+                    showToast(`Event completed: ${changes.join(', ')}`, 'success');
+                  } else {
+                    showToast('Event completed', 'info');
+                  }
+
+                  setActionMode('idle');
+                }}
+                onRemoveCard={(cardId) => {
+                  handleRemoveCard(cardId);
+                  showToast('Card removed from deck', 'success');
+                }}
+                onUpgradeCard={(cardId) => {
+                  handleUpgradeCard(cardId);
+                  showToast('Card upgraded', 'success');
+                }}
+                onClose={() => setActionMode('idle')}
+              />
+            )}
+          </div>
+
+          {/* RIGHT SIDEBAR - Advice & Look For (20%) */}
+          <div className="lg:col-span-3 space-y-2">
+            {/* Build Advice - Look For */}
+            <BuildAdvisoryBox deck={deck} relics={relics} character={character} />
+
+            {/* Context-Aware Advisor */}
+            <div className="bg-sts-dark rounded p-2.5 sticky top-12">
+              <h2 className="text-base font-bold text-sts-light mb-2">💡 Advisor</h2>
+
+              {actionMode === 'idle' && (
+                <div className="text-sm text-sts-light/70">
+                  {/* Ascension Key Timing Advice (A15+) */}
+                  {stats.ascensionLevel >= 15 && (() => {
+                    const keysObtained = stats.keysObtained || { emerald: false, ruby: false, sapphire: false };
+                    const keysCount = [keysObtained.emerald, keysObtained.ruby, keysObtained.sapphire].filter(Boolean).length;
+
+                    if (keysCount === 3) {
+                      return (
+                        <div className="bg-yellow-900/20 border border-yellow-500/50 rounded p-2 mb-2">
+                          <div className="text-xs font-bold text-yellow-400 mb-1">🔑 Ascension Keys</div>
+                          <div className="text-xs text-sts-light/90">All 3 keys obtained! Act 4 (Heart) unlocked after Act 3 boss.</div>
+                        </div>
+                      );
+                    }
+
+                    // Find which key to prioritize
+                    const hpPercent = stats.currentHP / stats.maxHP;
+                    const unupgradedCards = deck.filter(c => !c.upgraded).length;
+
+                    let keyAdvice = '';
+                    let keyName = '';
+                    let priority = 'medium';
+
+                    // Prioritize Sapphire (elites) - lowest cost
+                    if (!keysObtained.sapphire && hpPercent > 0.3) {
+                      keyName = 'Sapphire';
+                      priority = currentAct >= 2 ? 'high' : 'medium';
+                      keyAdvice = `Take Sapphire Key from elites (only costs 25% relic chance). ${
+                        currentAct === 1 ? 'Start collecting keys early!' :
+                        currentAct === 2 ? 'Act 2 is ideal for keys.' :
+                        'Last chance before boss!'
+                      }`;
+                    }
+                    // Emerald (campfire) - needs good HP
+                    else if (!keysObtained.emerald && hpPercent > 0.7 && (currentAct >= 2 || unupgradedCards < 5)) {
+                      keyName = 'Emerald';
+                      priority = currentAct === 3 ? 'high' : 'medium';
+                      keyAdvice = `At ${Math.round(hpPercent * 100)}% HP, you can take Emerald Key from campfires (skip rest/upgrade). ${
+                        currentAct === 3 ? 'Act 3 - good time!' : 'Consider it at your next campfire.'
+                      }`;
+                    }
+                    // Ruby (chest) - needs strong relics
+                    else if (!keysObtained.ruby && relics.length >= 7 && currentAct >= 2) {
+                      keyName = 'Ruby';
+                      priority = currentAct === 3 ? 'high' : 'medium';
+                      keyAdvice = `With ${relics.length} relics, take Ruby Key from chests (skip chest reward). ${
+                        currentAct === 3 ? 'Do it in Act 3!' : 'Wait until Act 2-3.'
+                      }`;
+                    }
+                    // Low HP warning
+                    else if (hpPercent < 0.4 && !keysObtained.emerald) {
+                      keyName = '';
+                      priority = 'low';
+                      keyAdvice = `Low HP (${Math.round(hpPercent * 100)}%) - heal first, then pursue keys. Sapphire from elites is safest.`;
+                    }
+                    // Default advice
+                    else if (!keysObtained.sapphire) {
+                      keyName = 'Sapphire';
+                      priority = 'low';
+                      keyAdvice = 'Sapphire Key (from elites) has the lowest cost. Take it when you fight an elite.';
+                    } else if (!keysObtained.emerald) {
+                      keyName = 'Emerald';
+                      priority = 'low';
+                      keyAdvice = `Emerald Key from campfires. Need ${Math.round((0.7 - hpPercent) * stats.maxHP)} more HP to take safely.`;
+                    } else {
+                      keyName = 'Ruby';
+                      priority = 'low';
+                      keyAdvice = `Ruby Key from chests. ${relics.length < 7 ? `Get ${7 - relics.length} more relics first.` : 'Take it next chest!'}`;
+                    }
+
+                    if (keyAdvice) {
+                      return (
+                        <div className={`border rounded p-2 mb-2 ${
+                          priority === 'high' ? 'bg-green-900/20 border-green-500/50' :
+                          priority === 'medium' ? 'bg-yellow-900/20 border-yellow-500/50' :
+                          'bg-blue-900/20 border-blue-500/30'
+                        }`}>
+                          <div className="text-xs font-bold text-sts-light/90 mb-1">
+                            🔑 Keys ({keysCount}/3) {keyName && `- Next: ${keyName}`}
+                          </div>
+                          <div className="text-xs text-sts-light/80 leading-relaxed">{keyAdvice}</div>
+                          <button
+                            onClick={() => setActionMode('ascension-keys')}
+                            className="mt-1.5 text-xs text-blue-400 hover:text-blue-300 underline"
+                          >
+                            View Full Key Strategy →
+                          </button>
+                        </div>
+                      );
+                    }
+                    return null;
+                  })()}
+
+                  <p>Select an action from the center panel to get contextual advice.</p>
+                </div>
+              )}
+
+              {actionMode === 'combat-preview' && combatAdvice && (
+                <div className="space-y-3 text-sm">
+                  <div className="text-sts-light/80">
+                    <div className="font-semibold text-sts-light mb-1">Learn the Game:</div>
+                    {combatAdvice.tutorialTips.slice(0, 2).map((tip, i) => (
+                      <p key={i} className="text-xs text-sts-light/70 mb-2 leading-relaxed">{tip}</p>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {actionMode === 'campfire' && (
+                <div className="text-sm text-sts-light/80">
+                  <div className="font-semibold text-sts-light mb-2">Recommendation:</div>
+                  {stats.currentHP < stats.maxHP * 0.7 ? (
+                    <p className="text-green-400 mb-3">💚 Rest recommended - You're at {Math.floor((stats.currentHP/stats.maxHP)*100)}% HP</p>
+                  ) : (
+                    <p className="text-blue-400 mb-3">⬆️ Upgrade recommended - You're at {Math.floor((stats.currentHP/stats.maxHP)*100)}% HP</p>
+                  )}
+
+                  <div className="mt-4">
+                    <div className="font-semibold text-sts-light mb-2">Top Upgrade Priorities:</div>
+                    <ul className="text-xs space-y-1">
+                      {deck.filter(c => !c.upgraded && c.tierRating >= 3).slice(0, 3).map((card, i) => (
+                        <li key={i} className="text-sts-light/70">• {card.name} ({'★'.repeat(card.tierRating)})</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Boss Reward Modal */}
+      {actionMode === 'boss-reward' && (
+        <BossRewardModal
+          character={character}
+          deck={deck}
+          relics={relics}
+          currentAct={currentAct}
+          onSelectCard={handleAddCard}
+          onSelectRelic={handleAddRelic}
+          onSkip={() => {
+            showToast('Skipped card reward', 'info');
+            setActionMode('idle');
+          }}
+          onClose={() => setActionMode('idle')}
+        />
+      )}
+
+      {/* Elite Reward Modal */}
+      {actionMode === 'elite-reward' && (
+        <EliteRewardModal
+          character={character}
+          deck={deck}
+          relics={relics}
+          currentAct={currentAct}
+          onSelectCard={handleAddCard}
+          onSelectRelic={handleAddRelic}
+          onSkip={() => {
+            showToast('Skipped card reward', 'info');
+            setActionMode('idle');
+          }}
+          onClose={() => setActionMode('idle')}
+        />
+      )}
+
+      {/* Event Modal is now inline - see actionMode === 'event' in center panel */}
+
+      {/* Shop is now inline - see actionMode === 'shop' in center panel */}
+
+      {/* Ascension Key Advisor */}
+      {actionMode === 'ascension-keys' && (
+        <AscensionKeyAdvisor
+          character={character}
+          deck={deck}
+          relics={relics}
+          currentHp={stats.currentHP}
+          maxHp={stats.maxHP}
+          currentAct={currentAct}
+          keysObtained={stats.keysObtained || { emerald: false, ruby: false, sapphire: false }}
+          onClose={() => setActionMode('idle')}
+        />
+      )}
+
+      {/* Card Zoom Modal */}
+      {zoomedCard && (
+        <CardZoomModal
+          card={zoomedCard}
+          onClose={() => setZoomedCard(null)}
+        />
+      )}
+
+      {/* Toast Notifications */}
+      {toast && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast(null)}
+        />
+      )}
+    </div>
+  );
+}
