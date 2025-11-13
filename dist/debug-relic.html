@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Debug Burning Blood Relic</title>
+  <style>
+    body { background: #1a1a1a; color: white; padding: 20px; font-family: monospace; }
+    .test { margin: 20px 0; padding: 20px; background: #2a2a2a; border-radius: 8px; }
+    img { border: 2px solid #666; margin: 10px; }
+    .success { border-color: #44ff44 !important; }
+    .error { border-color: #ff4444 !important; }
+  </style>
+</head>
+<body>
+  <h1>Burning Blood Relic Image Test</h1>
+  
+  <div class="test">
+    <h2>Direct Path Test</h2>
+    <p>Path: <code>/images/relics/burningBlood.png</code></p>
+    <img 
+      src="/images/relics/burningBlood.png" 
+      alt="Burning Blood"
+      width="100"
+      onload="this.classList.add('success'); console.log('✓ Loaded:', this.src)"
+      onerror="this.classList.add('error'); console.error('✗ Failed:', this.src)"
+    >
+  </div>
+
+  <div class="test">
+    <h2>Error Handler Test</h2>
+    <p>Testing the handleImageError function with SVG placeholder</p>
+    <img 
+      src="/images/relics/FAKE_IMAGE.png" 
+      alt="Fake (should show SVG placeholder)"
+      width="100"
+      onerror="handleImageError(event)"
+    >
+  </div>
+
+  <div class="test">
+    <h2>Peace Pipe (for comparison)</h2>
+    <p>Path: <code>/images/relics/peacePipe.png</code></p>
+    <img 
+      src="/images/relics/peacePipe.png" 
+      alt="Peace Pipe"
+      width="100"
+      onload="this.classList.add('success'); console.log('✓ Loaded:', this.src)"
+      onerror="this.classList.add('error'); console.error('✗ Failed:', this.src)"
+    >
+  </div>
+
+  <script>
+    function handleImageError(event) {
+      const img = event.currentTarget;
+      img.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Crect fill="%23333" width="100" height="100"/%3E%3Ctext x="50" y="50" font-size="40" text-anchor="middle" dominant-baseline="middle" fill="%23666"%3E?%3C/text%3E%3C/svg%3E';
+      img.style.objectFit = 'contain';
+      console.log('Applied SVG placeholder');
+    }
+  </script>
+
+  <div class="test">
+    <h2>Instructions</h2>
+    <ol>
+      <li>Open browser DevTools (F12)</li>
+      <li>Check Console for load/error messages</li>
+      <li>Green border = loaded successfully</li>
+      <li>Red border = failed to load</li>
+      <li>If Burning Blood has red border, check Network tab for 404</li>
+    </ol>
+  </div>
+</body>
+</html>
