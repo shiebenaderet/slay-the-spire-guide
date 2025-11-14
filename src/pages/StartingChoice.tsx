@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useGameStore } from '../store/gameStore';
+import { useCoachingStore } from '../store/coachingStore';
 import type { Blessing, Card } from '../types';
 import blessingsData from '../data/blessings.json';
 import cardsData from '../data/cards.json';
@@ -9,7 +10,8 @@ import { getBlessingActionType } from '../utils/blessingHelpers';
 
 export function StartingChoice() {
   const navigate = useNavigate();
-  const { character, stats, deck, setStartingBlessing, setBlessingWorkflowResult, startRun } = useGameStore();
+  const { character, stats, setStartingRelic: setGameStoreRelic, setStartingBlessing, setBlessingWorkflowResult, startRun: startGameStoreRun } = useGameStore();
+  const { startRun: startCoachingRun } = useCoachingStore();
   const [selectedBlessing, setSelectedBlessing] = useState<Blessing | null>(null);
   const [isConfirming, setIsConfirming] = useState(false);
   const [showWorkflow, setShowWorkflow] = useState(false);
@@ -82,13 +84,25 @@ export function StartingChoice() {
       setBlessingWorkflowResult(workflowResult);
     }
 
-    startRun();
+    // Start both stores (for now, for compatibility)
+    startGameStoreRun();
+
+    // Start coaching store with proper values
+    const startingRelic = (useGameStore.getState() as any).startingRelic?.name || 'Burning Blood';
+    startCoachingRun(character || 'Ironclad', stats.ascensionLevel, startingRelic);
+
     navigate('/run-tracker');
   };
 
   const handleSkip = () => {
     setStartingBlessing(null);
-    startRun();
+
+    // Start both stores
+    startGameStoreRun();
+
+    const startingRelic = (useGameStore.getState() as any).startingRelic?.name || 'Burning Blood';
+    startCoachingRun(character || 'Ironclad', stats.ascensionLevel, startingRelic);
+
     navigate('/run-tracker');
   };
 

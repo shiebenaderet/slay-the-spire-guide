@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, Component, type ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useGameStore, useHasHydrated } from '../store/gameStore';
 import { DeckView } from '../components/DeckView';
@@ -6,14 +6,60 @@ import { RelicHoverZoom } from '../components/RelicHoverZoom';
 import { CardRewardModal } from '../components/CardRewardModal';
 import { RunCompletionModal } from '../components/RunCompletionModal';
 import { Toast } from '../components/Toast';
-// Temporarily commented out to fix deployment
-// import { DeckHealthDashboard } from '../components/DeckHealthDashboard';
-// import { BossPreparationPanel } from '../components/BossPreparationPanel';
-// import { RemovalAdvisorPanel } from '../components/RemovalAdvisorPanel';
-// import { PathAdvisorPanel } from '../components/PathAdvisorPanel';
+import { DeckHealthDashboard } from '../components/DeckHealthDashboard';
+import { BossPreparationPanel } from '../components/BossPreparationPanel';
+import { RemovalAdvisorPanel } from '../components/RemovalAdvisorPanel';
+import { PathAdvisorPanel } from '../components/PathAdvisorPanel';
 import type { Card, Relic, Potion } from '../types';
 import { getRelicImagePath, handleImageError } from '../utils/imageHelpers';
 import { detectDeckArchetypes } from '../utils/archetypeDetection';
+
+// Error Boundary Component
+class ErrorBoundary extends Component<
+  { children: ReactNode; fallback: ReactNode },
+  { hasError: boolean; error: Error | null }
+> {
+  constructor(props: { children: ReactNode; fallback: ReactNode }) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
+
+  static getDerivedStateFromError(error: Error) {
+    return { hasError: true, error };
+  }
+
+  componentDidCatch(error: Error, errorInfo: any) {
+    console.error('Error caught by boundary:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return this.props.fallback;
+    }
+    return this.props.children;
+  }
+}
+
+// Error Message Component
+function ErrorMessage({ message }: { message: string }) {
+  return (
+    <div className="bg-sts-dark border-2 border-red-500 rounded-lg p-8 shadow-sts-lg">
+      <div className="text-center">
+        <div className="text-4xl mb-4">⚠️</div>
+        <h2 className="text-2xl font-bold text-red-400 mb-2">{message}</h2>
+        <p className="text-sts-light/70 mb-4">
+          Please check the browser console for more details or try refreshing the page.
+        </p>
+        <button
+          onClick={() => window.location.reload()}
+          className="px-4 py-2 bg-sts-gold hover:bg-sts-gold/80 text-sts-dark font-semibold rounded transition-colors"
+        >
+          Refresh Page
+        </button>
+      </div>
+    </div>
+  );
+}
 
 export function MainRunTracker() {
   const navigate = useNavigate();
@@ -40,15 +86,30 @@ export function MainRunTracker() {
   const [cardRewardModalOpen, setCardRewardModalOpen] = useState(false);
   const [runCompletionModalOpen, setRunCompletionModalOpen] = useState(false);
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' | 'info' } | null>(null);
+  const [activeTab, setActiveTab] = useState<'overview' | 'health' | 'boss' | 'removal' | 'path'>('overview');
+  const [error, setError] = useState<string | null>(null);
+
+  // Debug logging
+  useEffect(() => {
+    console.log('MainRunTracker mounted:', {
+      hasHydrated,
+      isRunActive,
+      character,
+      deckSize: deck?.length,
+      relicsCount: relics?.length
+    });
+  }, []);
 
   // Redirect if no active run
   useEffect(() => {
     if (hasHydrated && !isRunActive) {
+      console.log('Redirecting to home - no active run');
       navigate('/');
     }
   }, [hasHydrated, isRunActive, navigate]);
 
   if (!hasHydrated || !isRunActive || !character) {
+    console.log('Showing loading screen:', { hasHydrated, isRunActive, character });
     return (
       <div className="min-h-screen bg-gradient-to-b from-sts-darkest via-sts-darker to-sts-dark flex items-center justify-center">
         <div className="text-sts-light">Loading...</div>
@@ -56,10 +117,17 @@ export function MainRunTracker() {
     );
   }
 
-  // Detect deck archetypes
+  console.log('Rendering MainRunTracker content');
+
+  // Detect deck archetypes with error handling
   const detectedArchetypes = useMemo(() => {
-    if (!character || deck.length === 0) return [];
-    return detectDeckArchetypes(deck, character);
+    try {
+      if (!character || deck.length === 0) return [];
+      return detectDeckArchetypes(deck, character);
+    } catch (err) {
+      console.error('Error detecting archetypes:', err);
+      return [];
+    }
   }, [deck, character]);
 
   const showToast = (message: string, type: 'success' | 'error' | 'info' = 'success') => {
@@ -141,8 +209,66 @@ export function MainRunTracker() {
           </div>
         </div>
 
-        {/* Main Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        {/* Tab Navigation */}
+        <div className="bg-sts-dark border-2 border-sts-light/20 rounded-lg mb-4 shadow-sts-lg overflow-x-auto">
+          <div className="flex gap-1 p-2 min-w-max">
+            <button
+              onClick={() => setActiveTab('overview')}
+              className={`px-4 py-2 rounded font-semibold transition-colors ${
+                activeTab === 'overview'
+                  ? 'bg-sts-gold text-sts-dark'
+                  : 'bg-sts-darker text-sts-light hover:bg-sts-light/10'
+              }`}
+            >
+              📋 Overview
+            </button>
+            <button
+              onClick={() => setActiveTab('health')}
+              className={`px-4 py-2 rounded font-semibold transition-colors ${
+                activeTab === 'health'
+                  ? 'bg-sts-gold text-sts-dark'
+                  : 'bg-sts-darker text-sts-light hover:bg-sts-light/10'
+              }`}
+            >
+              💊 Deck Health
+            </button>
+            <button
+              onClick={() => setActiveTab('boss')}
+              className={`px-4 py-2 rounded font-semibold transition-colors ${
+                activeTab === 'boss'
+                  ? 'bg-sts-gold text-sts-dark'
+                  : 'bg-sts-darker text-sts-light hover:bg-sts-light/10'
+              }`}
+            >
+              👑 Boss Prep
+            </button>
+            <button
+              onClick={() => setActiveTab('removal')}
+              className={`px-4 py-2 rounded font-semibold transition-colors ${
+                activeTab === 'removal'
+                  ? 'bg-sts-gold text-sts-dark'
+                  : 'bg-sts-darker text-sts-light hover:bg-sts-light/10'
+              }`}
+            >
+              🗑️ Removal
+            </button>
+            <button
+              onClick={() => setActiveTab('path')}
+              className={`px-4 py-2 rounded font-semibold transition-colors ${
+                activeTab === 'path'
+                  ? 'bg-sts-gold text-sts-dark'
+                  : 'bg-sts-darker text-sts-light hover:bg-sts-light/10'
+              }`}
+            >
+              🗺️ Path
+            </button>
+          </div>
+        </div>
+
+        {/* Tab Content */}
+        {activeTab === 'overview' && (
+          <ErrorBoundary fallback={<ErrorMessage message="Error loading Overview" />}>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             {/* Left Column - Deck */}
             <div className="lg:col-span-2">
               <div className="bg-sts-dark border-2 border-sts-light/20 rounded-lg p-4 shadow-sts-lg">
@@ -229,7 +355,61 @@ export function MainRunTracker() {
               </div>
             </div>
           </div>
-        </div>
+          </ErrorBoundary>
+        )}
+
+        {activeTab === 'health' && (
+          <ErrorBoundary fallback={<ErrorMessage message="Error loading Deck Health" />}>
+            <DeckHealthDashboard
+              deck={deck}
+              relics={relics}
+              character={character}
+              floor={stats.floorNumber}
+              ascensionLevel={stats.ascensionLevel}
+            />
+          </ErrorBoundary>
+        )}
+
+        {activeTab === 'boss' && (
+          <ErrorBoundary fallback={<ErrorMessage message="Error loading Boss Preparation" />}>
+            <BossPreparationPanel
+              deck={deck}
+              relics={relics}
+              character={character}
+              floor={stats.floorNumber}
+              currentHP={stats.currentHP}
+              maxHP={stats.maxHP}
+            />
+          </ErrorBoundary>
+        )}
+
+        {activeTab === 'removal' && (
+          <ErrorBoundary fallback={<ErrorMessage message="Error loading Removal Advisor" />}>
+            <RemovalAdvisorPanel
+              deck={deck}
+              relics={relics}
+              character={character}
+              floor={stats.floorNumber}
+              gold={stats.gold}
+            />
+          </ErrorBoundary>
+        )}
+
+        {activeTab === 'path' && (
+          <ErrorBoundary fallback={<ErrorMessage message="Error loading Path Advisor" />}>
+            <PathAdvisorPanel
+              deck={deck}
+              relics={relics}
+              character={character}
+              floor={stats.floorNumber}
+              currentHP={stats.currentHP}
+              maxHP={stats.maxHP}
+              gold={stats.gold}
+              ascensionLevel={stats.ascensionLevel}
+            />
+          </ErrorBoundary>
+        )}
+      </div>
 
       {/* Modals */}
       {cardRewardModalOpen && (
