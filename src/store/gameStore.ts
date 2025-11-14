@@ -540,18 +540,18 @@ function transformCards(
  * Use this to prevent accessing state before it's loaded
  */
 export const useHasHydrated = () => {
-  const [hydrated, setHydrated] = useState(false);
+  // Initialize with the current hydration state to avoid render mismatches
+  const [hydrated, setHydrated] = useState(() => useGameStore.persist.hasHydrated());
 
   useEffect(() => {
-    const unsubscribe = useGameStore.persist.onFinishHydration(() => {
-      setHydrated(true);
-    });
-
-    // Set to true if already hydrated
-    setHydrated(useGameStore.persist.hasHydrated());
-
-    return unsubscribe;
-  }, []);
+    // Only set up listener if not already hydrated
+    if (!hydrated) {
+      const unsubscribe = useGameStore.persist.onFinishHydration(() => {
+        setHydrated(true);
+      });
+      return unsubscribe;
+    }
+  }, [hydrated]);
 
   return hydrated;
 };
