@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, Component, type ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useGameStore, useHasHydrated } from '../store/gameStore';
 import { DeckView } from '../components/DeckView';
@@ -13,6 +13,53 @@ import { PathAdvisorPanel } from '../components/PathAdvisorPanel';
 import type { Card, Relic, Potion } from '../types';
 import { getRelicImagePath, handleImageError } from '../utils/imageHelpers';
 import { detectDeckArchetypes } from '../utils/archetypeDetection';
+
+// Error Boundary Component
+class ErrorBoundary extends Component<
+  { children: ReactNode; fallback: ReactNode },
+  { hasError: boolean; error: Error | null }
+> {
+  constructor(props: { children: ReactNode; fallback: ReactNode }) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
+
+  static getDerivedStateFromError(error: Error) {
+    return { hasError: true, error };
+  }
+
+  componentDidCatch(error: Error, errorInfo: any) {
+    console.error('Error caught by boundary:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return this.props.fallback;
+    }
+    return this.props.children;
+  }
+}
+
+// Error Message Component
+function ErrorMessage({ message }: { message: string }) {
+  return (
+    <div className="bg-sts-dark border-2 border-red-500 rounded-lg p-8 shadow-sts-lg">
+      <div className="text-center">
+        <div className="text-4xl mb-4">⚠️</div>
+        <h2 className="text-2xl font-bold text-red-400 mb-2">{message}</h2>
+        <p className="text-sts-light/70 mb-4">
+          Please check the browser console for more details or try refreshing the page.
+        </p>
+        <button
+          onClick={() => window.location.reload()}
+          className="px-4 py-2 bg-sts-gold hover:bg-sts-gold/80 text-sts-dark font-semibold rounded transition-colors"
+        >
+          Refresh Page
+        </button>
+      </div>
+    </div>
+  );
+}
 
 export function MainRunTracker() {
   const navigate = useNavigate();
@@ -40,6 +87,7 @@ export function MainRunTracker() {
   const [runCompletionModalOpen, setRunCompletionModalOpen] = useState(false);
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' | 'info' } | null>(null);
   const [activeTab, setActiveTab] = useState<'overview' | 'health' | 'boss' | 'removal' | 'path'>('overview');
+  const [error, setError] = useState<string | null>(null);
 
   // Redirect if no active run
   useEffect(() => {
@@ -56,10 +104,15 @@ export function MainRunTracker() {
     );
   }
 
-  // Detect deck archetypes
+  // Detect deck archetypes with error handling
   const detectedArchetypes = useMemo(() => {
-    if (!character || deck.length === 0) return [];
-    return detectDeckArchetypes(deck, character);
+    try {
+      if (!character || deck.length === 0) return [];
+      return detectDeckArchetypes(deck, character);
+    } catch (err) {
+      console.error('Error detecting archetypes:', err);
+      return [];
+    }
   }, [deck, character]);
 
   const showToast = (message: string, type: 'success' | 'error' | 'info' = 'success') => {
@@ -199,6 +252,7 @@ export function MainRunTracker() {
 
         {/* Tab Content */}
         {activeTab === 'overview' && (
+          <ErrorBoundary fallback={<ErrorMessage message="Error loading Overview" />}>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             {/* Left Column - Deck */}
             <div className="lg:col-span-2">
@@ -286,50 +340,59 @@ export function MainRunTracker() {
               </div>
             </div>
           </div>
+          </ErrorBoundary>
         )}
 
         {activeTab === 'health' && (
-          <DeckHealthDashboard
-            deck={deck}
-            relics={relics}
-            character={character}
-            floor={stats.floorNumber}
-            ascensionLevel={stats.ascensionLevel}
-          />
+          <ErrorBoundary fallback={<ErrorMessage message="Error loading Deck Health" />}>
+            <DeckHealthDashboard
+              deck={deck}
+              relics={relics}
+              character={character}
+              floor={stats.floorNumber}
+              ascensionLevel={stats.ascensionLevel}
+            />
+          </ErrorBoundary>
         )}
 
         {activeTab === 'boss' && (
-          <BossPreparationPanel
-            deck={deck}
-            relics={relics}
-            character={character}
-            floor={stats.floorNumber}
-            currentHP={stats.currentHP}
-            maxHP={stats.maxHP}
-          />
+          <ErrorBoundary fallback={<ErrorMessage message="Error loading Boss Preparation" />}>
+            <BossPreparationPanel
+              deck={deck}
+              relics={relics}
+              character={character}
+              floor={stats.floorNumber}
+              currentHP={stats.currentHP}
+              maxHP={stats.maxHP}
+            />
+          </ErrorBoundary>
         )}
 
         {activeTab === 'removal' && (
-          <RemovalAdvisorPanel
-            deck={deck}
-            relics={relics}
-            character={character}
-            floor={stats.floorNumber}
-            gold={stats.gold}
-          />
+          <ErrorBoundary fallback={<ErrorMessage message="Error loading Removal Advisor" />}>
+            <RemovalAdvisorPanel
+              deck={deck}
+              relics={relics}
+              character={character}
+              floor={stats.floorNumber}
+              gold={stats.gold}
+            />
+          </ErrorBoundary>
         )}
 
         {activeTab === 'path' && (
-          <PathAdvisorPanel
-            deck={deck}
-            relics={relics}
-            character={character}
-            floor={stats.floorNumber}
-            currentHP={stats.currentHP}
-            maxHP={stats.maxHP}
-            gold={stats.gold}
-            ascensionLevel={stats.ascensionLevel}
-          />
+          <ErrorBoundary fallback={<ErrorMessage message="Error loading Path Advisor" />}>
+            <PathAdvisorPanel
+              deck={deck}
+              relics={relics}
+              character={character}
+              floor={stats.floorNumber}
+              currentHP={stats.currentHP}
+              maxHP={stats.maxHP}
+              gold={stats.gold}
+              ascensionLevel={stats.ascensionLevel}
+            />
+          </ErrorBoundary>
         )}
       </div>
 
