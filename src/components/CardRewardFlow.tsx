@@ -95,13 +95,21 @@ export function CardRewardFlow({
           </div>
         </div>
 
-        <button
-          onClick={handleCardsEntered}
-          disabled={cardsOffered.length === 0}
-          className="w-full py-3 bg-sts-gold hover:bg-sts-gold/80 disabled:bg-sts-gold/30 text-sts-dark font-bold rounded transition-colors disabled:cursor-not-allowed"
-        >
-          Get Recommendations
-        </button>
+        <div className="flex gap-4">
+          <button
+            onClick={() => onComplete({ floor, cardsOffered: [], picked: 'SKIP' })}
+            className="flex-1 py-3 bg-sts-darker hover:bg-sts-dark border-2 border-sts-light/20 text-sts-light font-semibold rounded transition-colors"
+          >
+            Skip Reward
+          </button>
+          <button
+            onClick={handleCardsEntered}
+            disabled={cardsOffered.length === 0}
+            className="flex-1 py-3 bg-sts-gold hover:bg-sts-gold/80 disabled:bg-sts-gold/30 text-sts-dark font-bold rounded transition-colors disabled:cursor-not-allowed"
+          >
+            Get Recommendations
+          </button>
+        </div>
       </div>
     );
   }
