@@ -6,10 +6,11 @@ import { RelicHoverZoom } from '../components/RelicHoverZoom';
 import { CardRewardModal } from '../components/CardRewardModal';
 import { RunCompletionModal } from '../components/RunCompletionModal';
 import { Toast } from '../components/Toast';
-import { DeckHealthDashboard } from '../components/DeckHealthDashboard';
-import { BossPreparationPanel } from '../components/BossPreparationPanel';
-import { RemovalAdvisorPanel } from '../components/RemovalAdvisorPanel';
-import { PathAdvisorPanel } from '../components/PathAdvisorPanel';
+// Temporarily commented out to fix deployment
+// import { DeckHealthDashboard } from '../components/DeckHealthDashboard';
+// import { BossPreparationPanel } from '../components/BossPreparationPanel';
+// import { RemovalAdvisorPanel } from '../components/RemovalAdvisorPanel';
+// import { PathAdvisorPanel } from '../components/PathAdvisorPanel';
 import type { Card, Relic, Potion } from '../types';
 import { getRelicImagePath, handleImageError } from '../utils/imageHelpers';
 import { detectDeckArchetypes } from '../utils/archetypeDetection';
@@ -39,7 +40,6 @@ export function MainRunTracker() {
   const [cardRewardModalOpen, setCardRewardModalOpen] = useState(false);
   const [runCompletionModalOpen, setRunCompletionModalOpen] = useState(false);
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' | 'info' } | null>(null);
-  const [activeTab, setActiveTab] = useState<'overview' | 'health' | 'boss' | 'removal' | 'path'>('overview');
 
   // Redirect if no active run
   useEffect(() => {
@@ -141,65 +141,8 @@ export function MainRunTracker() {
           </div>
         </div>
 
-        {/* Tab Navigation */}
-        <div className="bg-sts-dark border-2 border-sts-light/20 rounded-lg mb-4 shadow-sts-lg overflow-x-auto">
-          <div className="flex gap-1 p-2 min-w-max">
-            <button
-              onClick={() => setActiveTab('overview')}
-              className={`px-4 py-2 rounded font-semibold transition-colors ${
-                activeTab === 'overview'
-                  ? 'bg-sts-gold text-sts-dark'
-                  : 'bg-sts-darker text-sts-light hover:bg-sts-light/10'
-              }`}
-            >
-              📋 Overview
-            </button>
-            <button
-              onClick={() => setActiveTab('health')}
-              className={`px-4 py-2 rounded font-semibold transition-colors ${
-                activeTab === 'health'
-                  ? 'bg-sts-gold text-sts-dark'
-                  : 'bg-sts-darker text-sts-light hover:bg-sts-light/10'
-              }`}
-            >
-              💊 Deck Health
-            </button>
-            <button
-              onClick={() => setActiveTab('boss')}
-              className={`px-4 py-2 rounded font-semibold transition-colors ${
-                activeTab === 'boss'
-                  ? 'bg-sts-gold text-sts-dark'
-                  : 'bg-sts-darker text-sts-light hover:bg-sts-light/10'
-              }`}
-            >
-              👑 Boss Prep
-            </button>
-            <button
-              onClick={() => setActiveTab('removal')}
-              className={`px-4 py-2 rounded font-semibold transition-colors ${
-                activeTab === 'removal'
-                  ? 'bg-sts-gold text-sts-dark'
-                  : 'bg-sts-darker text-sts-light hover:bg-sts-light/10'
-              }`}
-            >
-              🗑️ Removal
-            </button>
-            <button
-              onClick={() => setActiveTab('path')}
-              className={`px-4 py-2 rounded font-semibold transition-colors ${
-                activeTab === 'path'
-                  ? 'bg-sts-gold text-sts-dark'
-                  : 'bg-sts-darker text-sts-light hover:bg-sts-light/10'
-              }`}
-            >
-              🗺️ Path
-            </button>
-          </div>
-        </div>
-
-        {/* Tab Content */}
-        {activeTab === 'overview' && (
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        {/* Main Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             {/* Left Column - Deck */}
             <div className="lg:col-span-2">
               <div className="bg-sts-dark border-2 border-sts-light/20 rounded-lg p-4 shadow-sts-lg">
@@ -286,52 +229,7 @@ export function MainRunTracker() {
               </div>
             </div>
           </div>
-        )}
-
-        {activeTab === 'health' && (
-          <DeckHealthDashboard
-            deck={deck}
-            relics={relics}
-            character={character}
-            floor={stats.floorNumber}
-            ascensionLevel={stats.ascensionLevel}
-          />
-        )}
-
-        {activeTab === 'boss' && (
-          <BossPreparationPanel
-            deck={deck}
-            relics={relics}
-            character={character}
-            floor={stats.floorNumber}
-            currentHP={stats.currentHP}
-            maxHP={stats.maxHP}
-          />
-        )}
-
-        {activeTab === 'removal' && (
-          <RemovalAdvisorPanel
-            deck={deck}
-            relics={relics}
-            character={character}
-            floor={stats.floorNumber}
-            gold={stats.gold}
-          />
-        )}
-
-        {activeTab === 'path' && (
-          <PathAdvisorPanel
-            deck={deck}
-            relics={relics}
-            character={character}
-            floor={stats.floorNumber}
-            currentHP={stats.currentHP}
-            maxHP={stats.maxHP}
-            gold={stats.gold}
-            ascensionLevel={stats.ascensionLevel}
-          />
-        )}
-      </div>
+        </div>
 
       {/* Modals */}
       {cardRewardModalOpen && (
