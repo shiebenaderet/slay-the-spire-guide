@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { CharacterSelect } from './pages/CharacterSelect';
 import { StartingChoice } from './pages/StartingChoice';
 import { RunCoach } from './pages/RunCoach';
