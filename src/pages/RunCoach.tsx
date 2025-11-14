@@ -145,10 +145,11 @@ export function RunCoach() {
     );
   }
 
-  const handleCombatComplete = (combat: CombatEncounter) => {
+  const handleCombatComplete = (combat: CombatEncounter, cardReward?: any) => {
     // TODO: Update floor data with combat results
-    // TODO: Show card reward screen
-    console.log('Combat completed:', combat);
+    // TODO: Update deck if card was picked
+    // TODO: Update gold and HP
+    console.log('Combat completed:', combat, cardReward);
     handleCompleteFloor();
   };
 
@@ -177,6 +178,8 @@ export function RunCoach() {
               character={character}
               currentHP={currentHP}
               maxHP={maxHP}
+              gold={gold}
+              ascension={ascensionLevel}
               onComplete={handleCombatComplete}
             />
           )}

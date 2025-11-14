@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import type { CombatEncounter } from '../types/coaching';
+import type { CombatEncounter, CardRewardDecision } from '../types/coaching';
 import { AutocompleteInput } from './AutocompleteInput';
+import { CardRewardFlow } from './CardRewardFlow';
 import { generateCombatStrategy } from '../utils/combatAdvisor';
 
 interface CombatFlowProps {
@@ -10,10 +11,12 @@ interface CombatFlowProps {
   character: string;
   currentHP: number;
   maxHP: number;
-  onComplete: (combat: CombatEncounter) => void;
+  gold: number;
+  ascension: number;
+  onComplete: (combat: CombatEncounter, cardReward?: CardRewardDecision) => void;
 }
 
-type CombatStep = 'enter-enemies' | 'enter-hand' | 'show-strategy' | 'record-results';
+type CombatStep = 'enter-enemies' | 'enter-hand' | 'show-strategy' | 'record-results' | 'card-reward';
 
 export function CombatFlow({
   floor,
@@ -22,6 +25,8 @@ export function CombatFlow({
   character,
   currentHP,
   maxHP,
+  gold,
+  ascension,
   onComplete,
 }: CombatFlowProps) {
   const [step, setStep] = useState<CombatStep>('enter-enemies');
@@ -31,6 +36,7 @@ export function CombatFlow({
   const [won, setWon] = useState<boolean | null>(null);
   const [endingHP, setEndingHP] = useState(currentHP);
   const [goldReceived, setGoldReceived] = useState(0);
+  const [combatData, setCombatData] = useState<CombatEncounter | null>(null);
 
   const handleEnemiesEntered = () => {
     setStep('enter-hand');
@@ -68,7 +74,18 @@ export function CombatFlow({
       goldReceived,
     };
 
-    onComplete(combat);
+    setCombatData(combat);
+
+    // Only show card rewards if they won
+    if (won) {
+      setStep('card-reward');
+    } else {
+      onComplete(combat);
+    }
+  };
+
+  const handleCardRewardComplete = (cardReward: CardRewardDecision) => {
+    onComplete(combatData!, cardReward);
   };
 
   // Step 1: Enter enemies
@@ -259,4 +276,23 @@ export function CombatFlow({
       </button>
     </div>
   );
+
+  // Step 5: Card Reward
+  if (step === 'card-reward') {
+    return (
+      <CardRewardFlow
+        floor={floor}
+        deck={deck}
+        relics={relics}
+        character={character}
+        currentHP={endingHP}
+        maxHP={maxHP}
+        gold={gold + goldReceived}
+        ascension={ascension}
+        onComplete={handleCardRewardComplete}
+      />
+    );
+  }
+
+  return null;
 }
