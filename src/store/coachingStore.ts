@@ -40,7 +40,7 @@ export const useCoachingStore = create<CoachingStore>()(
       ...initialState,
 
       startRun: (character, ascension, startingRelic, hpLoss = 0) => {
-        const starterDeck = getStarterDeck(character);
+        const starterDeck = getStarterDeck(character, ascension);
         const { currentHP, maxHP } = getStartingHP(character, ascension);
 
         // Apply HP loss from Neow's blessing (if any)
@@ -178,35 +178,48 @@ function getInitialDecision(floorType: FloorType): DecisionType {
   }
 }
 
-function getStarterDeck(character: string): string[] {
+function getStarterDeck(character: string, ascension: number): string[] {
+  let deck: string[] = [];
+
   switch (character.toLowerCase()) {
     case 'ironclad':
-      return [
+      deck = [
         'Strike', 'Strike', 'Strike', 'Strike', 'Strike',
         'Defend', 'Defend', 'Defend', 'Defend',
         'Bash',
       ];
+      break;
     case 'silent':
-      return [
+      deck = [
         'Strike', 'Strike', 'Strike', 'Strike', 'Strike',
         'Defend', 'Defend', 'Defend', 'Defend', 'Defend',
         'Neutralize', 'Survivor',
       ];
+      break;
     case 'defect':
-      return [
+      deck = [
         'Strike', 'Strike', 'Strike', 'Strike',
         'Defend', 'Defend', 'Defend', 'Defend',
         'Zap', 'Dualcast',
       ];
+      break;
     case 'watcher':
-      return [
+      deck = [
         'Strike', 'Strike', 'Strike', 'Strike',
         'Defend', 'Defend', 'Defend', 'Defend',
         'Eruption', 'Vigilance',
       ];
+      break;
     default:
-      return [];
+      deck = [];
   }
+
+  // Ascension 10+ adds Ascender's Bane (curse)
+  if (ascension >= 10) {
+    deck.push("Ascender's Bane");
+  }
+
+  return deck;
 }
 
 function getStartingHP(character: string, ascension: number): { currentHP: number; maxHP: number } {

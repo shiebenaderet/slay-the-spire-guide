@@ -78,9 +78,8 @@ export function AutocompleteInput({
   };
 
   const addValue = (value: string) => {
-    if (!values.includes(value)) {
-      onChange([...values, value]);
-    }
+    // Always allow adding (including duplicates like multiple Strikes)
+    onChange([...values, value]);
     setInputValue('');
     setShowSuggestions(false);
     inputRef.current?.focus();
