@@ -4,7 +4,7 @@ import type { CoachingRunState, FloorState, DecisionType, FloorType } from '../t
 
 interface CoachingStore extends CoachingRunState {
   // Actions
-  startRun: (character: string, ascension: number, startingRelic: string) => void;
+  startRun: (character: string, ascension: number, startingRelic: string, hpLoss?: number) => void;
   startFloor: (floorType: FloorType) => void;
   setDecision: (decision: DecisionType) => void;
   updateFloorData: (data: Partial<FloorState>) => void;
@@ -39,16 +39,19 @@ export const useCoachingStore = create<CoachingStore>()(
     (set, get) => ({
       ...initialState,
 
-      startRun: (character, ascension, startingRelic) => {
+      startRun: (character, ascension, startingRelic, hpLoss = 0) => {
         const starterDeck = getStarterDeck(character);
         const { currentHP, maxHP } = getStartingHP(character, ascension);
+
+        // Apply HP loss from Neow's blessing (if any)
+        const actualCurrentHP = Math.max(1, currentHP - hpLoss);
 
         set({
           character,
           ascensionLevel: ascension,
           startingRelic,
           currentFloor: 1,
-          currentHP,
+          currentHP: actualCurrentHP,
           maxHP,
           gold: 99,
           deck: starterDeck,
@@ -226,9 +229,9 @@ function getStartingHP(character: string, ascension: number): { currentHP: numbe
       baseHP = 80;
   }
 
-  // Ascension 14+ reduces starting HP
+  // Ascension 14+ reduces starting HP by 5
   if (ascension >= 14) {
-    baseHP -= 10;
+    baseHP -= 5;
   }
 
   return { currentHP: baseHP, maxHP: baseHP };
