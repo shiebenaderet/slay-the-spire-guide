@@ -38,6 +38,8 @@ export function CombatFlow({
   const [goldReceived, setGoldReceived] = useState(0);
   const [combatData, setCombatData] = useState<CombatEncounter | null>(null);
 
+  console.log('CombatFlow render - step:', step, 'won:', won);
+
   const handleEnemiesEntered = () => {
     setStep('enter-hand');
   };
@@ -64,6 +66,8 @@ export function CombatFlow({
   };
 
   const handleResultsSubmitted = () => {
+    console.log('handleResultsSubmitted called, won:', won, 'step:', step);
+
     const combat: CombatEncounter = {
       floor,
       enemies,
@@ -78,8 +82,10 @@ export function CombatFlow({
 
     // Only show card rewards if they won
     if (won) {
+      console.log('Setting step to card-reward');
       setStep('card-reward');
     } else {
+      console.log('Calling onComplete for loss');
       onComplete(combat);
     }
   };
