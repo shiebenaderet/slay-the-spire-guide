@@ -6,9 +6,12 @@ import { RelicHoverZoom } from '../components/RelicHoverZoom';
 import { CardRewardModal } from '../components/CardRewardModal';
 import { RunCompletionModal } from '../components/RunCompletionModal';
 import { Toast } from '../components/Toast';
+import { DeckHealthDashboard } from '../components/DeckHealthDashboard';
+import { BossPreparationPanel } from '../components/BossPreparationPanel';
+import { RemovalAdvisorPanel } from '../components/RemovalAdvisorPanel';
+import { PathAdvisorPanel } from '../components/PathAdvisorPanel';
 import type { Card, Relic, Potion } from '../types';
 import { getRelicImagePath, handleImageError } from '../utils/imageHelpers';
-import { calculateRelicBuffs } from '../utils/relicBuffs';
 import { detectDeckArchetypes } from '../utils/archetypeDetection';
 
 export function MainRunTracker() {
@@ -36,6 +39,7 @@ export function MainRunTracker() {
   const [cardRewardModalOpen, setCardRewardModalOpen] = useState(false);
   const [runCompletionModalOpen, setRunCompletionModalOpen] = useState(false);
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' | 'info' } | null>(null);
+  const [activeTab, setActiveTab] = useState<'overview' | 'health' | 'boss' | 'removal' | 'path'>('overview');
 
   // Redirect if no active run
   useEffect(() => {
@@ -52,8 +56,6 @@ export function MainRunTracker() {
     );
   }
 
-  const relicBuffs = calculateRelicBuffs(relics);
-
   // Detect deck archetypes
   const detectedArchetypes = useMemo(() => {
     if (!character || deck.length === 0) return [];
@@ -65,18 +67,9 @@ export function MainRunTracker() {
   };
 
   const handleCardReward = (card: Card) => {
-    // Apply relic buffs (auto-upgrade eggs, etc.)
-    let finalCard = { ...card };
-
-    // Check for egg relics that auto-upgrade
-    if (relicBuffs.autoUpgradeCardTypes.includes(card.type) && !finalCard.upgraded) {
-      finalCard = { ...finalCard, upgraded: true };
-      showToast(`${card.name} auto-upgraded by relic!`, 'info');
-    }
-
-    addCard(finalCard);
+    addCard(card);
     setCardRewardModalOpen(false);
-    showToast(`Added ${finalCard.name}${finalCard.upgraded ? '+' : ''} to deck`);
+    showToast(`Added ${card.name}${card.upgraded ? '+' : ''} to deck`);
   };
 
   const handleRemoveCard = (cardId: string) => {
@@ -148,94 +141,196 @@ export function MainRunTracker() {
           </div>
         </div>
 
-        {/* Main Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-          {/* Left Column - Deck */}
-          <div className="lg:col-span-2">
-            <div className="bg-sts-dark border-2 border-sts-light/20 rounded-lg p-4 shadow-sts-lg">
-              <h2 className="text-xl font-bold text-sts-light mb-4">
-                Deck ({deck.length} cards)
-              </h2>
-              <DeckView
-                deck={deck}
-                character={character}
-                relics={relics}
-                onRemoveCard={handleRemoveCard}
-                onUpgradeCard={handleUpgradeCard}
-              />
-            </div>
-          </div>
-
-          {/* Right Column - Relics & Actions */}
-          <div className="space-y-4">
-            {/* Relics */}
-            <div className="bg-sts-dark border-2 border-sts-light/20 rounded-lg p-4 shadow-sts-lg">
-              <h2 className="text-xl font-bold text-sts-light mb-4">
-                Relics ({relics.length})
-              </h2>
-              <div className="grid grid-cols-3 gap-2">
-                {relics.map((relic) => (
-                  <div
-                    key={relic.id}
-                    className="relative group cursor-pointer"
-                    onMouseEnter={() => setHoveredRelic(relic)}
-                    onMouseLeave={() => setHoveredRelic(null)}
-                  >
-                    <img
-                      src={getRelicImagePath(relic.id)}
-                      alt={relic.name}
-                      onError={handleImageError}
-                      className="w-full h-auto rounded border-2 border-sts-gold/30 hover:border-sts-gold transition-colors"
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Detected Build */}
-            {detectedArchetypes.length > 0 && (
-              <div className="bg-gradient-to-r from-sts-gold/10 to-sts-gold/5 border-2 border-sts-gold/40 rounded-lg p-4 shadow-sts-lg">
-                <h3 className="text-base font-bold text-sts-gold mb-2 flex items-center gap-2">
-                  🎯 Detected Build
-                </h3>
-                <div className="text-sts-light">
-                  <div className="font-bold text-lg mb-1">{detectedArchetypes[0].name}</div>
-                  <div className="text-xs text-sts-light/70 mb-2">{detectedArchetypes[0].description}</div>
-                  {detectedArchetypes[0].recommendedCards.length > 0 && (
-                    <div className="text-xs text-sts-gold">
-                      💡 Recommended: {detectedArchetypes[0].recommendedCards.slice(0, 3).join(', ')}
-                    </div>
-                  )}
-                </div>
-              </div>
-            )}
-
-            {/* Quick Actions */}
-            <div className="bg-sts-dark border-2 border-sts-light/20 rounded-lg p-4 shadow-sts-lg">
-              <h2 className="text-xl font-bold text-sts-light mb-4">Quick Actions</h2>
-              <div className="space-y-2">
-                <button
-                  onClick={() => setCardRewardModalOpen(true)}
-                  className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded font-semibold transition-colors"
-                >
-                  + Card Reward
-                </button>
-                <button
-                  onClick={handleNextFloor}
-                  className="w-full py-2 px-4 bg-green-600 hover:bg-green-700 text-white rounded font-semibold transition-colors"
-                >
-                  Next Floor →
-                </button>
-                <button
-                  onClick={() => setRunCompletionModalOpen(true)}
-                  className="w-full py-2 px-4 bg-red-600 hover:bg-red-700 text-white rounded font-semibold transition-colors"
-                >
-                  End Run
-                </button>
-              </div>
-            </div>
+        {/* Tab Navigation */}
+        <div className="bg-sts-dark border-2 border-sts-light/20 rounded-lg mb-4 shadow-sts-lg overflow-x-auto">
+          <div className="flex gap-1 p-2 min-w-max">
+            <button
+              onClick={() => setActiveTab('overview')}
+              className={`px-4 py-2 rounded font-semibold transition-colors ${
+                activeTab === 'overview'
+                  ? 'bg-sts-gold text-sts-dark'
+                  : 'bg-sts-darker text-sts-light hover:bg-sts-light/10'
+              }`}
+            >
+              📋 Overview
+            </button>
+            <button
+              onClick={() => setActiveTab('health')}
+              className={`px-4 py-2 rounded font-semibold transition-colors ${
+                activeTab === 'health'
+                  ? 'bg-sts-gold text-sts-dark'
+                  : 'bg-sts-darker text-sts-light hover:bg-sts-light/10'
+              }`}
+            >
+              💊 Deck Health
+            </button>
+            <button
+              onClick={() => setActiveTab('boss')}
+              className={`px-4 py-2 rounded font-semibold transition-colors ${
+                activeTab === 'boss'
+                  ? 'bg-sts-gold text-sts-dark'
+                  : 'bg-sts-darker text-sts-light hover:bg-sts-light/10'
+              }`}
+            >
+              👑 Boss Prep
+            </button>
+            <button
+              onClick={() => setActiveTab('removal')}
+              className={`px-4 py-2 rounded font-semibold transition-colors ${
+                activeTab === 'removal'
+                  ? 'bg-sts-gold text-sts-dark'
+                  : 'bg-sts-darker text-sts-light hover:bg-sts-light/10'
+              }`}
+            >
+              🗑️ Removal
+            </button>
+            <button
+              onClick={() => setActiveTab('path')}
+              className={`px-4 py-2 rounded font-semibold transition-colors ${
+                activeTab === 'path'
+                  ? 'bg-sts-gold text-sts-dark'
+                  : 'bg-sts-darker text-sts-light hover:bg-sts-light/10'
+              }`}
+            >
+              🗺️ Path
+            </button>
           </div>
         </div>
+
+        {/* Tab Content */}
+        {activeTab === 'overview' && (
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+            {/* Left Column - Deck */}
+            <div className="lg:col-span-2">
+              <div className="bg-sts-dark border-2 border-sts-light/20 rounded-lg p-4 shadow-sts-lg">
+                <h2 className="text-xl font-bold text-sts-light mb-4">
+                  Deck ({deck.length} cards)
+                </h2>
+                <DeckView
+                  deck={deck}
+                  character={character}
+                  relics={relics}
+                  onRemoveCard={handleRemoveCard}
+                  onUpgradeCard={handleUpgradeCard}
+                />
+              </div>
+            </div>
+
+            {/* Right Column - Relics & Actions */}
+            <div className="space-y-4">
+              {/* Relics */}
+              <div className="bg-sts-dark border-2 border-sts-light/20 rounded-lg p-4 shadow-sts-lg">
+                <h2 className="text-xl font-bold text-sts-light mb-4">
+                  Relics ({relics.length})
+                </h2>
+                <div className="grid grid-cols-3 gap-2">
+                  {relics.map((relic) => (
+                    <div
+                      key={relic.id}
+                      className="relative group cursor-pointer"
+                      onMouseEnter={() => setHoveredRelic(relic)}
+                      onMouseLeave={() => setHoveredRelic(null)}
+                    >
+                      <img
+                        src={getRelicImagePath(relic.id)}
+                        alt={relic.name}
+                        onError={handleImageError}
+                        className="w-full h-auto rounded border-2 border-sts-gold/30 hover:border-sts-gold transition-colors"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Detected Build */}
+              {detectedArchetypes.length > 0 && (
+                <div className="bg-gradient-to-r from-sts-gold/10 to-sts-gold/5 border-2 border-sts-gold/40 rounded-lg p-4 shadow-sts-lg">
+                  <h3 className="text-base font-bold text-sts-gold mb-2 flex items-center gap-2">
+                    🎯 Detected Build
+                  </h3>
+                  <div className="text-sts-light">
+                    <div className="font-bold text-lg mb-1">{detectedArchetypes[0].name}</div>
+                    <div className="text-xs text-sts-light/70 mb-2">{detectedArchetypes[0].description}</div>
+                    {detectedArchetypes[0].recommendedCards.length > 0 && (
+                      <div className="text-xs text-sts-gold">
+                        💡 Recommended: {detectedArchetypes[0].recommendedCards.slice(0, 3).join(', ')}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {/* Quick Actions */}
+              <div className="bg-sts-dark border-2 border-sts-light/20 rounded-lg p-4 shadow-sts-lg">
+                <h2 className="text-xl font-bold text-sts-light mb-4">Quick Actions</h2>
+                <div className="space-y-2">
+                  <button
+                    onClick={() => setCardRewardModalOpen(true)}
+                    className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded font-semibold transition-colors"
+                  >
+                    + Card Reward
+                  </button>
+                  <button
+                    onClick={handleNextFloor}
+                    className="w-full py-2 px-4 bg-green-600 hover:bg-green-700 text-white rounded font-semibold transition-colors"
+                  >
+                    Next Floor →
+                  </button>
+                  <button
+                    onClick={() => setRunCompletionModalOpen(true)}
+                    className="w-full py-2 px-4 bg-red-600 hover:bg-red-700 text-white rounded font-semibold transition-colors"
+                  >
+                    End Run
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {activeTab === 'health' && (
+          <DeckHealthDashboard
+            deck={deck}
+            relics={relics}
+            character={character}
+            floor={stats.floorNumber}
+            ascensionLevel={stats.ascensionLevel}
+          />
+        )}
+
+        {activeTab === 'boss' && (
+          <BossPreparationPanel
+            deck={deck}
+            relics={relics}
+            character={character}
+            floor={stats.floorNumber}
+            currentHP={stats.currentHP}
+            maxHP={stats.maxHP}
+          />
+        )}
+
+        {activeTab === 'removal' && (
+          <RemovalAdvisorPanel
+            deck={deck}
+            relics={relics}
+            character={character}
+            floor={stats.floorNumber}
+            gold={stats.gold}
+          />
+        )}
+
+        {activeTab === 'path' && (
+          <PathAdvisorPanel
+            deck={deck}
+            relics={relics}
+            character={character}
+            floor={stats.floorNumber}
+            currentHP={stats.currentHP}
+            maxHP={stats.maxHP}
+            gold={stats.gold}
+            ascensionLevel={stats.ascensionLevel}
+          />
+        )}
       </div>
 
       {/* Modals */}
