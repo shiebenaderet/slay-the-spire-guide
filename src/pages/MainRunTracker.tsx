@@ -89,20 +89,35 @@ export function MainRunTracker() {
   const [activeTab, setActiveTab] = useState<'overview' | 'health' | 'boss' | 'removal' | 'path'>('overview');
   const [error, setError] = useState<string | null>(null);
 
+  // Debug logging
+  useEffect(() => {
+    console.log('MainRunTracker mounted:', {
+      hasHydrated,
+      isRunActive,
+      character,
+      deckSize: deck?.length,
+      relicsCount: relics?.length
+    });
+  }, []);
+
   // Redirect if no active run
   useEffect(() => {
     if (hasHydrated && !isRunActive) {
+      console.log('Redirecting to home - no active run');
       navigate('/');
     }
   }, [hasHydrated, isRunActive, navigate]);
 
   if (!hasHydrated || !isRunActive || !character) {
+    console.log('Showing loading screen:', { hasHydrated, isRunActive, character });
     return (
       <div className="min-h-screen bg-gradient-to-b from-sts-darkest via-sts-darker to-sts-dark flex items-center justify-center">
         <div className="text-sts-light">Loading...</div>
       </div>
     );
   }
+
+  console.log('Rendering MainRunTracker content');
 
   // Detect deck archetypes with error handling
   const detectedArchetypes = useMemo(() => {
