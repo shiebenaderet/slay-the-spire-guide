@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCoachingStore } from '../store/coachingStore';
 import { CombatFlow } from '../components/CombatFlow';
+import { ShopFlow } from '../components/ShopFlow';
+import { RestFlow } from '../components/RestFlow';
 import type { FloorType, CombatEncounter } from '../types/coaching';
 
 export function RunCoach() {
@@ -153,6 +155,20 @@ export function RunCoach() {
     handleCompleteFloor();
   };
 
+  const handleShopComplete = (purchased: string[], removed: string[], goldSpent: number) => {
+    // TODO: Update deck with purchases and removals
+    // TODO: Update gold
+    console.log('Shop completed:', { purchased, removed, goldSpent });
+    handleCompleteFloor();
+  };
+
+  const handleRestComplete = (action: 'rest' | 'upgrade' | 'smith' | 'lift', cardUpgraded?: string, cardRemoved?: string) => {
+    // TODO: Update HP if rested
+    // TODO: Update deck with upgraded/removed cards
+    console.log('Rest site completed:', { action, cardUpgraded, cardRemoved });
+    handleCompleteFloor();
+  };
+
   // In active floor - show floor-specific UI
   return (
     <div className="min-h-screen bg-sts-darkest text-sts-light p-8">
@@ -185,27 +201,31 @@ export function RunCoach() {
           )}
 
           {activeFloor.floorType === 'shop' && (
-            <div>
-              <p className="text-sts-light/70 mb-4">Shop functionality coming soon...</p>
-              <button
-                onClick={handleCompleteFloor}
-                className="px-6 py-2 bg-sts-gold hover:bg-sts-gold/80 text-sts-dark font-bold rounded transition-colors"
-              >
-                Leave Shop
-              </button>
-            </div>
+            <ShopFlow
+              floor={currentFloor}
+              deck={deck}
+              relics={relics}
+              character={character}
+              currentHP={currentHP}
+              maxHP={maxHP}
+              gold={gold}
+              ascension={ascensionLevel}
+              onComplete={handleShopComplete}
+            />
           )}
 
           {activeFloor.floorType === 'rest' && (
-            <div>
-              <p className="text-sts-light/70 mb-4">Rest site functionality coming soon...</p>
-              <button
-                onClick={handleCompleteFloor}
-                className="px-6 py-2 bg-sts-gold hover:bg-sts-gold/80 text-sts-dark font-bold rounded transition-colors"
-              >
-                Leave Rest Site
-              </button>
-            </div>
+            <RestFlow
+              floor={currentFloor}
+              deck={deck}
+              relics={relics}
+              character={character}
+              currentHP={currentHP}
+              maxHP={maxHP}
+              gold={gold}
+              ascension={ascensionLevel}
+              onComplete={handleRestComplete}
+            />
           )}
 
           {activeFloor.floorType === 'event' && (
