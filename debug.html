@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head><title>Debug</title></head>
+<body style="background: #000; color: #fff; padding: 20px;">
+<h1>Direct Image Test</h1>
+<div style="display: flex; gap: 20px;">
+  <div>
+    <p>Using React path format:</p>
+    <img src="/images/cards/ironclad/strike.png" style="width: 150px; border: 2px solid red;" />
+    <p id="result1">Loading...</p>
+  </div>
+  <div>
+    <p>Relic:</p>
+    <img src="/images/relics/burningBlood.png" style="width: 150px; border: 2px solid red;" />
+    <p id="result2">Loading...</p>
+  </div>
+</div>
+<script>
+  document.querySelectorAll('img')[0].onload = () => document.getElementById('result1').textContent = 'SUCCESS!';
+  document.querySelectorAll('img')[0].onerror = () => document.getElementById('result1').textContent = 'FAILED!';
+  document.querySelectorAll('img')[1].onload = () => document.getElementById('result2').textContent = 'SUCCESS!';
+  document.querySelectorAll('img')[1].onerror = () => document.getElementById('result2').textContent = 'FAILED!';
+</script>
+</body>
+</html>
