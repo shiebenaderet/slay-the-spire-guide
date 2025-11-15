@@ -210,8 +210,26 @@ export function CombatFlow({
     );
   }
 
+  // Step 5: Card Reward
+  if (step === 'card-reward') {
+    return (
+      <CardRewardFlow
+        floor={floor}
+        deck={deck}
+        relics={relics}
+        character={character}
+        currentHP={endingHP}
+        maxHP={maxHP}
+        gold={gold + goldReceived}
+        ascension={ascension}
+        onComplete={handleCardRewardComplete}
+      />
+    );
+  }
+
   // Step 4: Record results
-  return (
+  if (step === 'record-results') {
+    return (
     <div className="space-y-6">
       <div>
         <h2 className="text-2xl font-bold text-sts-gold mb-4">How did it go?</h2>
@@ -281,22 +299,6 @@ export function CombatFlow({
         {won === null ? 'Select Win or Loss' : 'Continue to Rewards'}
       </button>
     </div>
-  );
-
-  // Step 5: Card Reward
-  if (step === 'card-reward') {
-    return (
-      <CardRewardFlow
-        floor={floor}
-        deck={deck}
-        relics={relics}
-        character={character}
-        currentHP={endingHP}
-        maxHP={maxHP}
-        gold={gold + goldReceived}
-        ascension={ascension}
-        onComplete={handleCardRewardComplete}
-      />
     );
   }
 
