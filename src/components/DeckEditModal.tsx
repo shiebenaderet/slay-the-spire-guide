@@ -26,9 +26,14 @@ export function DeckEditModal({
   const [newCards, setNewCards] = useState<string[]>([]);
   const [newRelicsToAdd, setNewRelicsToAdd] = useState<string[]>([]);
 
-  // Get all card names for autocomplete
+  // Get all card names for autocomplete - include EVERYTHING (curses, status, all characters)
   const availableCards = cardsData
-    .filter((c: any) => c.character === character.toLowerCase() || c.character === 'colorless')
+    .filter((c: any) =>
+      c.character === character.toLowerCase() ||
+      c.character === 'colorless' ||
+      c.rarity === 'curse' ||
+      c.rarity === 'status'
+    )
     .map((c: any) => c.name);
 
   const availableRelics = relicsData.map((r: any) => r.name);
