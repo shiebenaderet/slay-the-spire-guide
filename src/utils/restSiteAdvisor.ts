@@ -5,6 +5,14 @@
 
 import { getCardData } from './comprehensiveCardEvaluator';
 
+/**
+ * Cards that CANNOT be removed from your deck
+ */
+const UNREMOVABLE_CARDS = [
+  'ascenders_bane',  // Cannot be removed (Ascension 10+ starting curse)
+  'necronomicurse',  // Cannot be removed (spawns copies)
+];
+
 interface RestSiteContext {
   character: string;
   act: number;
@@ -120,7 +128,14 @@ export function evaluateRestSite(context: RestSiteContext): RestSiteRecommendati
   const hpCritical = isHPCritical(currentHP, maxHP, act);
 
   // REST evaluation
-  const restHeal = Math.floor(maxHP * 0.3);
+  let restHeal = Math.floor(maxHP * 0.3);
+
+  // Check for Regal Pillow relic (+15 HP on rest)
+  const hasRegalPillow = relics.some(r => r.toLowerCase().includes('regal pillow'));
+  if (hasRegalPillow) {
+    restHeal += 15;
+  }
+
   let restPriority: 'must-do' | 'strong' | 'consider' | 'avoid';
   const restReasoning: string[] = [];
 
@@ -197,9 +212,15 @@ export function evaluateRestSite(context: RestSiteContext): RestSiteRecommendati
     // Peace Pipe: Can remove a card at rest sites
     const strikes = deck.filter(c => c.toLowerCase().includes('strike') && !c.includes('+')).length;
     const defends = deck.filter(c => c.toLowerCase().includes('defend') && !c.includes('+')).length;
+
+    // Get removable curses only (exclude Ascender's Bane, Necronomicurse)
     const curses = deck.filter(c => {
       const card = getCardData(c);
-      return card?.type === 'curse';
+      if (!card || card.type !== 'curse') return false;
+
+      // Skip unremovable curses
+      const cardId = card.id.toLowerCase().replace(/[^a-z_]/g, '_');
+      return !UNREMOVABLE_CARDS.includes(cardId);
     });
 
     let smithPriority: 'must-do' | 'strong' | 'consider' | 'avoid';

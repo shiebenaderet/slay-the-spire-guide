@@ -49,6 +49,14 @@ export interface RemovalRecommendation {
 }
 
 /**
+ * Cards that CANNOT be removed from your deck
+ */
+const UNREMOVABLE_CARDS = [
+  'ascenders_bane',  // Cannot be removed (Ascension 10+ starting curse)
+  'necronomicurse',  // Cannot be removed (spawns copies)
+];
+
+/**
  * Get card removal priority
  */
 export function getRemovalPriority(deck: string[], relics: string[], gold: number, act: number): RemovalRecommendation[] {
@@ -59,10 +67,14 @@ export function getRemovalPriority(deck: string[], relics: string[], gold: numbe
   const strikes = deck.filter(c => c.toLowerCase().includes('strike') && !c.includes('+'));
   const defends = deck.filter(c => c.toLowerCase().includes('defend') && !c.includes('+'));
 
-  // Critical removals (remove even if expensive)
+  // Critical removals (remove even if expensive) - but exclude unremovable cards
   const curses = deck.filter(c => {
     const card = getCardData(c);
-    return card?.type === 'curse';
+    if (!card || card.type !== 'curse') return false;
+
+    // Skip unremovable curses
+    const cardId = card.id.toLowerCase().replace(/[^a-z_]/g, '_');
+    return !UNREMOVABLE_CARDS.includes(cardId);
   });
 
   curses.forEach(curse => {
