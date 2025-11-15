@@ -65,8 +65,18 @@ export function AutocompleteInput({
         // If there's exactly one suggestion, use it
         if (filteredSuggestions.length === 1) {
           addValue(filteredSuggestions[0]);
+        } else if (filteredSuggestions.length > 1) {
+          // Multiple matches - don't add, let user select from dropdown
+          return;
         } else {
-          addValue(inputValue.trim());
+          // No suggestions - check if input exactly matches a valid option (case-insensitive)
+          const exactMatch = suggestions.find(
+            s => s.toLowerCase() === inputValue.trim().toLowerCase()
+          );
+          if (exactMatch) {
+            addValue(exactMatch);
+          }
+          // If no match, do nothing (don't add invalid text)
         }
       }
     } else if (e.key === 'Backspace' && !inputValue && values.length > 0) {
