@@ -53,17 +53,21 @@ function calculateRemovalPriority(
   let priority = 0;
 
   // CURSES: Always highest priority
+  // NOTE: Some curses CANNOT be removed at shops
   if (card.type === 'curse') {
-    if (card.id === 'ascenders_bane') return 10; // Remove ASAP
+    // Unremovable curses (ethereal or special mechanics)
+    if (card.id === 'ascenders_bane') return 0; // UNREMOVABLE - ethereal, exhausts when played
+    if (card.id === 'necronomicurse') return 0; // UNREMOVABLE - only N'loth event can remove
+    if (card.id === 'curse_of_the_bell') return 0; // UNREMOVABLE - permanent curse
+
+    // Removable curses - prioritize by severity
     if (card.id === 'clumsy' || card.id === 'parasite') return 9;
     return 8; // Other curses
   }
 
-  // STATUS CARDS: Very high priority
+  // STATUS CARDS: Cannot be removed (temporary - auto-removed after combat)
   if (card.type === 'status') {
-    if (card.id === 'wound' || card.id === 'dazed') return 8;
-    if (card.id === 'burn' || card.id === 'slimed') return 7;
-    return 6;
+    return 0; // Status cards are temporary and cannot be removed at shops
   }
 
   // BASIC STRIKES: High priority in mid-late game
@@ -138,8 +142,14 @@ function calculateRemovalPriority(
 
   // CHARACTER-SPECIFIC REMOVALS
   if (character === 'ironclad') {
-    if (card.id === 'bash' && floor > 15 && analysis.cardIds.includes('thunderclap')) {
-      return 6; // Bash becomes bad with better vulnerable sources
+    // Bash is less valuable when you have better vulnerable sources
+    if (card.id === 'bash' && floor > 15) {
+      const hasBetterVulnerable = analysis.cardIds.some((id: string) =>
+        ['uppercut', 'shockwave', 'thunderclap'].includes(id)
+      );
+      if (hasBetterVulnerable) {
+        return 6; // Bash becomes redundant with better vulnerable sources
+      }
     }
   }
 
@@ -186,15 +196,23 @@ function getRemovalReason(
 ): string {
   // CURSES
   if (card.type === 'curse') {
+    // Unremovable curses have special explanations
     if (card.id === 'ascenders_bane') {
-      return '🚨 CRITICAL: Ascender\'s Bane is pure deck bloat - remove at ANY cost';
+      return '⛔ UNREMOVABLE: Ascender\'s Bane is ethereal - it exhausts when played and cannot be removed at shops';
     }
+    if (card.id === 'necronomicurse') {
+      return '⛔ UNREMOVABLE: Necronomicurse cannot be removed at shops - only N\'loth event can remove it';
+    }
+    if (card.id === 'curse_of_the_bell') {
+      return '⛔ UNREMOVABLE: Curse of the Bell is permanent - price for taking the Cursed Bell relic';
+    }
+
     return '⚠️ HIGH PRIORITY: Curses actively hurt your deck, remove ASAP';
   }
 
   // STATUS CARDS
   if (card.type === 'status') {
-    return '⚠️ Status cards dilute your deck and provide no value';
+    return 'ℹ️ Status cards are temporary - they auto-remove after combat ends (cannot be removed at shops)';
   }
 
   // STRIKES
@@ -260,8 +278,11 @@ function getRemovalReason(
 
   // CHARACTER SPECIFIC
   if (character === 'ironclad' && card.id === 'bash') {
-    if (analysis.cardIds.includes('thunderclap') || analysis.cardIds.includes('uppercut')) {
-      return 'Bash is weak late game when you have better vulnerable sources';
+    const hasBetterVulnerable = analysis.cardIds.some((id: string) =>
+      ['uppercut', 'shockwave', 'thunderclap'].includes(id)
+    );
+    if (hasBetterVulnerable) {
+      return 'Bash is weak late game when you have better vulnerable sources (Uppercut, Shockwave, Thunderclap)';
     }
   }
 

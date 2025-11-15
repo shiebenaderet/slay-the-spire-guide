@@ -242,9 +242,9 @@ function getStartingHP(character: string, ascension: number): { currentHP: numbe
       baseHP = 80;
   }
 
-  // Ascension 14+ reduces starting HP by 5
+  // Ascension 14: -10% max HP (rounded down)
   if (ascension >= 14) {
-    baseHP -= 5;
+    baseHP = Math.floor(baseHP * 0.9);
   }
 
   return { currentHP: baseHP, maxHP: baseHP };
