@@ -146,18 +146,51 @@ export function CardRewardFlow({
   const sortedEvaluations = [...evaluations].sort((a, b) => b.score - a.score);
   const bestPick = sortedEvaluations[0];
 
+  // Check if all cards are weak
+  const allCardsWeak = sortedEvaluations.every(e => e.recommendation === 'skip');
+  const allCardsLowScore = sortedEvaluations.every(e => e.score < 2);
+
   return (
     <div className="space-y-6">
       <div>
         <h2 className="text-2xl font-bold text-sts-gold mb-4">Card Recommendations</h2>
 
-        {/* Best Pick Highlight */}
-        <div className="mb-6 p-4 bg-green-900/30 border-2 border-green-500/60 rounded-lg">
-          <div className="flex items-center justify-between mb-2">
-            <h3 className="text-xl font-bold text-green-400">
-              {bestPick.recommendation === 'must-pick' ? '🏆' : '✓'} Best Pick: {bestPick.card}
+        {/* Warning if all cards are weak */}
+        {(allCardsWeak || allCardsLowScore) && (
+          <div className="mb-6 p-4 bg-red-900/30 border-2 border-red-500/60 rounded-lg">
+            <h3 className="text-xl font-bold text-red-400 mb-2">
+              ⚠️ All cards are weak - Consider skipping
             </h3>
-            <div className="text-2xl font-bold text-green-400">{bestPick.score}/5</div>
+            <p className="text-sm text-red-300">
+              None of these cards solve your immediate problems. Skipping is often correct when cards don't help with upcoming elites/boss.
+            </p>
+          </div>
+        )}
+
+        {/* Best Pick Highlight */}
+        <div className={`mb-6 p-4 border-2 rounded-lg ${
+          bestPick.recommendation === 'skip'
+            ? 'bg-yellow-900/30 border-yellow-500/60'
+            : bestPick.recommendation === 'must-pick'
+            ? 'bg-green-900/30 border-green-500/60'
+            : 'bg-blue-900/30 border-blue-500/60'
+        }`}>
+          <div className="flex items-center justify-between mb-2">
+            <h3 className={`text-xl font-bold ${
+              bestPick.recommendation === 'skip'
+                ? 'text-yellow-400'
+                : bestPick.recommendation === 'must-pick'
+                ? 'text-green-400'
+                : 'text-blue-400'
+            }`}>
+              {bestPick.recommendation === 'must-pick' ? '🏆' : bestPick.recommendation === 'skip' ? '⚠️' : '✓'}
+              {bestPick.recommendation === 'skip' ? 'Least Bad Option' : 'Best Pick'}: {bestPick.card}
+            </h3>
+            <div className={`text-2xl font-bold ${
+              bestPick.recommendation === 'skip'
+                ? 'text-yellow-400'
+                : 'text-green-400'
+            }`}>{bestPick.score}/5</div>
           </div>
 
           <div className="mb-3 flex gap-2 text-sm">
