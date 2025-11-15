@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { AutocompleteInput } from './AutocompleteInput';
 import { evaluateCardPick } from '../utils/cardRecommendationEngine';
 import type { CardRewardDecision } from '../types/coaching';
+import cardsData from '../data/cards.json';
 
 interface CardRewardFlowProps {
   floor: number;
@@ -29,6 +30,17 @@ export function CardRewardFlow({
   const [cardsOffered, setCardsOffered] = useState<string[]>([]);
   const [showingRecommendations, setShowingRecommendations] = useState(false);
   const [selectedCard, setSelectedCard] = useState<string | 'skip' | null>(null);
+
+  // Get all card names for autocomplete suggestions
+  const availableCards = useMemo(() => {
+    const characterCards = cardsData
+      .filter((c: any) =>
+        (c.character === character.toLowerCase() || c.character === 'colorless') &&
+        c.rarity !== 'starter' && c.rarity !== 'curse'
+      )
+      .map((c: any) => c.name);
+    return characterCards;
+  }, [character]);
 
   // Determine act and upcoming boss based on floor
   const act = floor <= 16 ? 1 : floor <= 33 ? 2 : 3;
@@ -84,6 +96,7 @@ export function CardRewardFlow({
             values={cardsOffered}
             onChange={setCardsOffered}
             placeholder="Type card name..."
+            suggestions={availableCards}
           />
 
           <div className="mt-4 text-sm text-sts-light/70">
