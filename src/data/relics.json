@@ -210,6 +210,16 @@
     "synergies": ["rupture", "brutality"]
   },
   {
+    "id": "regal_pillow",
+    "name": "Regal Pillow",
+    "rarity": "common",
+    "character": "shared",
+    "description": "Heal an additional 15 HP when you Rest.",
+    "tier": "B",
+    "tierRating": 3,
+    "synergies": []
+  },
+  {
     "id": "vajra",
     "name": "Vajra",
     "rarity": "common",
