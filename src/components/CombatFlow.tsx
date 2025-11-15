@@ -268,8 +268,9 @@ export function CombatFlow({
           </label>
           <input
             type="number"
-            value={endingHP}
-            onChange={(e) => setEndingHP(parseInt(e.target.value) || 0)}
+            value={endingHP === 0 ? '' : endingHP}
+            onChange={(e) => setEndingHP(e.target.value === '' ? 0 : parseInt(e.target.value))}
+            placeholder="0"
             className="w-full px-4 py-3 bg-sts-darker border-2 border-sts-light/20 rounded text-sts-light focus:border-sts-gold focus:outline-none"
             min={0}
             max={maxHP}
@@ -283,8 +284,9 @@ export function CombatFlow({
           </label>
           <input
             type="number"
-            value={goldReceived}
-            onChange={(e) => setGoldReceived(parseInt(e.target.value) || 0)}
+            value={goldReceived === 0 ? '' : goldReceived}
+            onChange={(e) => setGoldReceived(e.target.value === '' ? 0 : parseInt(e.target.value))}
+            placeholder="0"
             className="w-full px-4 py-3 bg-sts-darker border-2 border-sts-light/20 rounded text-sts-light focus:border-sts-gold focus:outline-none"
             min={0}
           />

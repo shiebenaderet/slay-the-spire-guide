@@ -32,6 +32,9 @@ export function RunCoach() {
   const [selectedFloorType, setSelectedFloorType] = useState<FloorType | null>(null);
   const [showRestartConfirm, setShowRestartConfirm] = useState(false);
   const [showDeckEditModal, setShowDeckEditModal] = useState(false);
+  const [showStatsEditModal, setShowStatsEditModal] = useState(false);
+  const [editedHP, setEditedHP] = useState(currentHP);
+  const [editedGold, setEditedGold] = useState(gold);
 
   if (!character) {
     navigate('/');
@@ -63,12 +66,24 @@ export function RunCoach() {
           <div className="mb-8">
             <div className="flex items-center justify-between mb-2">
               <h1 className="text-3xl font-bold text-sts-gold">Floor {currentFloor}</h1>
-              <button
-                onClick={() => setShowRestartConfirm(true)}
-                className="px-4 py-2 bg-red-900/40 hover:bg-red-900/60 border border-red-500/40 hover:border-red-500 text-red-300 hover:text-red-200 rounded transition-all"
-              >
-                🔄 Restart Run
-              </button>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => {
+                    setEditedHP(currentHP);
+                    setEditedGold(gold);
+                    setShowStatsEditModal(true);
+                  }}
+                  className="px-4 py-2 bg-blue-900/40 hover:bg-blue-900/60 border border-blue-500/40 hover:border-blue-500 text-blue-300 hover:text-blue-200 rounded transition-all"
+                >
+                  ✏️ Edit Stats
+                </button>
+                <button
+                  onClick={() => setShowRestartConfirm(true)}
+                  className="px-4 py-2 bg-red-900/40 hover:bg-red-900/60 border border-red-500/40 hover:border-red-500 text-red-300 hover:text-red-200 rounded transition-all"
+                >
+                  🔄 Restart Run
+                </button>
+              </div>
             </div>
             <div className="flex gap-6 text-sm text-sts-light/70">
               <span>{character} - A{ascensionLevel}</span>
@@ -99,6 +114,69 @@ export function RunCoach() {
                     className="flex-1 px-4 py-2 bg-red-900/40 border border-red-500/40 text-red-300 hover:bg-red-900/60 hover:border-red-500 rounded transition-all"
                   >
                     Restart
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Stats Edit Modal */}
+          {showStatsEditModal && (
+            <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
+              <div className="bg-sts-dark border-2 border-sts-gold/40 rounded-lg p-6 max-w-md mx-4 w-full">
+                <h2 className="text-2xl font-bold text-sts-gold mb-4">Edit Stats</h2>
+                <p className="text-sm text-sts-light/70 mb-6">
+                  Manually adjust HP or Gold to fix tracking errors
+                </p>
+
+                {/* HP Input */}
+                <div className="mb-4">
+                  <label className="block text-sm font-semibold text-sts-light mb-2">
+                    Current HP
+                  </label>
+                  <input
+                    type="number"
+                    value={editedHP === 0 ? '' : editedHP}
+                    onChange={(e) => setEditedHP(e.target.value === '' ? 0 : parseInt(e.target.value))}
+                    placeholder="0"
+                    min={0}
+                    max={maxHP}
+                    className="w-full px-4 py-3 bg-sts-darker border-2 border-sts-light/20 rounded text-sts-light focus:border-sts-gold focus:outline-none"
+                  />
+                  <p className="text-xs text-sts-light/50 mt-1">Max HP: {maxHP}</p>
+                </div>
+
+                {/* Gold Input */}
+                <div className="mb-6">
+                  <label className="block text-sm font-semibold text-sts-light mb-2">
+                    Gold
+                  </label>
+                  <input
+                    type="number"
+                    value={editedGold === 0 ? '' : editedGold}
+                    onChange={(e) => setEditedGold(e.target.value === '' ? 0 : parseInt(e.target.value))}
+                    placeholder="0"
+                    min={0}
+                    className="w-full px-4 py-3 bg-sts-darker border-2 border-sts-light/20 rounded text-sts-light focus:border-sts-gold focus:outline-none"
+                  />
+                </div>
+
+                <div className="flex gap-4">
+                  <button
+                    onClick={() => setShowStatsEditModal(false)}
+                    className="flex-1 px-4 py-2 bg-sts-darker border border-sts-light/40 text-sts-light hover:border-sts-light/60 rounded transition-all"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={() => {
+                      updateHP(editedHP);
+                      updateGold(editedGold);
+                      setShowStatsEditModal(false);
+                    }}
+                    className="flex-1 px-4 py-2 bg-sts-gold hover:bg-sts-gold/80 text-sts-dark font-bold rounded transition-all"
+                  >
+                    Save Changes
                   </button>
                 </div>
               </div>
@@ -240,9 +318,39 @@ export function RunCoach() {
     }
 
     // Player won - update stats and continue
-    if (combat.endingHP !== undefined) {
-      updateHP(combat.endingHP);
+    let finalHP = combat.endingHP !== undefined ? combat.endingHP : currentHP;
+
+    // Apply post-combat healing from relics
+    const relicNames = relics.map(r => r.toLowerCase());
+    const healingNotes: string[] = [];
+
+    // Burning Blood (Ironclad starter): Heal 6 HP
+    if (relicNames.includes('burning blood')) {
+      finalHP = Math.min(finalHP + 6, maxHP);
+      healingNotes.push('Burning Blood: +6 HP');
     }
+
+    // Black Blood (Boss relic, replaces Burning Blood): Heal 12 HP
+    if (relicNames.includes('black blood')) {
+      finalHP = Math.min(finalHP + 12, maxHP);
+      healingNotes.push('Black Blood: +12 HP');
+    }
+
+    // Meat on the Bone: Heal 12 HP if HP <= 50%
+    if (relicNames.includes('meat on the bone') && finalHP <= maxHP * 0.5) {
+      finalHP = Math.min(finalHP + 12, maxHP);
+      healingNotes.push('Meat on the Bone: +12 HP (HP was ≤50%)');
+    }
+
+    // Update HP with post-combat healing applied
+    updateHP(finalHP);
+
+    // Log healing if any occurred
+    if (healingNotes.length > 0) {
+      console.log('Post-combat healing:', healingNotes.join(', '));
+    }
+
+    // Update gold
     if (combat.goldReceived !== undefined && combat.goldReceived > 0) {
       updateGold(gold + combat.goldReceived);
     }

@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useGameStore } from '../store/gameStore';
 import type { CharacterType, Relic } from '../types';
+import packageJson from '../../package.json';
 
 const characters: Array<{
   id: CharacterType;
@@ -123,9 +124,12 @@ export function CharacterSelect() {
         <h1 className="text-6xl font-bold text-center mb-2 text-sts-light drop-shadow-lg" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
           Slay the Spire
         </h1>
-        <h2 className="text-2xl font-semibold text-center mb-4 text-sts-gold">
+        <h2 className="text-2xl font-semibold text-center mb-2 text-sts-gold">
           Run Tracker & Advisor
         </h2>
+        <p className="text-sm text-center mb-2 text-sts-light/50">
+          v{packageJson.version}
+        </p>
         <p className="text-lg text-center mb-12 text-sts-light/70">
           Select Your Character
         </p>
@@ -225,11 +229,12 @@ export function CharacterSelect() {
                 type="number"
                 min="0"
                 max="20"
-                value={selectedAscension}
+                value={selectedAscension === 0 ? '' : selectedAscension}
                 onChange={(e) => {
-                  const val = parseInt(e.target.value) || 0;
+                  const val = e.target.value === '' ? 0 : parseInt(e.target.value);
                   setSelectedAscension(Math.max(0, Math.min(20, val)));
                 }}
+                placeholder="0"
                 className="w-20 h-12 bg-sts-darkest text-sts-gold text-center font-bold text-2xl rounded border-2 border-sts-gold/60 focus:border-sts-gold focus:outline-none"
               />
             </div>
