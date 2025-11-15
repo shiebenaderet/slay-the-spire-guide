@@ -9,6 +9,14 @@ export interface RemovalAdvice {
 }
 
 /**
+ * Cards that CANNOT be removed from your deck
+ */
+const UNREMOVABLE_CARDS = [
+  'ascenders_bane',  // Cannot be removed (Ascension 10+ starting curse)
+  'necronomicurse',  // Cannot be removed (spawns copies)
+];
+
+/**
  * Generate prioritized card removal recommendations
  * Critical for A20 deck thinning strategy
  */
@@ -24,6 +32,11 @@ export function generateRemovalPriority(
 
   // Analyze each card in deck for removal priority
   deck.forEach(card => {
+    // Skip unremovable cards - don't even include them in recommendations
+    if (UNREMOVABLE_CARDS.includes(card.id)) {
+      return;
+    }
+
     const priority = calculateRemovalPriority(card, deck, analysis, relics, character, floor);
     const reason = getRemovalReason(card, deck, analysis, relics, character, floor);
     const urgency = getRemovalUrgency(priority);

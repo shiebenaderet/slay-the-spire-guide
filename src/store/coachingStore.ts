@@ -259,10 +259,19 @@ function getStartingHP(character: string, ascension: number): { currentHP: numbe
       baseHP = 80;
   }
 
-  // Ascension 14+ reduces starting HP by 5
+  // Ascension 14+ reduces max HP (Ironclad: -5, others: -4)
+  let maxHP = baseHP;
   if (ascension >= 14) {
-    baseHP -= 5;
+    const hpReduction = character.toLowerCase() === 'ironclad' ? 5 : 4;
+    maxHP -= hpReduction;
   }
 
-  return { currentHP: baseHP, maxHP: baseHP };
+  // Ascension 6+ starts damaged (lose 10% of max HP, rounded down)
+  let currentHP = maxHP;
+  if (ascension >= 6) {
+    const hpLoss = Math.floor(maxHP * 0.1);
+    currentHP = maxHP - hpLoss;
+  }
+
+  return { currentHP, maxHP };
 }

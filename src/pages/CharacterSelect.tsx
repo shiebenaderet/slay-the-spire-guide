@@ -93,11 +93,28 @@ export function CharacterSelect() {
     navigate('/starting-choice');
   };
 
-  const getModifiedHP = (baseHP: number) => {
+  const getModifiedHP = (baseHP: number, charId: CharacterType) => {
+    let maxHP = baseHP;
+
+    // Ascension 14+ reduces max HP (Ironclad: -5, others: -4)
     if (selectedAscension >= 14) {
-      return Math.floor(baseHP * 0.9);
+      const hpReduction = charId === 'ironclad' ? 5 : 4;
+      maxHP -= hpReduction;
     }
-    return baseHP;
+
+    return maxHP;
+  };
+
+  const getCurrentHP = (baseHP: number, charId: CharacterType) => {
+    const maxHP = getModifiedHP(baseHP, charId);
+
+    // Ascension 6+ starts damaged (lose 10% of max HP, rounded down)
+    if (selectedAscension >= 6) {
+      const hpLoss = Math.floor(maxHP * 0.1);
+      return maxHP - hpLoss;
+    }
+
+    return maxHP;
   };
 
   return (
@@ -145,9 +162,9 @@ export function CharacterSelect() {
                 )}
 
                 <div className="absolute bottom-3 right-3 bg-black/80 px-4 py-2 rounded-lg text-base font-bold border-2 border-sts-gold/50 shadow-sts">
-                  {getModifiedHP(char.startingHP)} HP
-                  {selectedAscension >= 14 && (
-                    <span className="text-red-400 ml-1 text-xs">(-{char.startingHP - getModifiedHP(char.startingHP)})</span>
+                  {getCurrentHP(char.startingHP, char.id)}/{getModifiedHP(char.startingHP, char.id)} HP
+                  {selectedAscension >= 6 && (
+                    <span className="text-red-400 ml-1 text-xs">(-{getModifiedHP(char.startingHP, char.id) - getCurrentHP(char.startingHP, char.id)})</span>
                   )}
                 </div>
               </div>
@@ -173,9 +190,9 @@ export function CharacterSelect() {
                 {/* Stats */}
                 <div className="mt-4 flex justify-between items-center text-xs">
                   <span className="text-sts-light/70 font-medium">
-                    Starting HP: {getModifiedHP(char.startingHP)}
-                    {selectedAscension >= 14 && (
-                      <span className="text-red-400"> ({char.startingHP})</span>
+                    Starting HP: {getCurrentHP(char.startingHP, char.id)}/{getModifiedHP(char.startingHP, char.id)}
+                    {selectedAscension >= 6 && (
+                      <span className="text-red-400"> (base: {char.startingHP})</span>
                     )}
                   </span>
                   <span className="text-sts-gold font-semibold group-hover:translate-x-1 transition-transform">

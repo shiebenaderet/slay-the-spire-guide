@@ -221,7 +221,25 @@ export function RunCoach() {
   }
 
   const handleCombatComplete = (combat: CombatEncounter, cardReward?: any) => {
-    // Update HP and gold from combat
+    // Check if player lost
+    if (combat.won === false) {
+      // Player lost the combat - end the run
+      console.log('Combat lost - ending run');
+
+      // Update HP to show death (0 HP)
+      updateHP(0);
+
+      // Navigate back to character select after a short delay
+      setTimeout(() => {
+        alert(`Run ended on floor ${currentFloor}. You were defeated by: ${combat.enemies.join(', ')}`);
+        resetRun();
+        navigate('/');
+      }, 500);
+
+      return;
+    }
+
+    // Player won - update stats and continue
     if (combat.endingHP !== undefined) {
       updateHP(combat.endingHP);
     }
