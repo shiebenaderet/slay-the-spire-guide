@@ -4,6 +4,7 @@ import { useCoachingStore } from '../store/coachingStore';
 import { CombatFlow } from '../components/CombatFlow';
 import { ShopFlow } from '../components/ShopFlow';
 import { RestFlow } from '../components/RestFlow';
+import { DeckEditModal } from '../components/DeckEditModal';
 import type { FloorType, CombatEncounter } from '../types/coaching';
 
 export function RunCoach() {
@@ -20,14 +21,27 @@ export function RunCoach() {
     activeFloor,
     startFloor,
     completeFloor,
+    addCardToDeck,
+    updateHP,
+    updateGold,
+    resetRun,
+    setDeck,
+    setRelics,
   } = useCoachingStore();
 
   const [selectedFloorType, setSelectedFloorType] = useState<FloorType | null>(null);
+  const [showRestartConfirm, setShowRestartConfirm] = useState(false);
+  const [showDeckEditModal, setShowDeckEditModal] = useState(false);
 
   if (!character) {
     navigate('/');
     return null;
   }
+
+  const handleRestartRun = () => {
+    resetRun();
+    navigate('/');
+  };
 
   const handleStartFloor = () => {
     if (selectedFloorType) {
@@ -47,7 +61,15 @@ export function RunCoach() {
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="mb-8">
-            <h1 className="text-3xl font-bold text-sts-gold mb-2">Floor {currentFloor}</h1>
+            <div className="flex items-center justify-between mb-2">
+              <h1 className="text-3xl font-bold text-sts-gold">Floor {currentFloor}</h1>
+              <button
+                onClick={() => setShowRestartConfirm(true)}
+                className="px-4 py-2 bg-red-900/40 hover:bg-red-900/60 border border-red-500/40 hover:border-red-500 text-red-300 hover:text-red-200 rounded transition-all"
+              >
+                🔄 Restart Run
+              </button>
+            </div>
             <div className="flex gap-6 text-sm text-sts-light/70">
               <span>{character} - A{ascensionLevel}</span>
               <span>HP: {currentHP}/{maxHP}</span>
@@ -56,6 +78,44 @@ export function RunCoach() {
               <span>Relics: {relics.length}</span>
             </div>
           </div>
+
+          {/* Restart Confirmation Modal */}
+          {showRestartConfirm && (
+            <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
+              <div className="bg-sts-dark border-2 border-sts-gold/40 rounded-lg p-6 max-w-md mx-4">
+                <h2 className="text-2xl font-bold text-sts-gold mb-4">Restart Run?</h2>
+                <p className="text-sts-light mb-6">
+                  Are you sure you want to restart? All progress will be lost.
+                </p>
+                <div className="flex gap-4">
+                  <button
+                    onClick={() => setShowRestartConfirm(false)}
+                    className="flex-1 px-4 py-2 bg-sts-darker border border-sts-light/40 text-sts-light hover:border-sts-light/60 rounded transition-all"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={handleRestartRun}
+                    className="flex-1 px-4 py-2 bg-red-900/40 border border-red-500/40 text-red-300 hover:bg-red-900/60 hover:border-red-500 rounded transition-all"
+                  >
+                    Restart
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Deck Edit Modal */}
+          {showDeckEditModal && (
+            <DeckEditModal
+              character={character}
+              deck={deck}
+              relics={relics}
+              onUpdateDeck={setDeck}
+              onUpdateRelics={setRelics}
+              onClose={() => setShowDeckEditModal(false)}
+            />
+          )}
 
           {/* Floor Type Selection */}
           <div className="bg-sts-dark border-2 border-sts-gold/40 rounded-lg p-6">
@@ -122,25 +182,38 @@ export function RunCoach() {
             </button>
           </div>
 
-          {/* Quick Stats */}
-          <div className="mt-8 bg-sts-dark border border-sts-light/20 rounded-lg p-6">
-            <h3 className="text-lg font-bold text-sts-light mb-3">Current Deck</h3>
+          {/* Quick Stats - Clickable to Edit */}
+          <button
+            onClick={() => setShowDeckEditModal(true)}
+            className="mt-8 w-full bg-sts-dark hover:bg-sts-dark/80 border border-sts-light/20 hover:border-sts-gold/40 rounded-lg p-6 text-left transition-all"
+          >
+            <div className="flex items-center justify-between mb-3">
+              <h3 className="text-lg font-bold text-sts-light">Current Deck ({deck.length} cards)</h3>
+              <span className="text-xs text-sts-gold">Click to edit ✏️</span>
+            </div>
             <div className="text-sm text-sts-light/80">
               {deck.length === 0 ? (
                 <p>No cards yet</p>
               ) : (
-                <p>{deck.join(', ')}</p>
+                <p className="line-clamp-3">{deck.join(', ')}</p>
               )}
             </div>
 
-            <h3 className="text-lg font-bold text-sts-light mt-4 mb-3">Relics</h3>
+            <div className="flex items-center justify-between mt-4 mb-3">
+              <h3 className="text-lg font-bold text-sts-light">Relics ({relics.length})</h3>
+            </div>
             <div className="text-sm text-sts-light/80">
               {relics.length === 0 ? (
                 <p>No relics yet</p>
               ) : (
-                <p>{relics.join(', ')}</p>
+                <p className="line-clamp-2">{relics.join(', ')}</p>
               )}
             </div>
+          </button>
+
+          {/* Version Footer */}
+          <div className="mt-8 text-center text-xs text-sts-light/40">
+            v2.0.1
           </div>
         </div>
       </div>
@@ -148,9 +221,19 @@ export function RunCoach() {
   }
 
   const handleCombatComplete = (combat: CombatEncounter, cardReward?: any) => {
-    // TODO: Update floor data with combat results
-    // TODO: Update deck if card was picked
-    // TODO: Update gold and HP
+    // Update HP and gold from combat
+    if (combat.endingHP !== undefined) {
+      updateHP(combat.endingHP);
+    }
+    if (combat.goldReceived !== undefined && combat.goldReceived > 0) {
+      updateGold(gold + combat.goldReceived);
+    }
+
+    // Add picked card to deck (if not skipped)
+    if (cardReward?.picked && cardReward.picked !== 'SKIP' && cardReward.picked !== 'skip') {
+      addCardToDeck(cardReward.picked);
+    }
+
     console.log('Combat completed:', combat, cardReward);
     handleCompleteFloor();
   };
@@ -175,14 +258,48 @@ export function RunCoach() {
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="mb-6">
-          <h1 className="text-3xl font-bold text-sts-gold mb-2">
-            Floor {currentFloor} - {activeFloor.floorType.charAt(0).toUpperCase() + activeFloor.floorType.slice(1)}
-          </h1>
+          <div className="flex items-center justify-between mb-2">
+            <h1 className="text-3xl font-bold text-sts-gold">
+              Floor {currentFloor} - {activeFloor.floorType.charAt(0).toUpperCase() + activeFloor.floorType.slice(1)}
+            </h1>
+            <button
+              onClick={() => setShowRestartConfirm(true)}
+              className="px-4 py-2 bg-red-900/40 hover:bg-red-900/60 border border-red-500/40 hover:border-red-500 text-red-300 hover:text-red-200 rounded transition-all"
+            >
+              🔄 Restart Run
+            </button>
+          </div>
           <div className="flex gap-6 text-sm text-sts-light/70">
             <span>HP: {currentHP}/{maxHP}</span>
             <span>Gold: {gold}</span>
           </div>
         </div>
+
+        {/* Restart Confirmation Modal */}
+        {showRestartConfirm && (
+          <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
+            <div className="bg-sts-dark border-2 border-sts-gold/40 rounded-lg p-6 max-w-md mx-4">
+              <h2 className="text-2xl font-bold text-sts-gold mb-4">Restart Run?</h2>
+              <p className="text-sts-light mb-6">
+                Are you sure you want to restart? All progress will be lost.
+              </p>
+              <div className="flex gap-4">
+                <button
+                  onClick={() => setShowRestartConfirm(false)}
+                  className="flex-1 px-4 py-2 bg-sts-darker border border-sts-light/40 text-sts-light hover:border-sts-light/60 rounded transition-all"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleRestartRun}
+                  className="flex-1 px-4 py-2 bg-red-900/40 border border-red-500/40 text-red-300 hover:bg-red-900/60 hover:border-red-500 rounded transition-all"
+                >
+                  Restart
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Floor-specific content */}
         <div className="bg-sts-dark border-2 border-sts-gold/40 rounded-lg p-6">
@@ -251,6 +368,11 @@ export function RunCoach() {
               </button>
             </div>
           )}
+        </div>
+
+        {/* Version Footer */}
+        <div className="mt-8 text-center text-xs text-sts-light/40">
+          v2.0.1
         </div>
       </div>
     </div>

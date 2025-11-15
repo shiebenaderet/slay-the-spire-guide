@@ -13,6 +13,9 @@ interface CoachingStore extends CoachingRunState {
   removeCardFromDeck: (card: string) => void;
   upgradeCardInDeck: (card: string) => void;
   addRelic: (relic: string) => void;
+  removeRelic: (relic: string) => void;
+  setDeck: (deck: string[]) => void;
+  setRelics: (relics: string[]) => void;
   updateHP: (current: number, max?: number) => void;
   updateGold: (amount: number) => void;
   resetRun: () => void;
@@ -135,6 +138,20 @@ export const useCoachingStore = create<CoachingStore>()(
         set((state) => ({
           relics: [...state.relics, relic],
         }));
+      },
+
+      removeRelic: (relic) => {
+        set((state) => ({
+          relics: state.relics.filter((r) => r !== relic),
+        }));
+      },
+
+      setDeck: (deck) => {
+        set({ deck });
+      },
+
+      setRelics: (relics) => {
+        set({ relics });
       },
 
       updateHP: (current, max) => {
