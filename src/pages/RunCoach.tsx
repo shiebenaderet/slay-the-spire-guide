@@ -23,14 +23,21 @@ export function RunCoach() {
     addCardToDeck,
     updateHP,
     updateGold,
+    resetRun,
   } = useCoachingStore();
 
   const [selectedFloorType, setSelectedFloorType] = useState<FloorType | null>(null);
+  const [showRestartConfirm, setShowRestartConfirm] = useState(false);
 
   if (!character) {
     navigate('/');
     return null;
   }
+
+  const handleRestartRun = () => {
+    resetRun();
+    navigate('/');
+  };
 
   const handleStartFloor = () => {
     if (selectedFloorType) {
@@ -50,7 +57,15 @@ export function RunCoach() {
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="mb-8">
-            <h1 className="text-3xl font-bold text-sts-gold mb-2">Floor {currentFloor}</h1>
+            <div className="flex items-center justify-between mb-2">
+              <h1 className="text-3xl font-bold text-sts-gold">Floor {currentFloor}</h1>
+              <button
+                onClick={() => setShowRestartConfirm(true)}
+                className="px-4 py-2 bg-red-900/40 hover:bg-red-900/60 border border-red-500/40 hover:border-red-500 text-red-300 hover:text-red-200 rounded transition-all"
+              >
+                🔄 Restart Run
+              </button>
+            </div>
             <div className="flex gap-6 text-sm text-sts-light/70">
               <span>{character} - A{ascensionLevel}</span>
               <span>HP: {currentHP}/{maxHP}</span>
@@ -59,6 +74,32 @@ export function RunCoach() {
               <span>Relics: {relics.length}</span>
             </div>
           </div>
+
+          {/* Restart Confirmation Modal */}
+          {showRestartConfirm && (
+            <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
+              <div className="bg-sts-dark border-2 border-sts-gold/40 rounded-lg p-6 max-w-md mx-4">
+                <h2 className="text-2xl font-bold text-sts-gold mb-4">Restart Run?</h2>
+                <p className="text-sts-light mb-6">
+                  Are you sure you want to restart? All progress will be lost.
+                </p>
+                <div className="flex gap-4">
+                  <button
+                    onClick={() => setShowRestartConfirm(false)}
+                    className="flex-1 px-4 py-2 bg-sts-darker border border-sts-light/40 text-sts-light hover:border-sts-light/60 rounded transition-all"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={handleRestartRun}
+                    className="flex-1 px-4 py-2 bg-red-900/40 border border-red-500/40 text-red-300 hover:bg-red-900/60 hover:border-red-500 rounded transition-all"
+                  >
+                    Restart
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Floor Type Selection */}
           <div className="bg-sts-dark border-2 border-sts-gold/40 rounded-lg p-6">
@@ -145,6 +186,11 @@ export function RunCoach() {
               )}
             </div>
           </div>
+
+          {/* Version Footer */}
+          <div className="mt-8 text-center text-xs text-sts-light/40">
+            v2.0.1
+          </div>
         </div>
       </div>
     );
@@ -188,14 +234,48 @@ export function RunCoach() {
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="mb-6">
-          <h1 className="text-3xl font-bold text-sts-gold mb-2">
-            Floor {currentFloor} - {activeFloor.floorType.charAt(0).toUpperCase() + activeFloor.floorType.slice(1)}
-          </h1>
+          <div className="flex items-center justify-between mb-2">
+            <h1 className="text-3xl font-bold text-sts-gold">
+              Floor {currentFloor} - {activeFloor.floorType.charAt(0).toUpperCase() + activeFloor.floorType.slice(1)}
+            </h1>
+            <button
+              onClick={() => setShowRestartConfirm(true)}
+              className="px-4 py-2 bg-red-900/40 hover:bg-red-900/60 border border-red-500/40 hover:border-red-500 text-red-300 hover:text-red-200 rounded transition-all"
+            >
+              🔄 Restart Run
+            </button>
+          </div>
           <div className="flex gap-6 text-sm text-sts-light/70">
             <span>HP: {currentHP}/{maxHP}</span>
             <span>Gold: {gold}</span>
           </div>
         </div>
+
+        {/* Restart Confirmation Modal */}
+        {showRestartConfirm && (
+          <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
+            <div className="bg-sts-dark border-2 border-sts-gold/40 rounded-lg p-6 max-w-md mx-4">
+              <h2 className="text-2xl font-bold text-sts-gold mb-4">Restart Run?</h2>
+              <p className="text-sts-light mb-6">
+                Are you sure you want to restart? All progress will be lost.
+              </p>
+              <div className="flex gap-4">
+                <button
+                  onClick={() => setShowRestartConfirm(false)}
+                  className="flex-1 px-4 py-2 bg-sts-darker border border-sts-light/40 text-sts-light hover:border-sts-light/60 rounded transition-all"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleRestartRun}
+                  className="flex-1 px-4 py-2 bg-red-900/40 border border-red-500/40 text-red-300 hover:bg-red-900/60 hover:border-red-500 rounded transition-all"
+                >
+                  Restart
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Floor-specific content */}
         <div className="bg-sts-dark border-2 border-sts-gold/40 rounded-lg p-6">
@@ -264,6 +344,11 @@ export function RunCoach() {
               </button>
             </div>
           )}
+        </div>
+
+        {/* Version Footer */}
+        <div className="mt-8 text-center text-xs text-sts-light/40">
+          v2.0.1
         </div>
       </div>
     </div>
