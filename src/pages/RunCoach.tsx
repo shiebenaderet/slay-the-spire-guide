@@ -213,7 +213,7 @@ export function RunCoach() {
 
           {/* Version Footer */}
           <div className="mt-8 text-center text-xs text-sts-light/40">
-            v2.0.1
+            v2.0.2
           </div>
         </div>
       </div>
@@ -372,7 +372,7 @@ export function RunCoach() {
 
         {/* Version Footer */}
         <div className="mt-8 text-center text-xs text-sts-light/40">
-          v2.0.1
+          v2.0.2
         </div>
       </div>
     </div>
