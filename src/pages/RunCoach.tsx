@@ -20,6 +20,9 @@ export function RunCoach() {
     activeFloor,
     startFloor,
     completeFloor,
+    addCardToDeck,
+    updateHP,
+    updateGold,
   } = useCoachingStore();
 
   const [selectedFloorType, setSelectedFloorType] = useState<FloorType | null>(null);
@@ -148,9 +151,19 @@ export function RunCoach() {
   }
 
   const handleCombatComplete = (combat: CombatEncounter, cardReward?: any) => {
-    // TODO: Update floor data with combat results
-    // TODO: Update deck if card was picked
-    // TODO: Update gold and HP
+    // Update HP and gold from combat
+    if (combat.endingHP !== undefined) {
+      updateHP(combat.endingHP);
+    }
+    if (combat.goldReceived !== undefined && combat.goldReceived > 0) {
+      updateGold(gold + combat.goldReceived);
+    }
+
+    // Add picked card to deck (if not skipped)
+    if (cardReward?.picked && cardReward.picked !== 'SKIP' && cardReward.picked !== 'skip') {
+      addCardToDeck(cardReward.picked);
+    }
+
     console.log('Combat completed:', combat, cardReward);
     handleCompleteFloor();
   };

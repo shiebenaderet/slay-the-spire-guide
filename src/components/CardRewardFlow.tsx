@@ -175,22 +175,34 @@ export function CardRewardFlow({
             ? 'bg-green-900/30 border-green-500/60'
             : 'bg-blue-900/30 border-blue-500/60'
         }`}>
-          <div className="flex items-center justify-between mb-2">
-            <h3 className={`text-xl font-bold ${
-              bestPick.recommendation === 'skip'
-                ? 'text-yellow-400'
-                : bestPick.recommendation === 'must-pick'
-                ? 'text-green-400'
-                : 'text-blue-400'
-            }`}>
-              {bestPick.recommendation === 'must-pick' ? '🏆' : bestPick.recommendation === 'skip' ? '⚠️' : '✓'}
-              {bestPick.recommendation === 'skip' ? 'Least Bad Option' : 'Best Pick'}: {bestPick.card}
-            </h3>
-            <div className={`text-2xl font-bold ${
-              bestPick.recommendation === 'skip'
-                ? 'text-yellow-400'
-                : 'text-green-400'
-            }`}>{bestPick.score}/5</div>
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex-1">
+              <h3 className={`text-xl font-bold ${
+                bestPick.recommendation === 'skip'
+                  ? 'text-yellow-400'
+                  : bestPick.recommendation === 'must-pick'
+                  ? 'text-green-400'
+                  : 'text-blue-400'
+              }`}>
+                {bestPick.recommendation === 'must-pick' ? '🏆' : bestPick.recommendation === 'skip' ? '⚠️' : '✓'}
+                {bestPick.recommendation === 'skip' ? 'Least Bad Option' : 'Best Pick'}: {bestPick.card}
+              </h3>
+              <div className={`text-2xl font-bold ${
+                bestPick.recommendation === 'skip'
+                  ? 'text-yellow-400'
+                  : 'text-green-400'
+              }`}>{bestPick.score}/5</div>
+            </div>
+            <button
+              onClick={() => setSelectedCard(bestPick.card)}
+              className={`ml-4 px-6 py-3 rounded font-bold transition-all ${
+                selectedCard === bestPick.card
+                  ? 'bg-sts-gold text-sts-dark'
+                  : 'bg-sts-dark border-2 border-sts-gold/60 text-sts-gold hover:bg-sts-gold hover:text-sts-dark'
+              }`}
+            >
+              {selectedCard === bestPick.card ? '✓ SELECTED' : 'SELECT THIS CARD'}
+            </button>
           </div>
 
           <div className="mb-3 flex gap-2 text-sm">
@@ -242,27 +254,41 @@ export function CardRewardFlow({
               <div
                 key={idx}
                 className={`p-3 rounded border-2 ${
-                  evaluation.recommendation === 'skip'
+                  selectedCard === evaluation.card
+                    ? 'bg-sts-gold/20 border-sts-gold'
+                    : evaluation.recommendation === 'skip'
                     ? 'bg-red-900/20 border-red-500/30'
                     : 'bg-sts-darker border-sts-light/20'
                 }`}
               >
                 <div className="flex items-center justify-between mb-2">
-                  <h4 className="font-bold text-sts-light">{evaluation.card}</h4>
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm text-sts-light/70">{evaluation.score}/5</span>
-                    <span
-                      className={`px-2 py-1 rounded text-xs font-semibold ${
-                        evaluation.recommendation === 'skip'
-                          ? 'bg-red-900/40 text-red-300'
-                          : evaluation.recommendation === 'consider'
-                          ? 'bg-yellow-900/40 text-yellow-300'
-                          : 'bg-blue-900/40 text-blue-300'
-                      }`}
-                    >
-                      {evaluation.recommendation === 'skip' ? 'SKIP' : evaluation.recommendation === 'consider' ? 'MAYBE' : 'GOOD'}
-                    </span>
+                  <div className="flex-1">
+                    <h4 className="font-bold text-sts-light">{evaluation.card}</h4>
+                    <div className="flex items-center gap-2 mt-1">
+                      <span className="text-sm text-sts-light/70">{evaluation.score}/5</span>
+                      <span
+                        className={`px-2 py-1 rounded text-xs font-semibold ${
+                          evaluation.recommendation === 'skip'
+                            ? 'bg-red-900/40 text-red-300'
+                            : evaluation.recommendation === 'consider'
+                            ? 'bg-yellow-900/40 text-yellow-300'
+                            : 'bg-blue-900/40 text-blue-300'
+                        }`}
+                      >
+                        {evaluation.recommendation === 'skip' ? 'SKIP' : evaluation.recommendation === 'consider' ? 'MAYBE' : 'GOOD'}
+                      </span>
+                    </div>
                   </div>
+                  <button
+                    onClick={() => setSelectedCard(evaluation.card)}
+                    className={`ml-4 px-4 py-2 rounded font-semibold transition-all ${
+                      selectedCard === evaluation.card
+                        ? 'bg-sts-gold text-sts-dark'
+                        : 'bg-sts-dark border border-sts-light/40 text-sts-light hover:border-sts-gold'
+                    }`}
+                  >
+                    {selectedCard === evaluation.card ? '✓ Selected' : 'Select'}
+                  </button>
                 </div>
 
                 <div className="text-xs text-sts-light/80 space-y-1">
@@ -276,12 +302,16 @@ export function CardRewardFlow({
         )}
 
         {/* Skip Option */}
-        <div className="mt-6 p-3 bg-sts-darker border border-sts-light/20 rounded">
+        <div className={`mt-6 p-3 rounded border-2 ${
+          selectedCard === 'skip'
+            ? 'bg-sts-gold/20 border-sts-gold'
+            : 'bg-sts-darker border-sts-light/20'
+        }`}>
           <div className="flex items-center justify-between">
             <div>
-              <h4 className="font-bold text-sts-light">Skip</h4>
+              <h4 className="font-bold text-sts-light">Skip All Cards</h4>
               <p className="text-xs text-sts-light/70">
-                Don't take any of these cards if they don't solve your problems
+                Don't take any of these cards - keep your deck lean
               </p>
             </div>
             <button
@@ -289,32 +319,12 @@ export function CardRewardFlow({
               className={`px-4 py-2 rounded font-semibold transition-colors ${
                 selectedCard === 'skip'
                   ? 'bg-sts-gold text-sts-dark'
-                  : 'bg-sts-dark border-2 border-sts-light/40 text-sts-light hover:border-sts-gold'
+                  : 'bg-sts-dark border border-sts-light/40 text-sts-light hover:border-sts-gold'
               }`}
             >
               {selectedCard === 'skip' ? '✓ Selected' : 'Select'}
             </button>
           </div>
-        </div>
-
-        {/* Selection Buttons */}
-        <div className="mt-6 space-y-2">
-          {sortedEvaluations.map((evaluation, idx) => (
-            <button
-              key={idx}
-              onClick={() => setSelectedCard(evaluation.card)}
-              className={`w-full p-3 rounded border-2 font-semibold text-left transition-colors ${
-                selectedCard === evaluation.card
-                  ? 'bg-sts-gold/20 border-sts-gold text-sts-gold'
-                  : 'bg-sts-darker border-sts-light/20 text-sts-light hover:border-sts-gold/60'
-              }`}
-            >
-              <div className="flex items-center justify-between">
-                <span>Pick: {evaluation.card}</span>
-                {selectedCard === evaluation.card && <span>✓</span>}
-              </div>
-            </button>
-          ))}
         </div>
       </div>
 
