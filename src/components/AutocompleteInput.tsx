@@ -39,10 +39,12 @@ export function AutocompleteInput({
     let allSuggestions: string[] = [];
 
     // Get suggestions based on type
-    if (type === 'enemy') {
+    if (suggestions.length > 0) {
+      // Use provided suggestions for all types (cards, relics, potions)
+      allSuggestions = suggestions;
+    } else if (type === 'enemy') {
+      // Fallback to hardcoded enemy names if no suggestions provided
       allSuggestions = ENEMY_NAMES;
-    } else if (type === 'card' && suggestions.length > 0) {
-      allSuggestions = suggestions;  // Use provided deck
     }
 
     // Filter suggestions
