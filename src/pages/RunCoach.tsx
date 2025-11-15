@@ -4,6 +4,7 @@ import { useCoachingStore } from '../store/coachingStore';
 import { CombatFlow } from '../components/CombatFlow';
 import { ShopFlow } from '../components/ShopFlow';
 import { RestFlow } from '../components/RestFlow';
+import { DeckEditModal } from '../components/DeckEditModal';
 import type { FloorType, CombatEncounter } from '../types/coaching';
 
 export function RunCoach() {
@@ -24,10 +25,13 @@ export function RunCoach() {
     updateHP,
     updateGold,
     resetRun,
+    setDeck,
+    setRelics,
   } = useCoachingStore();
 
   const [selectedFloorType, setSelectedFloorType] = useState<FloorType | null>(null);
   const [showRestartConfirm, setShowRestartConfirm] = useState(false);
+  const [showDeckEditModal, setShowDeckEditModal] = useState(false);
 
   if (!character) {
     navigate('/');
@@ -101,6 +105,18 @@ export function RunCoach() {
             </div>
           )}
 
+          {/* Deck Edit Modal */}
+          {showDeckEditModal && (
+            <DeckEditModal
+              character={character}
+              deck={deck}
+              relics={relics}
+              onUpdateDeck={setDeck}
+              onUpdateRelics={setRelics}
+              onClose={() => setShowDeckEditModal(false)}
+            />
+          )}
+
           {/* Floor Type Selection */}
           <div className="bg-sts-dark border-2 border-sts-gold/40 rounded-lg p-6">
             <h2 className="text-xl font-bold text-sts-gold mb-4">What type of room is this?</h2>
@@ -166,26 +182,34 @@ export function RunCoach() {
             </button>
           </div>
 
-          {/* Quick Stats */}
-          <div className="mt-8 bg-sts-dark border border-sts-light/20 rounded-lg p-6">
-            <h3 className="text-lg font-bold text-sts-light mb-3">Current Deck</h3>
+          {/* Quick Stats - Clickable to Edit */}
+          <button
+            onClick={() => setShowDeckEditModal(true)}
+            className="mt-8 w-full bg-sts-dark hover:bg-sts-dark/80 border border-sts-light/20 hover:border-sts-gold/40 rounded-lg p-6 text-left transition-all"
+          >
+            <div className="flex items-center justify-between mb-3">
+              <h3 className="text-lg font-bold text-sts-light">Current Deck ({deck.length} cards)</h3>
+              <span className="text-xs text-sts-gold">Click to edit ✏️</span>
+            </div>
             <div className="text-sm text-sts-light/80">
               {deck.length === 0 ? (
                 <p>No cards yet</p>
               ) : (
-                <p>{deck.join(', ')}</p>
+                <p className="line-clamp-3">{deck.join(', ')}</p>
               )}
             </div>
 
-            <h3 className="text-lg font-bold text-sts-light mt-4 mb-3">Relics</h3>
+            <div className="flex items-center justify-between mt-4 mb-3">
+              <h3 className="text-lg font-bold text-sts-light">Relics ({relics.length})</h3>
+            </div>
             <div className="text-sm text-sts-light/80">
               {relics.length === 0 ? (
                 <p>No relics yet</p>
               ) : (
-                <p>{relics.join(', ')}</p>
+                <p className="line-clamp-2">{relics.join(', ')}</p>
               )}
             </div>
-          </div>
+          </button>
 
           {/* Version Footer */}
           <div className="mt-8 text-center text-xs text-sts-light/40">
