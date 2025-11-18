@@ -22,6 +22,9 @@ export function RunCoach() {
     startFloor,
     completeFloor,
     addCardToDeck,
+    removeCardFromDeck,
+    upgradeCardInDeck,
+    addRelic,
     updateHP,
     updateGold,
     resetRun,
@@ -137,7 +140,10 @@ export function RunCoach() {
                   <input
                     type="number"
                     value={editedHP === 0 ? '' : editedHP}
-                    onChange={(e) => setEditedHP(e.target.value === '' ? 0 : parseInt(e.target.value))}
+                    onChange={(e) => {
+                      const val = parseInt(e.target.value);
+                      setEditedHP(e.target.value === '' ? 0 : (isNaN(val) ? 0 : val));
+                    }}
                     placeholder="0"
                     min={0}
                     max={maxHP}
@@ -154,7 +160,10 @@ export function RunCoach() {
                   <input
                     type="number"
                     value={editedGold === 0 ? '' : editedGold}
-                    onChange={(e) => setEditedGold(e.target.value === '' ? 0 : parseInt(e.target.value))}
+                    onChange={(e) => {
+                      const val = parseInt(e.target.value);
+                      setEditedGold(e.target.value === '' ? 0 : (isNaN(val) ? 0 : val));
+                    }}
                     placeholder="0"
                     min={0}
                     className="w-full px-4 py-3 bg-sts-darker border-2 border-sts-light/20 rounded text-sts-light focus:border-sts-gold focus:outline-none"
@@ -302,14 +311,13 @@ export function RunCoach() {
     // Check if player lost
     if (combat.won === false) {
       // Player lost the combat - end the run
-      console.log('Combat lost - ending run');
-
       // Update HP to show death (0 HP)
       updateHP(0);
 
       // Navigate back to character select after a short delay
       setTimeout(() => {
-        alert(`Run ended on floor ${currentFloor}. You were defeated by: ${combat.enemies.join(', ')}`);
+        const enemyList = combat.enemies?.length ? combat.enemies.join(', ') : 'unknown enemies';
+        alert(`Run ended on floor ${currentFloor}. You were defeated by: ${enemyList}`);
         resetRun();
         navigate('/');
       }, 500);
@@ -318,37 +326,33 @@ export function RunCoach() {
     }
 
     // Player won - update stats and continue
-    let finalHP = combat.endingHP !== undefined ? combat.endingHP : currentHP;
+    const originalHP = combat.endingHP !== undefined ? combat.endingHP : currentHP;
+    let finalHP = originalHP;
 
     // Apply post-combat healing from relics
     const relicNames = relics.map(r => r.toLowerCase());
     const healingNotes: string[] = [];
 
-    // Burning Blood (Ironclad starter): Heal 6 HP
-    if (relicNames.includes('burning blood')) {
+    // Black Blood (Boss relic, replaces Burning Blood): Heal 12 HP
+    // Check Black Blood first since it replaces Burning Blood
+    if (relicNames.includes('black blood')) {
+      finalHP = Math.min(finalHP + 12, maxHP);
+      healingNotes.push('Black Blood: +12 HP');
+    } else if (relicNames.includes('burning blood')) {
+      // Burning Blood (Ironclad starter): Heal 6 HP
       finalHP = Math.min(finalHP + 6, maxHP);
       healingNotes.push('Burning Blood: +6 HP');
     }
 
-    // Black Blood (Boss relic, replaces Burning Blood): Heal 12 HP
-    if (relicNames.includes('black blood')) {
-      finalHP = Math.min(finalHP + 12, maxHP);
-      healingNotes.push('Black Blood: +12 HP');
-    }
-
-    // Meat on the Bone: Heal 12 HP if HP <= 50%
-    if (relicNames.includes('meat on the bone') && finalHP <= maxHP * 0.5) {
+    // Meat on the Bone: Heal 12 HP if original HP was <= 50%
+    // Use originalHP to check threshold, not finalHP after other healing
+    if (relicNames.includes('meat on the bone') && originalHP <= maxHP * 0.5) {
       finalHP = Math.min(finalHP + 12, maxHP);
       healingNotes.push('Meat on the Bone: +12 HP (HP was ≤50%)');
     }
 
     // Update HP with post-combat healing applied
     updateHP(finalHP);
-
-    // Log healing if any occurred
-    if (healingNotes.length > 0) {
-      console.log('Post-combat healing:', healingNotes.join(', '));
-    }
 
     // Update gold
     if (combat.goldReceived !== undefined && combat.goldReceived > 0) {
@@ -360,21 +364,46 @@ export function RunCoach() {
       addCardToDeck(cardReward.picked);
     }
 
-    console.log('Combat completed:', combat, cardReward);
     handleCompleteFloor();
   };
 
   const handleShopComplete = (purchased: string[], removed: string[], goldSpent: number) => {
-    // TODO: Update deck with purchases and removals
-    // TODO: Update gold
-    console.log('Shop completed:', { purchased, removed, goldSpent });
+    // Update deck with purchased cards
+    purchased.forEach(card => {
+      addCardToDeck(card);
+    });
+
+    // Update deck with removed cards
+    removed.forEach(card => {
+      removeCardFromDeck(card);
+    });
+
+    // Update gold
+    updateGold(gold - goldSpent);
+
     handleCompleteFloor();
   };
 
   const handleRestComplete = (action: 'rest' | 'upgrade' | 'smith' | 'lift', cardUpgraded?: string, cardRemoved?: string) => {
-    // TODO: Update HP if rested
-    // TODO: Update deck with upgraded/removed cards
-    console.log('Rest site completed:', { action, cardUpgraded, cardRemoved });
+    // Update HP if rested (heal 30% of max HP)
+    if (action === 'rest') {
+      const healAmount = Math.floor(maxHP * 0.3);
+      const newHP = Math.min(currentHP + healAmount, maxHP);
+      updateHP(newHP);
+    }
+
+    // Update deck with upgraded card
+    if (action === 'upgrade' && cardUpgraded) {
+      upgradeCardInDeck(cardUpgraded);
+    }
+
+    // Update deck with removed card (Peace Pipe)
+    if (action === 'smith' && cardRemoved) {
+      removeCardFromDeck(cardRemoved);
+    }
+
+    // Note: 'lift' action (Girya) doesn't modify game state in this version
+
     handleCompleteFloor();
   };
 

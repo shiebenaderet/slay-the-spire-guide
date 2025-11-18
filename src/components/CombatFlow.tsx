@@ -38,8 +38,6 @@ export function CombatFlow({
   const [goldReceived, setGoldReceived] = useState(0);
   const [combatData, setCombatData] = useState<CombatEncounter | null>(null);
 
-  console.log('CombatFlow render - step:', step, 'won:', won);
-
   const handleEnemiesEntered = () => {
     setStep('enter-hand');
   };
@@ -66,14 +64,18 @@ export function CombatFlow({
   };
 
   const handleResultsSubmitted = () => {
-    console.log('handleResultsSubmitted called, won:', won, 'step:', step);
+    // Guard: won should never be null here due to button disabled state, but check explicitly
+    if (won === null) {
+      console.error('handleResultsSubmitted called with won === null');
+      return;
+    }
 
     const combat: CombatEncounter = {
       floor,
       enemies,
       currentHand,
       strategy,
-      won: won!,
+      won: won,
       endingHP,
       goldReceived,
     };
@@ -82,10 +84,8 @@ export function CombatFlow({
 
     // Only show card rewards if they won
     if (won) {
-      console.log('Setting step to card-reward');
       setStep('card-reward');
     } else {
-      console.log('Calling onComplete for loss');
       onComplete(combat);
     }
   };
@@ -269,7 +269,10 @@ export function CombatFlow({
           <input
             type="number"
             value={endingHP === 0 ? '' : endingHP}
-            onChange={(e) => setEndingHP(e.target.value === '' ? 0 : parseInt(e.target.value))}
+            onChange={(e) => {
+              const val = parseInt(e.target.value);
+              setEndingHP(e.target.value === '' ? 0 : (isNaN(val) ? 0 : val));
+            }}
             placeholder="0"
             className="w-full px-4 py-3 bg-sts-darker border-2 border-sts-light/20 rounded text-sts-light focus:border-sts-gold focus:outline-none"
             min={0}
@@ -285,7 +288,10 @@ export function CombatFlow({
           <input
             type="number"
             value={goldReceived === 0 ? '' : goldReceived}
-            onChange={(e) => setGoldReceived(e.target.value === '' ? 0 : parseInt(e.target.value))}
+            onChange={(e) => {
+              const val = parseInt(e.target.value);
+              setGoldReceived(e.target.value === '' ? 0 : (isNaN(val) ? 0 : val));
+            }}
             placeholder="0"
             className="w-full px-4 py-3 bg-sts-darker border-2 border-sts-light/20 rounded text-sts-light focus:border-sts-gold focus:outline-none"
             min={0}

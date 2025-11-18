@@ -154,7 +154,7 @@ function evaluateCard(card: string, context: DeckContext): CardEvaluation {
     if (!hasAOE && isAOECard(card)) {
       reasoning.push('🔥 PRIORITY: You need AOE for multi-enemy fights!');
     }
-    if (!hasScaling && isScalingDamage(card)) {
+    if (!hasScaling && isScalingDamageCard(card)) {
       reasoning.push('🔥 PRIORITY: You need scaling for the boss!');
     }
   }

@@ -59,24 +59,15 @@ export function ShopModal({
 
   useEffect(() => {
     // Generate shop stock
-    console.log('ShopModal: useEffect triggered, generating stock...');
     setIsLoading(true);
     generateShopStock();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [character]);
 
   const generateShopStock = () => {
-    console.log('ShopModal: Generating shop stock for character:', character);
-    console.log('ShopModal: cardsData loaded:', cardsData.length, 'cards');
-    console.log('ShopModal: relicsData loaded:', relicsData.length, 'relics');
-    console.log('ShopModal: potionsData loaded:', potionsData.length, 'potions');
-
     // Cards: 2 attacks, 2 skills, 1 power, 1 colorless
     const characterCards = cardsData.filter(c => c.character === character) as Card[];
     const colorlessCards = cardsData.filter(c => c.character === 'colorless') as Card[];
-
-    console.log('ShopModal: Character cards available:', characterCards.length);
-    console.log('ShopModal: Colorless cards available:', colorlessCards.length);
 
     const attacks = characterCards.filter(c => c.type === 'attack').sort(() => Math.random() - 0.5).slice(0, 2);
     const skills = characterCards.filter(c => c.type === 'skill').sort(() => Math.random() - 0.5).slice(0, 2);
@@ -102,8 +93,6 @@ export function ShopModal({
     // Sort by rating (best first)
     shopCardsWithEval.sort((a, b) => b.rating - a.rating);
 
-    console.log('ShopModal: Shop cards generated:', shopCardsWithEval.length);
-
     // Relics: 2-3 relics
     const nonBossRelics = relicsData.filter(r => r.rarity !== 'boss' && r.rarity !== 'starter') as Relic[];
     const shopRelics = nonBossRelics.sort(() => Math.random() - 0.5).slice(0, 3).map(relic => ({
@@ -112,8 +101,6 @@ export function ShopModal({
              relic.rarity === 'uncommon' ? 250 :
              300
     }));
-
-    console.log('ShopModal: Shop relics generated:', shopRelics.length);
 
     // Potions: 3 potions
     const availablePotions = potionsData.filter(
